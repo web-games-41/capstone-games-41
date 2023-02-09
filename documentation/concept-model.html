@@ -8,7 +8,7 @@
 <!--The below is incomplete and needs further development-->
 <h2>Profile</h2>
 <ul>
-    <li>profileID</li>
+    <li>PK:profileID</li>
     <li>profileName</li>
     <li>profileHash</li>
     <li>profileEmail</li>
@@ -17,9 +17,9 @@
 
 <h2>Listing</h2>
 <ul>
-    <li>listingID</li>
-    <li>listingProfileID</li>
-    <li>listingCategoryID</li>
+    <li>PK:listingID</li>
+    <li>FK:listingProfileID</li>
+    <li>FK:listingCategoryID</li>
     <li>listingCondition</li>
     <li>listingName</li>
     <li>listingDescription</li>
@@ -28,17 +28,27 @@
 
 <h2>Message</h2>
 <ul>
-    <li>messageID</li>
-    <li>messageProfileID</li>
-    <li>messageListingID</li>
+    <li>PK:messageID</li>
+    <li>FK:messageProfileID</li>
+    <li>FK:messageReceiverID</li>
+    <li>FK:messageListingID</li>
     <li>messageText</li>
     <li>messageDate</li>
 </ul>
 
 <h2>Category</h2>
 <ul>
-    <li>categoryID</li>
+    <li>PK:categoryID</li>
     <li>categoryName</li>
+</ul>
+
+<h2>Relationships</h2>
+<ul>
+    <li>Foreign Key<strong>listingProfileID</strong> to Primary Key<strong>profileID</strong></li>
+    <li>Foreign Key<strong>listingCategoryID</strong> to Primary Key <strong>categoryID</strong></li>
+    <li>Foreign Key<strong>messageProfileID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key<strong>messageListingID</strong> to Primary Key <strong>listingID</strong></li>
+    <li>Foreign Key<strong>messageRecieverID</strong> to Primary Key <strong>profileID</strong></li>
 </ul>
 
 <p>Profile</p>
