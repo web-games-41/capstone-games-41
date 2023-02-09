@@ -9,31 +9,31 @@
 <h2>Profile</h2>
 <ul>
     <li>PK:profileID</li>
-    <li>profileName</li>
-    <li>profileHash</li>
-    <li>profileEmail</li>
     <li>profileAvatarUrl</li>
+    <li>profileEmail</li>
+    <li>profileHash</li>
+    <li>profileName</li>
 </ul>
 
 <h2>Listing</h2>
 <ul>
     <li>PK:listingID</li>
-    <li>FK:listingProfileID</li>
     <li>FK:listingCategoryID</li>
+    <li>FK:listingProfileID</li>
     <li>listingCondition</li>
-    <li>listingName</li>
     <li>listingDescription</li>
-    <li>listingImageUrl</li>
+    <li>listingImageURL</li>
+    <li>listingName</li>
 </ul>
 
 <h2>Message</h2>
 <ul>
     <li>PK:messageID</li>
+    <li>FK:messageListingID</li>
     <li>FK:messageProfileID</li>
     <li>FK:messageReceiverID</li>
-    <li>FK:messageListingID</li>
-    <li>messageText</li>
     <li>messageDate</li>
+    <li>messageText</li>
 </ul>
 
 <h2>Category</h2>
