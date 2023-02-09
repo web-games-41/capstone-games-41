@@ -5,7 +5,7 @@
     <title>Conceptual Model and ERD</title>
 </head>
 <body>
-<!--The below is incomplete and needs further development-->
+
 <h2>Profile</h2>
 <ul>
     <li>PK:profileID</li>
@@ -44,14 +44,14 @@
 
 <h2>Relationships</h2>
 <ul>
-    <li>Foreign Key<strong>listingProfileID</strong> to Primary Key<strong>profileID</strong></li>
     <li>Foreign Key<strong>listingCategoryID</strong> to Primary Key <strong>categoryID</strong></li>
-    <li>Foreign Key<strong>messageProfileID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key<strong>listingProfileID</strong> to Primary Key<strong>profileID</strong></li>
     <li>Foreign Key<strong>messageListingID</strong> to Primary Key <strong>listingID</strong></li>
-    <li>Foreign Key<strong>messageRecieverID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key<strong>messageProfileID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key<strong>messageReceiverID</strong> to Primary Key <strong>profileID</strong></li>
 </ul>
 
 <p>Profile</p>
-<img src="./updatederd.jpg" alt="erdmodel">
+<img src="./erd.jpg" alt="erdmodel">
 </body>
 </html>
