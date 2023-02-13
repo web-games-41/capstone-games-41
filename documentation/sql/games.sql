@@ -31,7 +31,7 @@ create table message(
     message_profile_id uuid not null,
     message_receiver_id uuid not null,
     message_date varchar(16) not null,
-    message_texts varchar(300) not null,
+    message_text varchar(300) not null,
     foreign key (message_listing_id) references listing(listing_id),
     foreign key (message_profile_id) references profile(profile_id),
     foreign key (message_receiver_id) references profile(profile_id),
