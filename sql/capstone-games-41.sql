@@ -1,6 +1,6 @@
-drop table if exists category;
 drop table if exists listing;
 drop table if exists message;
+drop table if exists category;
 drop table if exists profile;
 
 create table category(
