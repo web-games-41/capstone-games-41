@@ -21,3 +21,8 @@ export async function insertProfile (profile: Profile): Promise<string> {
     await sql `insert into profile(profile_id, profile_activation_id, profile_avatar_url, profile_email, profile_hash, profile_name) values (gen_random_uuid(), ${profileActivationToken}, ${profileAvatarUrl}, ${profileEmail}, ${profileHash}, ${profileName})`
     return 'Profile updated successfully'
 }
+
+export async function selectProfileByProfileEmail (profileEmail: string) : Promise<Profile|null> {
+    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_id, profile_avatar_url, profile_hash, profile_name FROM profile WHERE profile_email = ${profileEmail}`
+    return result?.length === 1 ? result[0] : null
+}
