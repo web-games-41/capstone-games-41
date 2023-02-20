@@ -1,4 +1,4 @@
-import {sql} from "../../src/utils/database.utils";
+import {sql} from "../database.utils";
 
 
 export interface Profile {
