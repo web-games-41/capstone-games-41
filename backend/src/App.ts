@@ -36,7 +36,6 @@ export class App {
             saveUninitialized: true,
             secret: process.env.SESSION_SECRET as string,
             resave: false
-
         }
 
         this.app.use(morgan('dev'))
