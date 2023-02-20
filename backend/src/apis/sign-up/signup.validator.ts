@@ -36,7 +36,7 @@ export const signupValidator: Schema = {
         trim: true,
         isLength: {
             errorMessage: 'profileName must be between seven and one hundred twenty eight',
-            options: {min: 1, max: 32}
+            options: {min: 1, max: 128}
         }
     }
 }
