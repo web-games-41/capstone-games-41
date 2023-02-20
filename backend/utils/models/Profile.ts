@@ -11,7 +11,7 @@ export interface Profile {
 }
 
 /**
- *Function to insert profile object into postgres database
+ * Function to insert profile object into postgres database
  * @param profile Profile object that will be updated into the database
  * @return success message if the sql statement was executed with no errors
  **/
