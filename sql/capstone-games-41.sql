@@ -24,6 +24,8 @@ create table listing(
                         listing_category_id uuid not null,
                         listing_profile_id uuid not null,
                         listing_condition varchar(128) not null,
+                        listing_claimed boolean not null,
+                        listing_date date not null,
                         listing_description varchar(512) not null,
                         listing_image_url varchar(256),
                         listing_name varchar(128) not null,
