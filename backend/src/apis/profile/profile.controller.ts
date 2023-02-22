@@ -1,4 +1,11 @@
-import e, { Request, Response } from "express";
+import { Request, Response } from "express";
+import {
+    PartialProfile,
+    Profile,
+    selectPartialProfileByProfileId,
+    selectWholeProfileByProfileId, updateProfile
+} from "../../utils/models/Profile";
+import {Status} from "../../utils/interfaces/Status";
 
 
 /**
@@ -10,8 +17,8 @@ export async function putProfileController (request: Request, response: Response
     try {
         const { profileId } = request.params
         const { profileAvatarUrl, profileEmail, profileName } = request.body
-        const profile = request.session.profile as Promise
-        const profileIdFromSessions = profile.profileId. as string
+        const profile = request.session.profile as Profile
+        const profileIdFromSessions = profile.profileId as string
 
         const preformUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
             const previousProfile: Profile = await selectWholeProfileByProfileId(partialProfile.profileId as string) as Profile

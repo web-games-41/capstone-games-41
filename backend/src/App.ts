@@ -9,6 +9,7 @@ import {signUpRoute} from "./apis/sign-up/signup.route";
 import {signInRoute} from "./apis/sign-in/sign-in.route";
 import {signOutRoute} from "./apis/sign-out/sign-out.route";
 import {categoryRoute} from "./apis/category/category.route";
+import {profileRoute} from "./apis/profile/profile.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -52,6 +53,7 @@ export class App {
         this.app.use('/apis/sign-in', signInRoute)
         this.app.use('/apis/sign-out', signOutRoute)
         this.app.use('/apis/category', categoryRoute)
+        this.app.use('/apis/profile', profileRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

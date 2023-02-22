@@ -16,7 +16,7 @@ export function generateJwt (payload: object, signature: string): string {
     return sign({ exp, ...payload }, signature)
 }
 
-export function setActivationToken (): string {
+export function setActivationId (): string {
     return crypto.randomBytes(16).toString('hex')
 }
 
