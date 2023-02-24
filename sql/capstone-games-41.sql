@@ -43,7 +43,7 @@ create table if not exists message(
                         message_profile_id uuid not null,
                         message_receiver_id uuid not null,
                         message_content varchar(300) not null,
-                        message_date timestamptz,
+                        message_date timestamptz not null,
                         foreign key (message_listing_id) references listing(listing_id),
                         foreign key (message_profile_id) references profile(profile_id),
                         foreign key (message_receiver_id) references profile(profile_id),
