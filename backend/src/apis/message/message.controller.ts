@@ -71,7 +71,7 @@ export async function postMessageController (request: Request, response: Respons
             messageContent
         }
         const result: string = await insertMessage(message)
-        return response.json({status: 200, data: null, message})
+        return response.json({status: 200, data: null, result})
     } catch (error) {
         console.log(error)
         return response.json({
