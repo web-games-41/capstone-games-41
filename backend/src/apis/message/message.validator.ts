@@ -6,6 +6,11 @@ export const messageValidator: Schema = {
             errorMessage: 'please provide a valid MessageProfileId'
         }
     },
+    messageListingId: {
+        isUUID: {
+            errorMessage: 'please provide a valid messageListingId'
+        }
+    },
     messageContent: {
         isLength: {
             errorMessage: 'a message cannot be longer than 300 characters',
