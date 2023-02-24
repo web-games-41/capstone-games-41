@@ -58,17 +58,19 @@ export async function getMessageByMessageIdController (request: Request, respons
 export async function postMessageController (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const profile = request.session.profile as Profile
+        const messageListingId = listing.listingId as string
         const messageProfileId = profile.profileId as string
+        const messageReceiverId = profile.profileId as string
 
-        const {messageListingId, messageReceiverId, messageContent} = request.body
+        const {messageContent} = request.body
 
         const message: Message = {
             messageId: null,
             messageListingId,
             messageProfileId,
             messageReceiverId,
-            messageDate: null,
-            messageContent
+            messageContent,
+            messageDate: null
         }
         const result: string = await insertMessage(message)
         return response.json({status: 200, data: null, result})

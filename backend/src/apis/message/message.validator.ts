@@ -1,14 +1,19 @@
 import { Schema } from "express-validator";
 
 export const messageValidator: Schema = {
+    messageListingId: {
+        isUUID: {
+            errorMessage: 'please provide a valid messageListingId'
+        }
+    },
     messageProfileId: {
         isUUID: {
             errorMessage: 'please provide a valid MessageProfileId'
         }
     },
-    messageListingId: {
+    messageReceiverId: {
         isUUID: {
-            errorMessage: 'please provide a valid messageListingId'
+            errorMessage: 'please provide a valid messageReceiverId'
         }
     },
     messageContent: {
