@@ -6,25 +6,25 @@ export interface Message {
     messageListingId: string
     messageProfileId: string
     messageReceiverId: string
-    messageDate: null|Date
-    messageText: string
+    messageDate: string|Date|null
+    messageContent: string
 }
 
 export async function insertMessage (message: Message): Promise<string> {
-    const {messageListingId, messageProfileId, messageReceiverId, messageText} = message
-    await sql `insert into message (message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_text) values (gen_random_uuid(), ${messageListingId}, ${messageProfileId}, ${messageReceiverId}, NOW(), ${messageText})`
+    const {messageListingId, messageProfileId, messageReceiverId, messageDate, messageContent} = message
+    await sql `insert into message (message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_content) values (gen_random_uuid(), ${messageListingId}, ${messageProfileId}, ${messageReceiverId}, ${messageDate}, ${messageContent})`
     return 'Message created successfully'
 }
 
 export async function selectAllMessages (): Promise<Message[]> {
-    return sql<Message[]> `select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_text from message`
+    return sql<Message[]> `select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_content from message`
 }
 
 export async function selectMessageByMessageId (messageId: string): Promise<Message|null> {
-    const result = <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_text from message where message_id = ${messageId}`
+    const result = <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_content from message where message_id = ${messageId}`
     return result?.length === 1 ? result[0] : null
 }
 
 export async function selectMessageByMessageProfileId (messageProfileId: string): Promise<Message[]> {
-    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_text from message where message_profile_id = ${messageProfileId}`
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_date, message_content from message where message_profile_id = ${messageProfileId}`
 }

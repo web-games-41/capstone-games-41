@@ -3,13 +3,13 @@ drop table if exists message;
 drop table if exists category;
 drop table if exists profile;
 
-create table category(
+create table if not exists category(
                          category_id uuid not null,
                          category_name varchar(32) not null,
                          primary key (category_id)
 );
 
-create table profile(
+create table if not exists profile(
                         profile_id uuid not null,
                         profile_activation_id uuid not null,
                         profile_avatar_url varchar(256),
@@ -19,7 +19,7 @@ create table profile(
                         primary key(profile_id)
 );
 
-create table listing(
+create table if not exists listing(
                         listing_id uuid not null,
                         listing_category_id uuid not null,
                         listing_profile_id uuid not null,
@@ -37,13 +37,13 @@ create table listing(
 create index on listing(listing_category_id);
 create index on listing(listing_profile_id);
 
-create table message(
+create table if not exists message(
                         message_id uuid not null,
                         message_listing_id uuid not null,
                         message_profile_id uuid not null,
                         message_receiver_id uuid not null,
                         message_date timestamptz not null,
-                        message_text varchar(300) not null,
+                        message_content varchar(300) not null,
                         foreign key (message_listing_id) references listing(listing_id),
                         foreign key (message_profile_id) references profile(profile_id),
                         foreign key (message_receiver_id) references profile(profile_id),

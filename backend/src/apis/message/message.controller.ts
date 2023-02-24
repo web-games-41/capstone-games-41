@@ -25,7 +25,7 @@ export async function getAllMessageController (request: Request, response: Respo
     }
 }
 
-export async function getMessageByMessageProfileIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getMessageByMessageProfileIdController (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const {messageProfileId} = request.params
         const data = await selectMessageByMessageProfileId(messageProfileId)
@@ -54,11 +54,13 @@ export async function getMessageByMessageIdController (request: Request, respons
     }
 }
 
-export async function postMessage (request: Request, response: Response): Promise<Response<Status>> {
+
+export async function postMessageController (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const { messageListingId,messageReceiverId,messageText } = request.body
-        const profile: Profile = request.session.profile as Profile
-        const messageProfileId: string = profile.profileId as string
+        const profile = request.session.profile as Profile
+        const messageProfileId = profile.profileId as string
+
+        const {messageListingId, messageReceiverId, messageContent} = request.body
 
         const message: Message = {
             messageId: null,
@@ -66,19 +68,15 @@ export async function postMessage (request: Request, response: Response): Promis
             messageProfileId,
             messageReceiverId,
             messageDate: null,
-            messageText
+            messageContent
         }
-        const result = await insertMessage(message)
-        const status: Status = {
-            status: 200,
-            message: result,
-            data: null
-        }
-        return response.json(status)
+        const result: string = await insertMessage(message)
+        return response.json({status: 200, data: null, message})
     } catch (error) {
+        console.log(error)
         return response.json({
             status: 500,
-            message: 'Error Creating message, try again later.',
+            message: 'internal server error',
             data: null
         })
     }
