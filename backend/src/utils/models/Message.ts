@@ -11,10 +11,9 @@ export interface Message {
 }
 
 export async function insertMessage (message: Message): Promise<string> {
-    const {messageListingId, messageProfileId, messageReceiverId, messageContent, messageDate} = message
-    const formattedDate = messageDate ? `${messageDate as string} 12:59:59.999` : null
+    const {messageListingId, messageProfileId, messageReceiverId, messageContent} = message
     await sql `insert into message (message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date) 
-values (gen_random_uuid(), ${messageListingId}, ${messageProfileId}, ${messageReceiverId}, ${messageContent}, ${messageDate})`
+values (gen_random_uuid(), ${messageListingId}, ${messageProfileId}, ${messageReceiverId}, ${messageContent}, NOW())`
     return 'Message created successfully'
 }
 
