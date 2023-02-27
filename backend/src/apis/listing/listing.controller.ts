@@ -1,9 +1,15 @@
-import {NextFunction, Response} from "express";
+import {NextFunction, Response, Request} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {Profile} from "../../utils/models/Profile";
+import {
+    insertListing,
+    Listing, selectAllListings,
+    selectListingByListingId,
+    selectListingsByListingProfileId
+} from "../../utils/models/Listing";
 
 
-export async function getAllListingsController (request: Request, response: Response): Promise<Response<Response<Status>> {
+export async function getAllListingsController (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const data = await selectAllListings()
         // return the response
@@ -18,10 +24,10 @@ export async function getAllListingsController (request: Request, response: Resp
     }
 }
 
-export async function getListingsByListingsIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getListingsByListingProfileIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
-        const { listingProifileId } = request.params
-        const data = await selectListingsByListingProfileId(listingProifileId)
+        const { listingProfileId } = request.params
+        const data = await selectListingsByListingProfileId(listingProfileId)
         return response.json({status: 200, message:null, data })
     }   catch (error) {
         return response.json({
@@ -48,7 +54,7 @@ export async function getListingByListingIdController (request: Request, respons
 
 export async function postListing (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const { listingContent } = request.body
+        const { listingCategoryId, listingProfileId, listingCondition, listingClaimed, listingDescription, listingImageUrl, listingName} = request.body
         const profile: Profile = request.session.profile as Profile
         const listingProfileID: string = profile.profileId as string
 
@@ -57,8 +63,8 @@ export async function postListing (request: Request, response: Response): Promis
             listingCategoryId,
             listingProfileId,
             listingCondition,
-            listingClaimed
-            listingDate:null
+            listingClaimed,
+            listingDate:null,
             listingDescription,
             listingImageUrl,
             listingName,

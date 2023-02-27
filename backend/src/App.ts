@@ -11,6 +11,7 @@ import {signOutRoute} from "./apis/sign-out/sign-out.route";
 import {categoryRoute} from "./apis/category/category.route";
 import {profileRoute} from "./apis/profile/profile.route";
 import {messageRouter} from "./apis/message/message.route";
+import listingRoute from "./apis/listing/listing.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -55,6 +56,7 @@ export class App {
         this.app.use('/apis/sign-out', signOutRoute)
         this.app.use('/apis/category', categoryRoute)
         this.app.use('/apis/profile', profileRoute)
+        this.app.use('apis/listing', listingRoute)
         this.app.use('/apis/message', messageRouter)
     }
 
