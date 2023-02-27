@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conceptual Model and ERD</title>
+</head>
+<body>
+
+<h2>Profile</h2>
+<ul>
+    <li>PK: profileID</li>
+    <li>profileActivationID</li>
+    <li>profileAvatarUrl</li>
+    <li>profileEmail</li>
+    <li>profileHash</li>
+    <li>profileName</li>
+</ul>
+
+<h2>Listing</h2>
+<ul>
+    <li>PK: listingID</li>
+    <li>FK: listingCategoryID</li>
+    <li>FK: listingProfileID</li>
+    <li>listingCondition</li>
+    <li>listingDescription</li>
+    <li>listingImageURL</li>
+    <li>listingName</li>
+</ul>
+
+<h2>Message</h2>
+<ul>
+    <li>PK:messageID</li>
+    <li>FK:messageListingID</li>
+    <li>FK:messageProfileID</li>
+    <li>FK:messageReceiverID</li>
+    <li>messageDate</li>
+    <li>messageText</li>
+</ul>
+
+<h2>Category</h2>
+<ul>
+    <li>PK:categoryID</li>
+    <li>categoryName</li>
+</ul>
+
+<h2>Relationships</h2>
+<ul>
+    <li>Foreign Key <strong>listingCategoryID</strong> to Primary Key <strong>categoryID</strong></li>
+    <li>Foreign Key <strong>listingProfileID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key <strong>messageListingID</strong> to Primary Key <strong>listingID</strong></li>
+    <li>Foreign Key <strong>messageProfileID</strong> to Primary Key <strong>profileID</strong></li>
+    <li>Foreign Key <strong>messageReceiverID</strong> to Primary Key <strong>profileID</strong></li>
+</ul>
+
+<p>Profile</p>
+<img src="./erd.jpg" alt="erdmodel">
+</body>
+</html>
