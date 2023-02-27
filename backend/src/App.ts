@@ -56,7 +56,7 @@ export class App {
         this.app.use('/apis/sign-out', signOutRoute)
         this.app.use('/apis/category', categoryRoute)
         this.app.use('/apis/profile', profileRoute)
-        this.app.use('apis/listing', listingRoute)
+        this.app.use('/apis/listing', listingRoute)
         this.app.use('/apis/message', messageRouter)
     }
 
