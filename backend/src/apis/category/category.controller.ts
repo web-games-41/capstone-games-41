@@ -50,6 +50,7 @@ export async function getCategoryByCategoryIdController (request: Request, respo
  * @param response
  * @return A promise containing a status object with either a success or failure message set to the message field
  */
+
 export async function postCategoryController (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const { categoryName } = request.body
