@@ -54,16 +54,16 @@ export async function getListingByListingIdController (request: Request, respons
 
 export async function postListing (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const { listingCategoryId, listingProfileId, listingCondition, listingClaimed, listingDescription, listingImageUrl, listingName} = request.body
+        const { listingCategoryId, listingCondition, listingClaimed, listingDescription, listingImageUrl, listingName} = request.body
         const profile: Profile = request.session.profile as Profile
-        const listingProfileID: string = profile.profileId as string
+        const listingProfileId: string = profile.profileId as string
 
         const listing: Listing = {
             listingId: null,
             listingCategoryId,
             listingProfileId,
             listingCondition,
-            listingClaimed,
+            listingClaimed:false,
             listingDate:null,
             listingDescription,
             listingImageUrl,

@@ -8,7 +8,7 @@ export const listingValidator: Schema = {
     },
     listingCategoryId:{
         isUUID: {
-            errorMessage: 'please provide a valid ListingCategoryId'
+            errorMessage: 'Please provide a valid ListingCategoryId'
         }
     },
     listingCondition:{
