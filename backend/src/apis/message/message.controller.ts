@@ -3,8 +3,8 @@ import {
     insertMessage,
     Message,
     selectAllMessages,
-    selectMessageByMessageId,
-    selectMessageByMessageProfileId
+    selectMessageByMessageId, selectMessageByMessageListingId,
+    selectMessageByMessageProfileId, selectMessageByMessageReceiverId, selectMessagesByAllForeignKeys
 } from "../../utils/models/Message";
 import { Status } from "../../utils/interfaces/Status";
 import { Profile } from "../../utils/models/Profile";
@@ -32,6 +32,48 @@ export async function getMessageByMessageProfileIdController (request: Request, 
         return response.json({status: 200, message: null, data})
     } catch (error) {
         return response.json ({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
+export async function getMessageByMessageListingIdController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const {messageListingId} = request.params
+        const data = await selectMessageByMessageListingId(messageListingId)
+        return response.json({status: 200, message: null, data})
+    } catch (error) {
+        return response.json ({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
+export async function getMessagesByAllForeignKeys (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const {messageListingId, messageProfileIdOne, messageProfileIdTwo} = request.params
+        const data = await selectMessagesByAllForeignKeys(messageListingId, messageProfileIdOne, messageProfileIdTwo)
+        return response.json({status: 200, message: null, data})
+    } catch (error) {
+        return response.json ({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
+export async function getMessageByMessageReceiverId (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const {messageReceiverId} = request.params
+        const data = await selectMessageByMessageReceiverId(messageReceiverId)
+        return response.json({status: 200, message: null, data})
+    } catch (error) {
+        return response.json({
             status: 500,
             message: '',
             data: []
