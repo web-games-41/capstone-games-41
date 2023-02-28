@@ -59,9 +59,8 @@ export async function postMessageController (request: Request, response: Respons
     try {
         const profile = request.session.profile as Profile
         const messageProfileId = profile.profileId as string
-        const messageReceiverId = profile.profileId as string
 
-        const {messageListingId, messageContent} = request.body
+        const {messageListingId, messageReceiverId, messageContent} = request.body
 
         const message: Message = {
             messageId: null,
