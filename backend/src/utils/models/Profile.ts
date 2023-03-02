@@ -42,7 +42,7 @@ export async function selectWholeProfileByProfileId(profileId: string): Promise<
 }
 
 export async function selectPartialProfileByProfileId(profileId: string): Promise<Profile|null> {
-    const result = <Profile[]>await sql `SELECT profile_id, profile_avatar_url, profile_name FROM profile WHERE profile_id = ${profileId}`
+    const result = <Profile[]>await sql `SELECT profile_id, profile_avatar_url, profile_email, profile_name FROM profile WHERE profile_id = ${profileId}`
     return result?.length === 1 ? result[0] : null
 }
 
@@ -57,6 +57,9 @@ export async function updateProfile (profile: Profile): Promise<string> {
     return 'Profile successfully updated'
 }
 
+export async function selectProfileByMessageListingId (messageListingId: string, profileId: string): Promise<PartialProfile[]> {
+    return <PartialProfile[]> await sql `select distinct profile_id, profile_avatar_url, profile_email, profile_name from profile join message on profile.profile_id = message.message_profile_id or profile.profile_id = message.message_receiver_id where message_listing_id = ${messageListingId} and profile_id != ${profileId} and (message.message_profile_id = ${profileId} or message.message_receiver_id = ${profileId});`
+}
 
 
 
