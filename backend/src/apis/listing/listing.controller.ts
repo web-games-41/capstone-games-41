@@ -2,10 +2,11 @@ import {NextFunction, Response, Request} from "express";
 import {Status} from "../../utils/interfaces/Status";
 import {Profile} from "../../utils/models/Profile";
 import {
+    deleteListing,
     insertListing,
     Listing, selectAllListings,
     selectListingByListingId,
-    selectListingsByListingProfileId
+    selectListingsByListingProfileId, updateListing
 } from "../../utils/models/Listing";
 
 
@@ -83,5 +84,61 @@ export async function postListing (request: Request, response: Response): Promis
             data: null
         })
 
+    }
+}
+
+export async function putListingController (request: Request, response: Response): Promise<Response> {
+    try {
+        const { listingId } = request.params
+        const { listingProfileId, listingCategoryId, listingCondition, listingClaimed, listingDate, listingDescription, listingImageUrl, listingName } = request.body
+        const profile = request.session.profile as Profile
+        const profileIdFromSession = profile.profileId as string
+        const updateFailed = (message: string): Response => {
+            return response.json({status: 400, data: null, message})
+        }
+        const performUpdate = async (listing:Listing): Promise<Response> => {
+            const previousListing: Listing|null = await selectListingByListingId(listingId)
+            if (previousListing === null){
+                updateFailed('Listing was not found')
+            }
+            const newListing: Listing = { ...previousListing, ...listing}
+            await updateListing(newListing)
+            return response.json({status: 200, data: null, message:'Listing successfully updated'})
+        }
+
+
+
+        return listingProfileId === profileIdFromSession
+        ? await performUpdate({ listingId,listingProfileId, listingCategoryId, listingCondition, listingClaimed, listingDate, listingDescription, listingImageUrl, listingName })
+        : updateFailed('you are not allowed to preform this action')
+    } catch (error: any) {
+      return response.json({status: 400, data: null, message: error.message})
+    }
+}
+
+export async function deleteListingController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const {listingId} = request.params
+        const profile = request.session.profile as Profile
+        const profileIdFromSession = profile.profileId as string
+
+
+        const listing = await selectListingByListingId(listingId)
+        const listingProfileId = listing?.listingProfileId
+        if (listingProfileId !== profileIdFromSession) {
+            return response.json({status: 404, data: null, message:'You are not allowed to perform this task'})
+
+        }
+
+
+        const result = await deleteListing(listingId)
+        const status: Status = {
+            status: 200,
+            data: null,
+            message: result
+        }
+        return response.json(status)
+        } catch (error) {
+        return response.json({status: 500, data: null, message:'Error deleting listing, try again later'})
     }
 }

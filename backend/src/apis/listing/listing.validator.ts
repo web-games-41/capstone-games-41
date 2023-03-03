@@ -11,6 +11,11 @@ export const listingValidator: Schema = {
             errorMessage: 'Please provide a valid ListingCategoryId'
         }
     },
+    listingClaimed:{
+        isBoolean:{
+            errorMessage:'Please provide a boolean for listing claimed'
+        }
+    },
     listingCondition:{
         isLength: {
             errorMessage:'listing condition cannot be longer than 128 characters',
