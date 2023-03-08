@@ -40,7 +40,7 @@ export function Navigation () {
                 <Container fluid>
                     <Navbar.Brand href="/" alt="THIS IS THE ACTUAL LOGO">Logo Here</Navbar.Brand>
                     <Nav>
-                        <img
+                        <img className="me-auto"
                             alt="THIS IS THE MESSAGE ICON"
                             src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png"
                             height="30"
