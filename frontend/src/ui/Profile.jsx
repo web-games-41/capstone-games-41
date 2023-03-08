@@ -1,32 +1,33 @@
 import React from "react"
 import {Image} from "react-bootstrap";
+import Avatar from "./img/avatar.jpg"
 
 
 
 export function Profile() {
     return (
         <>
-            <h1>Profile</h1>
+            <h1 className="mb-5">Profile</h1>
 
-            <section id="avatarImg" className="bg-light container border rounded">
-                <Image fluid className="" src="https://thumbs.dreamstime.com/b/generic-person-gray-photo-placeholder-man-silhouette-white-background-144511705.jpg" alt="Generic Avatar"/>
+            <section id="avatarImg" className="bg-light container border rounded mb-5">
+                <Image fluid src={Avatar} alt="Generic Avatar"/>
 
             </section>
 
                 <form action="" method="" className="text-center">
-                    <div className="">
+                    <div className="mb-4">
                         <label htmlFor="firstName"></label>
-                        <input type="text" name="firstName" id="firstName" required placeholder="First Name" size="18" />
+                        <input type="text" name="firstName" id="firstName" required placeholder="First Name" />
 
 
                         <label htmlFor="Lastname"></label>
-                        <input type="text" name="LastName" id="LastName" required placeholder="Last Name" size="18" />
+                        <input type="text" name="LastName" id="LastName" required placeholder="Last Name" />
+                    </div>
+                    <div className="mb-5">
+                        <label htmlFor="email"></label>
+                        <input type="email" name="email" id="email" required placeholder="Email" size="46" />
                     </div>
                     <div className="">
-                        <label htmlFor="email"></label>
-                        <input type="email" name="email" id="email" required placeholder="Email" size="42" />
-                    </div>
-                    <div className="text-center">
                         <input type="submit" value="Update" />
                     </div>
                 </form>
