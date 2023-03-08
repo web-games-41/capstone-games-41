@@ -12,8 +12,8 @@ export function Navigation () {
                     <Navbar.Collapse className="justify-content-end">
                         <Nav>
                             <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                <NavDropdown.Item href="/sign-in">Sign In</NavDropdown.Item>
+                                <NavDropdown.Item href="sign-up">Sign Up</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="#home">Profile</Nav.Link>
                             <Nav.Link href="#link">My Listings</Nav.Link>
