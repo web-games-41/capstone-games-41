@@ -5,7 +5,7 @@ export function Message () {
         <>
             <h1 className='text-center'>Messages</h1>
             <div>
-                <Container className='bg-secondary'>
+                <Container className='bg-secondary rounded'>
                     <Row>
                         <Col xs={9} className='py-2'>
                             <p>
