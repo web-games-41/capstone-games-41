@@ -17,15 +17,15 @@ export function Profile() {
                 <form action="" method="" className="text-center">
                     <div className="mb-4">
                         <label htmlFor="firstName"></label>
-                        <input type="text" name="firstName" id="firstName" required placeholder="First Name" />
+                        <input className={"me-5"} type="text" name="firstName" id="firstName" required placeholder="First Name" size={"12"} />
 
 
                         <label htmlFor="Lastname"></label>
-                        <input type="text" name="LastName" id="LastName" required placeholder="Last Name" />
+                        <input type="text" name="LastName" id="LastName" required placeholder="Last Name" size={"12"} />
                     </div>
                     <div className="mb-5">
                         <label htmlFor="email"></label>
-                        <input type="email" name="email" id="email" required placeholder="Email" size="46" />
+                        <input type="email" name="email" id="email" required placeholder="Email" size="34" />
                     </div>
                     <div className="">
                         <input type="submit" value="Update" />

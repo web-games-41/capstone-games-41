@@ -6,6 +6,8 @@ import { FourOhFour } from './FourOhFour'
 
 import {Profile} from "./Profile.jsx";
 import {Navigation} from "./Navigation";
+import {Message} from "./Message.jsx";
+import {ViewListing} from "./ViewListing";
 
 
 
@@ -15,9 +17,13 @@ export function App() {
             <BrowserRouter>
                 <Navigation></Navigation>
                 <Routes>
-                    <Route  path='/' element={<Home />} />
+                    <Route path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
+
                     <Route path={'/profile'} element={<Profile />} />
+                    <Route path='/message' element={<Message />} />
+                    <Route path='/view-listing' element={<ViewListing />} />
+
                 </Routes>
             </BrowserRouter>
         </>
