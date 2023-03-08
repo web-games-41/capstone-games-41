@@ -53,7 +53,7 @@ export function Navigation () {
                                 <Button variant='secondary' onClick={handleShow} id='signin'>
                                     Sign In
                                 </Button>
-                                <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="/profile">Profile</Nav.Link>
                             <Nav.Link href="#link">My Listings</Nav.Link>

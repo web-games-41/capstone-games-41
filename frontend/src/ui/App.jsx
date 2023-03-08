@@ -8,7 +8,7 @@ import {Profile} from "./Profile.jsx";
 import {Navigation} from "./Navigation";
 import {Message} from "./Message.jsx";
 import {ViewListing} from "./ViewListing";
-
+import {Signup} from './Signup.jsx';
 
 
 export function App() {
@@ -17,6 +17,7 @@ export function App() {
             <BrowserRouter>
                 <Navigation></Navigation>
                 <Routes>
+                    <Route path='/sign-up' element={<Signup />} />
                     <Route path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
 
