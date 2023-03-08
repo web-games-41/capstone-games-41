@@ -3,17 +3,21 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour'
-import {Profile} from "./profile.jsx";
+
+import {Profile} from "./Profile.jsx";
+import {Navigation} from "./Navigation";
+
 
 
 export function App() {
     return (
         <>
             <BrowserRouter>
+                <Navigation></Navigation>
                 <Routes>
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
-                    <Route path={'/profile'} element={Profile}
+                    <Route path={'/profile'} element={<Profile />} />
                 </Routes>
             </BrowserRouter>
         </>

@@ -55,7 +55,16 @@ export async function getMessageByMessageListingIdController (request: Request, 
 
 export async function getMessagesByAllForeignKeys (request: Request, response: Response): Promise<Response<Status>> {
     try {
+        const profile = request.session.profile as Profile
+        const messageProfileId = profile.profileId as string
         const {messageListingId, messageProfileIdOne, messageProfileIdTwo} = request.params
+        if (messageProfileId !== messageProfileIdOne || messageProfileId !== messageProfileIdTwo){
+            return response.json({
+                status: 400,
+                message: 'you are not allowed to perform this task',
+                data: []
+            })
+        }
         const data = await selectMessagesByAllForeignKeys(messageListingId, messageProfileIdOne, messageProfileIdTwo)
         return response.json({status: 200, message: null, data})
     } catch (error) {

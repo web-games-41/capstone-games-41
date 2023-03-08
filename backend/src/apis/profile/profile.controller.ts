@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
     PartialProfile,
     Profile,
-    selectPartialProfileByProfileId,
+    selectPartialProfileByProfileId, selectProfileByMessageListingId,
     selectWholeProfileByProfileId, updateProfile
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
@@ -45,6 +45,20 @@ export async function getProfileByProfileId (request: Request, response: Respons
         const mySqlResult = await selectPartialProfileByProfileId(profileId)
         const data = mySqlResult ?? null
         const status: Status = { status: 200, data, message: null }
+        return response.json(status)
+    } catch (error: any) {
+        return (response.json({status: 400, data: null, message: error.message}))
+    }
+}
+
+export async function getProfileByMessageListingId (request: Request, response: Response): Promise<Response> {
+    try {
+        const { messageListingId } = request.params
+        const profile = request.session.profile as Profile
+        const profileIdFromSessions = profile.profileId as string
+
+        const data = await selectProfileByMessageListingId(messageListingId, profileIdFromSessions)
+        const status: Status = { status: 200, data, message: null}
         return response.json(status)
     } catch (error: any) {
         return (response.json({status: 400, data: null, message: error.message}))
