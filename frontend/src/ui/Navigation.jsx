@@ -54,6 +54,8 @@ export function Navigation () {
                                     Sign In
                                 </Button>
                                 <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                <NavDropdown.Item href="/sign-in">Sign In</NavDropdown.Item>
+                                <NavDropdown.Item href="sign-up">Sign Up</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="#home">Profile</Nav.Link>
                             <Nav.Link href="#link">My Listings</Nav.Link>
