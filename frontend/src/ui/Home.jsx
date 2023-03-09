@@ -1,5 +1,9 @@
 import React from "react"
 import {Card, Col, Container, Row} from "react-bootstrap";
+import BoardGame from "./img/gameIcons/boardGames.png"
+import Disk from "./img/gameIcons/disks.png"
+import Console from "./img/gameIcons/consoleCtlr.png"
+import Cards from "./img/gameIcons/cardDeck.png"
 
 export function Home() {
     return (
@@ -15,7 +19,14 @@ export function Home() {
             {/*    </Card.Body>*/}
             {/*</Card>*/}
 
-
+                <Container>
+                    <Row>
+                        <Col><Image src={BoardGame} /></Col>
+                        <Col><Image src={Disk} /></Col>
+                        <Col><Image src={Console} /></Col>
+                        <Col><Image src={Cards} /></Col>
+                    </Row>
+                </Container>
 
 
         </>
