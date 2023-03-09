@@ -38,25 +38,31 @@ export function Navigation () {
                     </Button>
                 </Form>
             </Modal>
+
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                        <Image className={"rounded"} fluid width={"50px"} src={Logo} alt={"Toss Me A Game Logo"} />
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Nav>
-                            <Image fluid width={"30px"} src={messageIcon} alt={"Message Icon"} />
-                        </Nav>
-                        <Nav>
-                            <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
-                                <Button variant='secondary' onClick={handleShow} id='signin'>
-                                    Sign In
-                                </Button>
-                                <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
-                            </NavDropdown>
-                            <Nav.Link href="/profile">Profile</Nav.Link>
-                            <Nav.Link href="#link">My Listings</Nav.Link>
-                        </Nav>
+                    <Image className={"rounded"} fluid width={"50px"} src={Logo} alt={"Toss Me A Game Logo"} />
+
+
+                    <Image fluid className={"ms-auto d-flex d-md-none"} width={"30px"} src={messageIcon} alt={"Message Icon"} />
+
+                    <Navbar.Toggle className="ms-2" />
+                        <Navbar.Collapse className="justify-content-end">
+                            <Nav>
+                                <Image fluid className={"d-none d-md-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} />
+                            </Nav>
+                            <Nav>
+                                <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
+                                    <Button variant='secondary' onClick={handleShow} id='signin'>
+                                        Sign In
+                                    </Button>
+                                    <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
+                                </NavDropdown>
+                                <Nav.Link href="/profile">Profile</Nav.Link>
+                                <Nav.Link href="#link">My Listings</Nav.Link>
+                            </Nav>
                     </Navbar.Collapse>
+
                 </Container>
             </Navbar>
         </>
