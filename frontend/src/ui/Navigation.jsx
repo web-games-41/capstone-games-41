@@ -1,6 +1,8 @@
 import {Button, Container, Form, Image, Modal, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import React, {useState} from "react";
-import styles from "./App.css"
+import "./App.css"
+import messageIcon from "./img/messageIcon.png"
+import Logo from "./img/tossMeAGameLogo.png"
 
 export function Navigation () {
     const [show, setShow] = useState(false);
@@ -38,16 +40,12 @@ export function Navigation () {
             </Modal>
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand href="/" alt="THIS IS THE ACTUAL LOGO">Logo Here</Navbar.Brand>
-                    <Nav>
-                        <img className="me-auto"
-                            alt="THIS IS THE MESSAGE ICON"
-                            src="https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png"
-                            height="30"
-                        />
-                    </Nav>
+                        <Image className={"rounded"} fluid width={"50px"} src={Logo} alt={"Toss Me A Game Logo"} />
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
+                        <Nav>
+                            <Image fluid width={"30px"} src={messageIcon} alt={"Message Icon"} />
+                        </Nav>
                         <Nav>
                             <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
                                 <Button variant='secondary' onClick={handleShow} id='signin'>

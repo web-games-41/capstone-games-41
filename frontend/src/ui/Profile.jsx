@@ -11,9 +11,8 @@ export function Profile() {
 
             <section id="avatarImg" className="bg-light container border rounded mb-5">
                 <Image fluid src={Avatar} alt="Generic Avatar"/>
-
             </section>
-                    {/*WORK ON CENTER POSITION WITH MARGIN*/}
+            
                 <form action="" method="" className="text-center">
                     <div className="mb-4">
                         <label htmlFor="firstName"></label>
