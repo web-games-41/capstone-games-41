@@ -47,7 +47,8 @@ export function Navigation () {
                     <Navbar.Toggle/>
                         <Navbar.Collapse className="justify-content-end pe-2">
                             <Nav>
-                                <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} />
+                                <a href='/message'>
+                                <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} /> </a>
                             </Nav>
                             <Nav>
                                 <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
