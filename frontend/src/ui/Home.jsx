@@ -8,8 +8,9 @@ import Cards from "./img/gameIcons/cardDeck.png"
 export function Home() {
     return (
         <>
-            <h1>Home</h1>
-            <Card>
+            <h1 className={'text-center'}>Home</h1>
+                <Container className={'d-flex justify-content-center'}>
+            <Card className={'w-50'}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Text>
@@ -19,15 +20,20 @@ export function Home() {
                 </Card.Body>
             </Card>
 
-                <Container>
+
+
                     <Row>
                         <Col><Image src={BoardGame} alt={"Board Game Icon"}/></Col>
                         <Col><Image src={Disk} alt={"Disk Game Icon"}/></Col>
                         <Col><Image src={Console} alt={"Console Game Icon"}/></Col>
                         <Col><Image src={Cards} alt={"Card Game Icon"}/></Col>
                     </Row>
-                </Container>
 
+
+
+
+
+            </Container>
 
         </>
     )

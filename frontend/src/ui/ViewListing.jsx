@@ -8,30 +8,13 @@ import profilepic from "../images/profile.jpg"
 export function ViewListing () {
     return(
         <>
-            <Container>
-            <Carousel>
-                <Carousel.Item>
+        <Container>
+            <Container className={'d-flex justify-content-center'}>
                     <Image
-                        className="d-block w-100"
+                        className="w-50 rounded-5 mt-2 border-dark"
                         src={image1}
-                        alt="First slide"
                     />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={image2}
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={image3}
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-            </Carousel>
+            </Container>
 
             <Container>
                 <Row className='g-2'>
