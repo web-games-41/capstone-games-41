@@ -4,8 +4,10 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 export function Home() {
     return (
         <>
-            <h1>Home</h1>
-            <Card>
+            <Container>
+            <h1 className={'text-center'}>Home</h1>
+                <Container className={'d-flex justify-content-center'}>
+            <Card className={'w-50'}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Text>
@@ -14,6 +16,8 @@ export function Home() {
                     </Card.Text>
                 </Card.Body>
             </Card>
+            </Container>
+            </Container>
         </>
     )
 }
