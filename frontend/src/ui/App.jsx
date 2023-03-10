@@ -10,6 +10,7 @@ import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
 import {Messaging} from "./Messaging";
+import {MyListings} from "./MyListings";
 
 export function App() {
     return (
@@ -20,11 +21,11 @@ export function App() {
                     <Route path='/sign-up' element={<Signup />} />
                     <Route path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
-
                     <Route path={'/profile'} element={<Profile />} />
                     <Route path='/message' element={<Message />} />
                     <Route path='/convo' element={<Messaging />} />
                     <Route path='/view-listing' element={<ViewListing />} />
+                    <Route path='/my-listings' element={<MyListings />} />
                     <Route path='/create-listing' element={<CreateListing />} />
 
                 </Routes>

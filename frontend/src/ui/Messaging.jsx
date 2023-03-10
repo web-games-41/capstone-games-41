@@ -7,7 +7,7 @@ export function Messaging () {
     return (
         <>
             <Container fluid={'md'} className={'text-center'}>
-            <h2>Plexi Putput</h2>
+            <h2>Chess Board</h2>
             </Container>
 
             <Container fluid={'md'} className='rounded border-dark mt-5'>

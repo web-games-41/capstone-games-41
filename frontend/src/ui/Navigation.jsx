@@ -21,9 +21,6 @@ export function Navigation () {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -45,7 +42,7 @@ export function Navigation () {
                     <Image className={"rounded"} fluid width={"50px"} src={Logo} alt={"Toss Me A Game Logo"} /> Toss Me A Game</a>
 
                     <Navbar.Toggle/>
-                        <Navbar.Collapse className="justify-content-end pe-2">
+                        <Navbar.Collapse className="justify-content-end p-2">
                             <Nav>
                                 <a href='/message'>
                                 <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} /> </a>
@@ -58,7 +55,7 @@ export function Navigation () {
                                     <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
                                 </NavDropdown>
                                 <Nav.Link href="/profile">Profile</Nav.Link>
-                                <Nav.Link href="#link">My Listings</Nav.Link>
+                                <Nav.Link href="/my-listings">My Listings</Nav.Link>
                             </Nav>
                     </Navbar.Collapse>
                 </Container>

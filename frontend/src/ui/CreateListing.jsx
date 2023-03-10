@@ -1,8 +1,6 @@
 import React from "react";
 import {Button, Container, DropdownButton, Image, Dropdown, Col, Row} from "react-bootstrap";
 import image1 from "../images/createlistingimg1.png"
-import image2 from "../images/createlistingimg2.png"
-import image3 from "../images/createlistingimg3.png"
 import Form from "react-bootstrap/Form";
 export function CreateListing() {
     return (
