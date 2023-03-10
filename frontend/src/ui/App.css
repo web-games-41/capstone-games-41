@@ -17,4 +17,15 @@ a {
     outline: inherit;
 
 }
+.icons {
+    width: 25%;
+}
+
+.addIcon {
+    width: 10%;
+}
+
+.mainGameIcon {
+    /*Home Game Icon Resize*/
+}
 
