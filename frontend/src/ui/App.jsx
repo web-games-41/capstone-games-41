@@ -3,13 +3,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour'
-
 import {Profile} from "./Profile.jsx";
 import {Navigation} from "./Navigation";
 import {Message} from "./Message.jsx";
 import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
+import {Messaging} from "./Messaging";
 
 export function App() {
     return (
@@ -23,6 +23,7 @@ export function App() {
 
                     <Route path={'/profile'} element={<Profile />} />
                     <Route path='/message' element={<Message />} />
+                    <Route path='/convo' element={<Messaging />} />
                     <Route path='/view-listing' element={<ViewListing />} />
                     <Route path='/create-listing' element={<CreateListing />} />
 
