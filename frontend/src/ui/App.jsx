@@ -9,7 +9,7 @@ import {Navigation} from "./Navigation";
 import {Message} from "./Message.jsx";
 import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
-
+import {CreateListing} from './CreateListing'
 
 export function App() {
     return (
@@ -24,6 +24,7 @@ export function App() {
                     <Route path={'/profile'} element={<Profile />} />
                     <Route path='/message' element={<Message />} />
                     <Route path='/view-listing' element={<ViewListing />} />
+                    <Route path='/create-listing' element={<CreateListing />} />
 
                 </Routes>
             </BrowserRouter>
