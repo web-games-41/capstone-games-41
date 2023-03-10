@@ -6,7 +6,7 @@ export function Message () {
         <>
             <h1 className='text-center'>Messages</h1>
             <div>
-                <Container className='rounded border-dark border-5 my-2 w-50'>
+                <Container className='rounded border-dark border-5 my-2'>
                     <Row>
                         <Col xs={3} className='d-flex justify-content-center'>
                             <Image fluid src={profilepic} width={100} height={100} alt="meow" className='rounded-circle'/>

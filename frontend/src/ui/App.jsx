@@ -9,6 +9,7 @@ import {Navigation} from "./Navigation";
 import {Message} from "./Message.jsx";
 import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
+import {Messaging} from "./Messaging";
 
 
 export function App() {
@@ -23,6 +24,7 @@ export function App() {
 
                     <Route path={'/profile'} element={<Profile />} />
                     <Route path='/message' element={<Message />} />
+                    <Route path='/convo' element={<Messaging />} />
                     <Route path='/view-listing' element={<ViewListing />} />
 
                 </Routes>
