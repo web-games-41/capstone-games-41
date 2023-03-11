@@ -1,5 +1,5 @@
 import React from "react"
-import {Container, Image, Form, Col, Row, Button} from "react-bootstrap";
+import {Container, Image, Form, Col, Row, Button, Card} from "react-bootstrap";
 import Avatar from "./img/avatar.jpg"
 
 
@@ -9,13 +9,16 @@ export function Profile() {
         <>
             <Container>
             <h1 className="mb-5">Profile</h1>
-                <div className="ms-5 ps-4 ms-md-0 ps-md-0">
-                <Image fluid className="rounded mb-5 mx-md-auto d-block" src={Avatar} alt="Generic Avatar"/>
-                </div>
+                {/*<div className="ms-5 ps-4 ms-md-0 ps-md-0">*/}
+                {/*<Image fluid className="rounded mb-5 mx-md-auto d-block" src={Avatar} alt="Generic Avatar"/>*/}
+                {/*</div>*/}
 
-                <Container>
-                    {/*ADD ALL THIS TO A CARD!!!*/}
+                <Container className={"d-flex justify-content-center mt-5"}>
                 <Form>
+                    <Card style={{ width: '30rem'}}>
+                        <Card.Img variant="top" src={Avatar} />
+                        <Card.Body>
+
                     <Row>
                     <Col xs={6}>
                         <Form.Group controlId={""}>
@@ -39,6 +42,8 @@ export function Profile() {
                     </Form.Group>
                     </Col>
                     </Row>
+                        </Card.Body>
+                    </Card>
                 </Form>
                 </Container>
 
