@@ -6,7 +6,7 @@ import Disk from "./img/gameIcons/disks.png"
 import Console from "./img/gameIcons/cnslCtlr.svg"
 import Cards from "./img/gameIcons/cardDeck.png"
 import Add from "./img/gameIcons/addIcon.png"
-import listingitem from "../images/createlistingimg1.png"
+import listingItem from "../images/createlistingimg1.png"
 
 export function Home() {
     return (
@@ -22,7 +22,7 @@ export function Home() {
             <Container className={'d-flex justify-content-center mt-5'}>
                 <Form>
                     <Card style={{ width: '30rem'}}>
-                        <Card.Img variant="top" src={listingitem} />
+                        <Card.Img variant="top" src={listingItem} />
                         <Card.Body>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
