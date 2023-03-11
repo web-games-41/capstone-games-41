@@ -3,10 +3,9 @@ import "./App.css"
 import {Card, Col, Container, Row, Image, Button, Form, DropdownButton, Dropdown} from "react-bootstrap";
 import BoardGame from "./img/gameIcons/boardGames.png"
 import Disk from "./img/gameIcons/disks.png"
-import Console from "./img/gameIcons/cnslCtlr.png"
+import Console from "./img/gameIcons/cnslCtlr.svg"
 import Cards from "./img/gameIcons/cardDeck.png"
 import Add from "./img/gameIcons/addIcon.png"
-import CastleGame from "./img/gameIcons/castleBoard.png"
 import listingitem from "../images/createlistingimg1.png"
 
 export function Home() {
