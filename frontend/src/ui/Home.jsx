@@ -21,44 +21,28 @@ export function Home() {
             </Container>
             <Container className={'d-flex justify-content-center mt-5'}>
 
-                    <Card style={{ width: '30rem'}}>
-                        <Card.Img variant="top" src={listingItem} />
-                        <Card.Body>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Item Name</Form.Label>
-                                    <Form.Control type="text" placeholder="Chess Board" />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Description</Form.Label>
-                                    <Form.Control type="text" placeholder="this chess board is wack" />
-                                </Form.Group>
+                <Card style={{width: '30rem'}}>
+                    <Card.Img variant="top" src={listingItem}/>
+                    <Card.Body>
 
-                                <Row>
-                                    <Col xs={4}>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <DropdownButton variant="outline-secondary" className="mt-4 " id="dropdown-basic-button" title="Condition">
-                                                <Dropdown.Item href="#/action-1">New</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-2">Used</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Slightly used</Dropdown.Item>
-                                            </DropdownButton>
-                                        </Form.Group>
-                                    </Col>
+                        <h5>Item Name:</h5><p>Monopoly</p>
 
-                                    <Col xs={4}>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <DropdownButton variant="outline-secondary" className="mt-4" id="dropdown-basic-button" title="Category">
-                                                <Dropdown.Item href="#/action-1">Board Games</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-2">Disc Copy</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Console</Dropdown.Item>
-                                                <Dropdown.Item href="#/action-3">Cards</Dropdown.Item>
-                                            </DropdownButton>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                            </Form>
-                        </Card.Body>
-                    </Card>
+                        <h5>Description:</h5><p>Money management game</p>
+
+                        <Row>
+                            <Col>
+                                <div><h5>Condition:</h5><p>New</p>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div><h5>Category:</h5><p>Board Game</p>
+                                </div>
+                            </Col>
+
+                        </Row>
+
+                    </Card.Body>
+                </Card>
 
             </Container>
 
