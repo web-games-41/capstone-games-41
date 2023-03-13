@@ -11,10 +11,13 @@ import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
 import {Messaging} from "./Messaging";
 import {MyListings} from "./MyListings";
+import {Provider} from "react-redux";
 
-export function App() {
+export function App(props) {
+    const { store } = props
     return (
         <>
+            <Provider store={store}>
             <BrowserRouter>
                 <Navigation></Navigation>
                 <Routes>
@@ -30,6 +33,7 @@ export function App() {
 
                 </Routes>
             </BrowserRouter>
+            </Provider>
         </>
     )
 }
