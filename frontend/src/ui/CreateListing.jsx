@@ -7,7 +7,7 @@ export function CreateListing() {
         <>
             <Container>
                 <Form className="p-4">
-                    <Image className="d-block mx-auto img-thumbnail border border rounded w-50" src={image1}/>
+                    <Image className="d-block mx-auto img-thumbnail border border rounded" src={image1}/>
                     <Form.Group>
                         <Button className="d-block mx-auto mt-2" variant="outline-secondary">Upload</Button>{' '}
                     </Form.Group>
