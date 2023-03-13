@@ -11,7 +11,7 @@ export function ViewListing () {
         <Container>
             <Container className={'d-flex justify-content-center'}>
                     <Image
-                        className="w-50 rounded-5 mt-2 border-dark"
+                        className="rounded-5 mt-2 border-dark"
                         src={image1}
                     />
             </Container>
