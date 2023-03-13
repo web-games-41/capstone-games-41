@@ -7,7 +7,7 @@ export function CreateListing() {
         <>
             <Container>
                 <Form className="p-4">
-                    <Image className="d-block mx-auto img-thumbnail border border rounded w-50" src={image1}/>
+                    <Image className="d-block mx-auto img-thumbnail border border rounded" src={image1}/>
                     <Form.Group>
                         <Button className="d-block mx-auto mt-2" variant="outline-secondary">Upload</Button>{' '}
                     </Form.Group>
@@ -20,14 +20,14 @@ export function CreateListing() {
                         <Form.Control type="text" placeholder="Enter Description" />
                     </Form.Group>
                     <Row>
-                        <Col sm={2}>
+                        <Col sm={3}>
                             <DropdownButton variant="outline-secondary" className="mt-4 " id="dropdown-basic-button" title="Condition">
                                 <Dropdown.Item href="#/action-1">New</Dropdown.Item>
                                 <Dropdown.Item href="#/action-2">Used</Dropdown.Item>
                                 <Dropdown.Item href="#/action-3">Slightly used</Dropdown.Item>
                             </DropdownButton>
                         </Col>
-                        <Col>
+                        <Col sm={3}>
                             <DropdownButton variant="outline-secondary" className="mt-4" id="dropdown-basic-button" title="Category">
                                 <Dropdown.Item href="#/action-1">Board Games</Dropdown.Item>
                                 <Dropdown.Item href="#/action-2">Disc Copy</Dropdown.Item>
