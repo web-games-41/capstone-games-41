@@ -20,7 +20,7 @@ export function Home() {
                 </Row>
             </Container>
             <Container className={'d-flex justify-content-center mt-5'}>
-                <Form>
+
                     <Card style={{ width: '30rem'}}>
                         <Card.Img variant="top" src={listingItem} />
                         <Card.Body>
@@ -35,7 +35,7 @@ export function Home() {
                                 </Form.Group>
 
                                 <Row>
-                                    <Col xs={3}>
+                                    <Col xs={4}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <DropdownButton variant="outline-secondary" className="mt-4 " id="dropdown-basic-button" title="Condition">
                                                 <Dropdown.Item href="#/action-1">New</Dropdown.Item>
@@ -45,7 +45,7 @@ export function Home() {
                                         </Form.Group>
                                     </Col>
 
-                                    <Col xs={3}>
+                                    <Col xs={4}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <DropdownButton variant="outline-secondary" className="mt-4" id="dropdown-basic-button" title="Category">
                                                 <Dropdown.Item href="#/action-1">Board Games</Dropdown.Item>
@@ -59,7 +59,7 @@ export function Home() {
                             </Form>
                         </Card.Body>
                     </Card>
-                </Form>
+
             </Container>
 
             <Image className="addIcon mx-auto d-block pt-5" width="" height="" src={Add} alt="Add Icon Button"/>

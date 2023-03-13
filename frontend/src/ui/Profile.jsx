@@ -14,7 +14,7 @@ export function Profile() {
                 {/*</div>*/}
 
                 <Container className={"d-flex justify-content-center mt-5"}>
-                <Form>
+
                     <Card style={{ width: '30rem'}}>
                         <Card.Img variant="top" src={Avatar} />
                         <Card.Body>
@@ -44,7 +44,7 @@ export function Profile() {
                     </Row>
                         </Card.Body>
                     </Card>
-                </Form>
+
                 </Container>
 
             </Container>

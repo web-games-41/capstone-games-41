@@ -10,7 +10,7 @@ export function MyListings() {
             </Container>
 
             <Container className={'d-flex justify-content-center my-3'}>
-                <Form>
+
             <Card style={{ width: '30rem'}}>
                 <Card.Img variant="top" src={listingitem} />
                 <Card.Body>
@@ -25,7 +25,7 @@ export function MyListings() {
                         </Form.Group>
 
                         <Row>
-                            <Col xs={3}>
+                            <Col xs={4}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <DropdownButton variant="outline-secondary" className="mt-4 " id="dropdown-basic-button" title="Condition">
                                 <Dropdown.Item href="#/action-1">New</Dropdown.Item>
@@ -35,7 +35,7 @@ export function MyListings() {
                         </Form.Group>
                             </Col>
 
-                            <Col xs={3}>
+                            <Col xs={4}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <DropdownButton variant="outline-secondary" className="mt-4" id="dropdown-basic-button" title="Category">
                                 <Dropdown.Item href="#/action-1">Board Games</Dropdown.Item>
@@ -53,7 +53,7 @@ export function MyListings() {
                     </Form>
                 </Card.Body>
             </Card>
-                </Form>
+
             </Container>
         </>
     )
