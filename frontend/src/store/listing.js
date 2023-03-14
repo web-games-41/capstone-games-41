@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {httpConfig} from "../utils/http-config.js";
+import {httpConfig} from "../ui/shared/utils/http-config.js";
 
 const listingSlice = createSlice({
     name: 'listing',
