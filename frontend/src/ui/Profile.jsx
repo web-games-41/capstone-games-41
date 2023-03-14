@@ -1,7 +1,77 @@
 import React from "react"
 import {Container, Image, Form, Col, Row, Button, Card} from "react-bootstrap";
 import Avatar from "./img/avatar.jpg"
+import {useDispatch} from "react-redux";
+import {httpConfig} from "../utils/http-config.js";
+import jwtDecode from "jwt-decode";
+import {Formik} from "formik";
 
+export const EditProfileForm = (props) => {
+    const { profile } = props
+
+    const validationObject = Yup.object().shape({
+        profileName: Yup.string()
+            .profileName("Enter full name")
+            .required('Full name is required'),
+        profileEmail: Yup.string()
+            .email("Please provide a valid email")
+            .required("Email is required")
+    })
+
+    function submitEditedProfile (values, { resetForm, setStatus }) {
+
+        const submitUpdatedProfile = (updatedProfile) => {
+            httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
+                .then(reply => {
+                    let { message, type } = reply
+
+                    if (reply.status === 200) {
+                        resetForm()
+                    }
+                    setStatus({ message, type })
+                    return (reply)
+                })
+        }
+
+            if (values.profileName !== undefined) {
+                httpConfig.post(`/apis/profile/`, values.profileName)
+                    .then(reply => {
+                        let { message, type } = reply
+
+                        if (reply.status === 200) {
+                            submitUpdatedProfile({ ...values, profileName: message })
+                    } else {
+                        setStatus({ message, type })
+                        }
+                    }
+                )
+            } else {
+                submitUpdatedProfile(values)
+            }
+        }
+        return (
+            <Formik initialValues={profile} onSubmit={submitEditedProfile} validationSchema={validationObject}>
+                {EditProfileFormContent}
+            </Formik>
+
+        )
+    }
+
+    function EditProfileContent (props) {
+            setFieldValue,
+            status,
+            values,
+            errors,
+            touched,
+            dirty,
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset
+        } = props
+
+            return ()
 
 
 export function Profile() {
@@ -17,18 +87,11 @@ export function Profile() {
                         <Card.Body>
 
                     <Row>
-                    <Col xs={6}>
                         <Form.Group controlId={""}>
                             <Form.Label></Form.Label>
-                            <Form.Control type={"text"} required placeholder={"First Name"}></Form.Control>
+                            <Form.Control type={"text"} required placeholder={"Profile Name"}></Form.Control>
                         </Form.Group>
-                    </Col>
-                    <Col xs={6}>
-                        <Form.Group controlId={""}>
-                            <Form.Label></Form.Label>
-                            <Form.Control type={"text"} required placeholder={"Last Name"}></Form.Control>
-                        </Form.Group>
-                    </Col>
+
                         <Form.Group controlId={""}>
                             <Form.Label></Form.Label>
                             <Form.Control type={"text"} required placeholder={"Email"}></Form.Control>
