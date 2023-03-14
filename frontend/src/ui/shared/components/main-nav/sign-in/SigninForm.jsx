@@ -3,6 +3,12 @@ import {httpConfig} from "../../../utils/http-config.js";
 import {Formik} from "formik";
 import {useDispatch} from "react-redux";
 import jwtDecode from "jwt-decode";
+import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import * as Yup from "yup";
+import {DisplayError} from "../../display-error/DisplayError.js";
+import {DisplayStatus} from "../../display-status/DisplayStatus.js";
+import {getAuth} from "../../../../../store/auth.js";
 
 export const SignInForm = () => {
 
@@ -23,7 +29,7 @@ export const SignInForm = () => {
         profilePassword: ""
     };
 
-    const sumbitSignIn = (values, {resetForm, setStatus}) => {
+    const submitSignIn = (values, {resetForm, setStatus}) => {
     httpConfig.post("/apis/sign-in/", values)
         .then(reply => {
             let {message, type} = reply;
@@ -50,3 +56,70 @@ export const SignInForm = () => {
         </>
     )
 };
+
+function SignInFormContent(props) {
+    const {
+        status,
+        values,
+        errors,
+        touched,
+        dirty,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        handleReset
+    } = props;
+    return (
+        <>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group classname ="mb-1" controlId="profileEmail">
+                    <Form.Label>email</Form.Label>
+                    <InputGroup>
+                        <InputGroup.Text>
+                            <FontAwesomeIcon icon="envelope"/>
+                        </InputGroup.Text>
+                        <FormControl className="form-control" name="profileEmail" type="text" value={values.profileEmail} placeholder="your@email.you" onChange={handleChange} onBlur={handleBlur} />
+                    </InputGroup>
+                    <DisplayError error={errors} touched={touched} field={"profileEmail"} />
+                </Form.Group>
+
+                <FontAwesomeIcon icon="key"/>
+                {/*controlId must match what is defined by the initialValues object*/}
+                <Form.Group className="mb-1" controlId="profileHash">
+                    <Form.Label>password</Form.Label>
+                    <InputGroup>
+                        <InputGroup.Text>
+                            <FontAwesomeIcon icon="key"/>
+                        </InputGroup.Text>
+                        <FormControl
+                            className="form-control"
+                            name="profilePassword"
+                            type="text"
+                            value={values.profilePassword}
+                            placeholder="p@ssword1"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+
+                        />
+                    </InputGroup>
+                    <DisplayError errors={errors} touched={touched} field={"profilePassword"} />
+                </Form.Group>
+
+                <Form.Group className={"mt-3"}>
+                    <Button className="btn btn-primary" type="submit">Submit</Button>
+                    {" "}
+                    <Button
+                        className="btn btn-danger"
+                        onClick={handleReset}
+                        disabled={!dirty || isSubmitting}
+                    >Reset
+                    </Button>
+                </Form.Group>
+            </Form>
+            <div className="pt-3">
+                <DisplayStatus status={status} />
+            </div>
+        </>
+    )
+}
