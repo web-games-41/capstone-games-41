@@ -9,9 +9,6 @@ export function Profile() {
         <>
             <Container>
             <h1 className="mb-5">Profile</h1>
-                {/*<div className="ms-5 ps-4 ms-md-0 ps-md-0">*/}
-                {/*<Image fluid className="rounded mb-5 mx-md-auto d-block" src={Avatar} alt="Generic Avatar"/>*/}
-                {/*</div>*/}
 
                 <Container className={"d-flex justify-content-center mt-5"}>
 
