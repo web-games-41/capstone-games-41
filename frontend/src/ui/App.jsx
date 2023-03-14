@@ -4,7 +4,6 @@ import './App.css'
 import { Home } from './home/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {Profile} from "./Profile.jsx";
-import {Navigation} from "./Navigation";
 import {Message} from "./Message.jsx";
 import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
@@ -12,9 +11,13 @@ import {CreateListing} from './CreateListing'
 import {Messaging} from "./Messaging";
 import {MyListings} from "./MyListings";
 import {Provider} from "react-redux";
+import {Navigation} from "./shared/components/main-nav/MainNav.jsx";
+import {library} from "@fortawesome/fontawesome-svg-core"
+import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
 
 export function App(props) {
     const { store } = props
+    library.add(faEnvelope, faKey)
     return (
         <>
             <Provider store={store}>

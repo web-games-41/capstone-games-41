@@ -30,7 +30,6 @@ export function fetchAllListings() {
             {}
         )
 
-        console.log(listingDictionary)
         dispatch(setInitialListings(listingDictionary))
     }
 }

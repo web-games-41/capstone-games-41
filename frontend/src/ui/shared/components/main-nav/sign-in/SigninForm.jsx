@@ -6,9 +6,10 @@ import jwtDecode from "jwt-decode";
 import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
-import {DisplayError} from "../../display-error/DisplayError.js";
-import {DisplayStatus} from "../../display-status/DisplayStatus.js";
+import {DisplayError} from "../../display-error/DisplayError.jsx";
+import {DisplayStatus} from "../../display-status/DisplayStatus.jsx";
 import {getAuth} from "../../../../../store/auth.js";
+import {FormDebugger} from "../../FormDebugger";
 
 export const SignInForm = () => {
 
@@ -73,7 +74,7 @@ function SignInFormContent(props) {
     return (
         <>
             <Form onSubmit={handleSubmit}>
-                <Form.Group classname ="mb-1" controlId="profileEmail">
+                <Form.Group className ="mb-1" controlId="profileEmail">
                     <Form.Label>email</Form.Label>
                     <InputGroup>
                         <InputGroup.Text>
@@ -81,10 +82,9 @@ function SignInFormContent(props) {
                         </InputGroup.Text>
                         <FormControl className="form-control" name="profileEmail" type="text" value={values.profileEmail} placeholder="your@email.you" onChange={handleChange} onBlur={handleBlur} />
                     </InputGroup>
-                    <DisplayError error={errors} touched={touched} field={"profileEmail"} />
+                    <DisplayError errors={errors} touched={touched} field={"profileEmail"} />
                 </Form.Group>
 
-                <FontAwesomeIcon icon="key"/>
                 {/*controlId must match what is defined by the initialValues object*/}
                 <Form.Group className="mb-1" controlId="profileHash">
                     <Form.Label>password</Form.Label>
@@ -95,7 +95,7 @@ function SignInFormContent(props) {
                         <FormControl
                             className="form-control"
                             name="profilePassword"
-                            type="text"
+                            type="password"
                             value={values.profilePassword}
                             placeholder="p@ssword1"
                             onChange={handleChange}
@@ -120,6 +120,7 @@ function SignInFormContent(props) {
             <div className="pt-3">
                 <DisplayStatus status={status} />
             </div>
+            <FormDebugger {...props}/>
         </>
     )
 }

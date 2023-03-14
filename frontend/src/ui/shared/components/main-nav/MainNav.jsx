@@ -1,8 +1,9 @@
 import {Button, Container, Form, Image, Modal, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import React, {useState} from "react";
-import "./App.css"
-import messageIcon from "./img/messageIcon.png"
-import Logo from "./img/tossMeAGameLogo.png"
+import "../../../App.css"
+import messageIcon from "../../../img/messageIcon.png"
+import Logo from "../../../img/tossMeAGameLogo.png"
+import {SignInModal} from "./sign-in/SigninModal";
 
 export function Navigation () {
     const [show, setShow] = useState(false);
@@ -26,9 +27,7 @@ export function Navigation () {
                         </Nav>
                         <Nav>
                             <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
-                                <Button variant='secondary' onClick={handleShow} id='signin'>
-                                    Sign In
-                                </Button>
+                                <SignInModal/>
                                 <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="/profile">Profile</Nav.Link>
