@@ -13,7 +13,6 @@ import {HomeCard} from "./HomeCard.jsx";
 
 export function Home() {
     const listings = useSelector(state => {
-        console.log(state.listings)
         if(state?.listings.constructor.name === "Object") {
             return Object.values(state.listings)
         } else []
@@ -27,7 +26,6 @@ export function Home() {
 
     React.useEffect(initialEffect, [])
 
-    console.log("listing slice", listings)
     return (
         <>
             <Container className="text-center mt-5">
