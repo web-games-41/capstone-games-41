@@ -9,7 +9,7 @@ import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
 import {Messaging} from "./Messaging";
-import {MyListings} from "./MyListings";
+import {MyListings} from "./mylistings/MyListings";
 import {Provider} from "react-redux";
 import {Navigation} from "./shared/components/main-nav/MainNav.jsx";
 import {library} from "@fortawesome/fontawesome-svg-core"

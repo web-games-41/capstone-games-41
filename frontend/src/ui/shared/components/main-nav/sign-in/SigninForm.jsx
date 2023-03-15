@@ -120,7 +120,7 @@ function SignInFormContent(props) {
             <div className="pt-3">
                 <DisplayStatus status={status} />
             </div>
-            <FormDebugger {...props}/>
+            {/*<FormDebugger {...props}/>*/}
         </>
     )
 }
