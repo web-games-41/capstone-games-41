@@ -1,7 +1,7 @@
 import React from "react"
 import {Container, Image, Form, Col, Row, Button, Card, InputGroup, FormControl} from "react-bootstrap";
 import Avatar from "./img/avatar.jpg"
-import {httpConfig} from "../utils/http-config.js";
+import {httpConfig} from "./shared/utils/http-config.js";
 import * as Yup from 'yup'
 import {Formik} from "formik";
 import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
