@@ -8,13 +8,17 @@ import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
 
-export const EditProfileForm = (props) => {
+
+
+
+
+export const Profile = (props) => {
     const { profile } = props
 
     const validationObject = Yup.object().shape({
         profileAvatarUrl: Yup.mixed(),
         profileName: Yup.string()
-            .profileName("Enter full name")
+            .min(1,"Enter full name")
             .required('Full name is required'),
         profileEmail: Yup.string()
             .email("Please provide a valid email")
@@ -54,13 +58,14 @@ export const EditProfileForm = (props) => {
         }
 
         return (
-            <Formik
-                initialValues={profile}
-                onSubmit={submitEditedProfile}
-                validationSchema={validationObject}
-            >
-                {EditProfileFormContent}
-            </Formik>
+            <h1>Profile Page</h1>
+            // <Formik
+            //     initialValues={profile}
+            //     onSubmit={submitEditedProfile}
+            //     validationSchema={validationObject}
+            // >
+            //     {EditProfileFormContent}
+            // </Formik>
             )
         }
 
