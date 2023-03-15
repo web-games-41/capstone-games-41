@@ -4,11 +4,11 @@ import './App.css'
 import { Home } from './home/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {Profile} from "./Profile.jsx";
-import {Message} from "./Message.jsx";
+import {Message} from "./messages/inbox/Message.jsx";
 import {ViewListing} from "./ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
-import {Messaging} from "./Messaging";
+import {Messaging} from "./messages/messaging/Messaging.jsx";
 import {MyListings} from "./mylistings/MyListings";
 import {Provider} from "react-redux";
 import {Navigation} from "./shared/components/main-nav/MainNav.jsx";

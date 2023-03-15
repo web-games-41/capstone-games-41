@@ -1,4 +1,8 @@
-import {getProfileByMessageListingId, getProfileByProfileId, putProfileController} from "./profile.controller";
+import {
+    getProfileByProfileId,
+    getProfilesForInbox,
+    putProfileController
+} from "./profile.controller";
 import {asyncValidatorController} from "../../utils/controllers/async-validator.controller";
 import {profileValidator} from "./profile.validator";
 import {check, checkSchema} from "express-validator";
@@ -19,5 +23,5 @@ profileRoute.route('/:profileId')
     )
     .put(isLoggedInController, asyncValidatorController(checkSchema(profileValidator)), putProfileController)
 
-profileRoute.route('/messageListingId/:messageListingId')
-    .get(isLoggedInController, asyncValidatorController([check('messageListingId', 'please provide a valid Listing').isUUID()]), getProfileByMessageListingId)
+profileRoute.route('/inbox/messages')
+    .get(isLoggedInController, getProfilesForInbox)

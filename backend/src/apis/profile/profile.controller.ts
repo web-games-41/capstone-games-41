@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
     PartialProfile,
     Profile,
-    selectPartialProfileByProfileId, selectProfileByMessageListingId,
+    selectPartialProfileByProfileId, selectProfilesForInbox,
     selectWholeProfileByProfileId, updateProfile
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
@@ -51,16 +51,16 @@ export async function getProfileByProfileId (request: Request, response: Respons
     }
 }
 
-export async function getProfileByMessageListingId (request: Request, response: Response): Promise<Response> {
+export async function getProfilesForInbox (request: Request, response: Response): Promise<Response> {
     try {
-        const { messageListingId } = request.params
         const profile = request.session.profile as Profile
         const profileIdFromSessions = profile.profileId as string
 
-        const data = await selectProfileByMessageListingId(messageListingId, profileIdFromSessions)
+        const data = await selectProfilesForInbox(profileIdFromSessions)
         const status: Status = { status: 200, data, message: null}
         return response.json(status)
     } catch (error: any) {
+
         return (response.json({status: 400, data: null, message: error.message}))
     }
 }
