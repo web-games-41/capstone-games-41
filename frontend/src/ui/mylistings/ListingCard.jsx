@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import listingItem from "../../images/createlistingimg1.png";
@@ -36,4 +37,4 @@ export function ListingCard(props) {
             </Container>
         </>
     )
-}
+}*/
