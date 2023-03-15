@@ -3,20 +3,17 @@ import { fetchAuth } from "./auth.js";
 import { httpConfig } from "../ui/shared/utils/http-config.js";
 
 const  currentUserSlice = createSlice({
-     name: "profile",
+     name: "currentUser",
      initialState: null,
      reducers: {
-                    getCurrentUserByProfileId: (profile, action) => {
+                    setCurrentUser: (currentUser, action) => {
                         return action.payload
                     }
                 }
  })
 
- export const {getCurrentUserByProfileId} = currentUserSlice.actions
+ export const {setCurrentUser} = currentUserSlice.actions
 
- export default currentUserSlice.reducer
-
- export const {getCurrentUserByProfileId} = currentUserSlice.actions
  export default currentUserSlice.reducer
 
  export const fetchCurrentUser = () => async (dispatch, getState) => {
@@ -24,6 +21,6 @@ const  currentUserSlice = createSlice({
      const {auth} = getState()
      if(auth !== null) {
          const {data} = await httpConfig.get(`/apis/profile/${auth.profileId}`)
-         dispatch(getCurrentUserByProfileId(data))
+         dispatch(setCurrentUser(data))
      }
  }
