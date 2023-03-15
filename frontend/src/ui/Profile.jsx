@@ -1,10 +1,13 @@
 import React from "react"
-import {Container, Image, Form, Col, Row, Button, Card} from "react-bootstrap";
+import {Container, Image, Form, Col, Row, Button, Card, InputGroup} from "react-bootstrap";
 import Avatar from "./img/avatar.jpg"
 import {useDispatch} from "react-redux";
 import {httpConfig} from "../utils/http-config.js";
 import jwtDecode from "jwt-decode";
 import {Formik} from "formik";
+import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
+import {useDropzone} from "react-dropzone";
 
 export const EditProfileForm = (props) => {
     const { profile } = props
@@ -34,15 +37,15 @@ export const EditProfileForm = (props) => {
                 })
         }
 
-            if (values.profileName !== undefined) {
-                httpConfig.post(`/apis/profile/`, values.profileName)
-                    .then(reply => {
+        if (values.profileAvatarUrl !== undefined) {
+            httpConfig.post(`/apis/profile/`, values.profileAvatarUrl)
+                .then(reply => {
                         let { message, type } = reply
 
                         if (reply.status === 200) {
-                            submitUpdatedProfile({ ...values, profileName: message })
-                    } else {
-                        setStatus({ message, type })
+                            submitUpdatedProfile({ ...values, profileAvatarUrl: message })
+                        } else {
+                            setStatus({ message, type })
                         }
                     }
                 )
@@ -50,6 +53,34 @@ export const EditProfileForm = (props) => {
                 submitUpdatedProfile(values)
             }
         }
+
+        return (
+            <Formik
+                initialValues={profile}
+                onSubmit={submitEditedProfile}
+                validationSchema={validationObject}
+            >
+                {EditProfileFormContent}
+            </Formik>
+            )
+
+        }
+
+        function EditProfileFormContent (props) {
+            const {
+                setFieldValue,
+                status,
+                values,
+                errors,
+                touched,
+                dirty,
+                isSubmitting,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                handleReset
+            } = props
+
         return (
             <Formik initialValues={profile} onSubmit={submitEditedProfile} validationSchema={validationObject}>
                 {EditProfileFormContent}
@@ -58,7 +89,8 @@ export const EditProfileForm = (props) => {
         )
     }
 
-    function EditProfileContent (props) {
+    function EditProfileFormContent (props) {
+    const {
             setFieldValue,
             status,
             values,
@@ -72,12 +104,9 @@ export const EditProfileForm = (props) => {
             handleReset
         } = props
 
-            return ()
+            return (
+                <>
 
-
-export function Profile() {
-    return (
-        <>
             <Container>
             <h1 className="mb-5">Profile</h1>
 
@@ -88,20 +117,32 @@ export function Profile() {
                         <Card.Body>
 
                     <Row>
-                        <Form.Group controlId={""}>
-                            <Form.Label></Form.Label>
-                            <Form.Control type={"text"} required placeholder={"Profile Name"}></Form.Control>
+                        <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId={"profileName"}>
+                            {/*<Form.Label>DO WE REALLY NEED A FORM LABEL?</Form.Label>*/}
+                            <InputGroup>
+                            <Form.Control name="profileName" type="text" value={value.profileName} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+                            </InputGroup>
+                            <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                         </Form.Group>
 
-                        <Form.Group controlId={""}>
-                            <Form.Label></Form.Label>
-                            <Form.Control type={"text"} required placeholder={"Email"}></Form.Control>
+                        <Form.Group controlId={"profileEmail"}>
+                            {/*<Form.Label>DO WE REALLY NEED A FORM LABEL?</Form.Label>*/}
+                            <InputGroup>
+                            <Form.Control name="profileEmail" type="text" value={value.profileEmail} required placeholder={"Email"} onChange={handleChange} onBlur={handleBlur}/>
+                            </InputGroup>
+                            <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
                         </Form.Group>
+
                     <Col xs={12} className={"text-center"}>
                     <Form.Group>
-                        <Button className={"btn btn-light btn-outline-secondary mt-5"}>Update</Button>
+                        <Button className={"btn btn-light btn-outline-secondary mt-5"} type="submit">Update</Button>
+                        {' '}
+                        <Button className="btn btn-danger" onClick={handleReset} disabled={!dirty || isSubmitting}>Reset</Button>
                     </Form.Group>
+                        <DisplayStatus status={status} />
                     </Col>
+                        </Form>
                     </Row>
                         </Card.Body>
                     </Card>
@@ -115,7 +156,35 @@ export function Profile() {
     )
 }
 
+    function ImageDropZone ({ formikProps }) {
 
+        const onDrop = React.useCallback(acceptedFiles => {
+            const FormData = new FormData()
+            formData.append('image', acceptedFiles[0])
+
+            formikProps.setFieldValue(formikProps.fieldValue, formData)
+
+        }, [formikProps])
+            const { getRootProps, getInputProps,isDragActive } = useDropzone({ onDrop })
+
+            return (
+                <Form.Group {...getRootProps()}>
+                    {/*<Form.Label>USE OR NOT USE THIS LABEL IS THE QUESTION?!?</Form.Label>*/}
+                    <InputGroup>
+                        {
+                            formikProps.values.profileAvatarUrl &&
+                            <>
+                                <div>
+                                    <Image fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="Avatar Image" src={formikProps.values.profileAvatarUrl} />
+                                </div>
+                            </>
+                        }
+                    </InputGroup>
+                </Form.Group>
+
+            )
+
+        })
 
 
 
