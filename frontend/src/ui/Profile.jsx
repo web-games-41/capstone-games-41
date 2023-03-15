@@ -115,14 +115,14 @@ export const Profile = (props) => {
                             />
                         <Form.Group controlId={"profileName"}>
                             <InputGroup>
-                            <Form.Control name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control className={"mt-3"} name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                         </Form.Group>
 
                         <Form.Group controlId={"profileEmail"}>
                             <InputGroup>
-                            <Form.Control name="profileEmail" type="text" value={values.profileEmail} required placeholder={"Email"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control className={"mt-3"} name="profileEmail" type="text" value={values.profileEmail} required placeholder={"Email"} onChange={handleChange} onBlur={handleBlur}/>
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
                         </Form.Group>
@@ -131,7 +131,7 @@ export const Profile = (props) => {
 
                         <Button className={"btn btn-light btn-outline-secondary mt-5"} type="submit">Update</Button>
                         {' '}
-                        <Button className="ms-xs-5" onClick={handleReset} disabled={!dirty || isSubmitting}>Reset</Button>
+                        <Button className="mt-5" onClick={handleReset} disabled={!dirty || isSubmitting}>Reset</Button>
 
                     </Form.Group>
                         <DisplayStatus status={status} />
