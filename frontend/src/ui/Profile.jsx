@@ -1,9 +1,8 @@
 import React from "react"
-import {Container, Image, Form, Col, Row, Button, Card, InputGroup} from "react-bootstrap";
+import {Container, Image, Form, Col, Row, Button, Card, InputGroup, FormControl} from "react-bootstrap";
 import Avatar from "./img/avatar.jpg"
-import {useDispatch} from "react-redux";
 import {httpConfig} from "../utils/http-config.js";
-import jwtDecode from "jwt-decode";
+import * as Yup from 'yup'
 import {Formik} from "formik";
 import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
@@ -20,7 +19,7 @@ export const EditProfileForm = (props) => {
         profileEmail: Yup.string()
             .email("Please provide a valid email")
             .required("Email is required")
-    })
+        })
 
     function submitEditedProfile (values, { resetForm, setStatus }) {
 
@@ -35,7 +34,7 @@ export const EditProfileForm = (props) => {
                     setStatus({ message, type })
                     return (reply)
                 })
-        }
+            }
 
         if (values.profileAvatarUrl !== undefined) {
             httpConfig.post(`/apis/profile/`, values.profileAvatarUrl)
@@ -63,31 +62,7 @@ export const EditProfileForm = (props) => {
                 {EditProfileFormContent}
             </Formik>
             )
-
         }
-
-        function EditProfileFormContent (props) {
-            const {
-                setFieldValue,
-                status,
-                values,
-                errors,
-                touched,
-                dirty,
-                isSubmitting,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                handleReset
-            } = props
-
-        return (
-            <Formik initialValues={profile} onSubmit={submitEditedProfile} validationSchema={validationObject}>
-                {EditProfileFormContent}
-            </Formik>
-
-        )
-    }
 
     function EditProfileFormContent (props) {
     const {
@@ -121,7 +96,7 @@ export const EditProfileForm = (props) => {
                         <Form.Group controlId={"profileName"}>
                             {/*<Form.Label>DO WE REALLY NEED A FORM LABEL?</Form.Label>*/}
                             <InputGroup>
-                            <Form.Control name="profileName" type="text" value={value.profileName} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control name="profileName" type="text" value={values.profileName} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                         </Form.Group>
@@ -129,10 +104,20 @@ export const EditProfileForm = (props) => {
                         <Form.Group controlId={"profileEmail"}>
                             {/*<Form.Label>DO WE REALLY NEED A FORM LABEL?</Form.Label>*/}
                             <InputGroup>
-                            <Form.Control name="profileEmail" type="text" value={value.profileEmail} required placeholder={"Email"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control name="profileEmail" type="text" value={values.profileEmail} required placeholder={"Email"} onChange={handleChange} onBlur={handleBlur}/>
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
                         </Form.Group>
+
+                            <ImageDropZone
+                                formikProps={{
+                                    values,
+                                    handleChange,
+                                    handleBlur,
+                                    setFieldValue,
+                                    fieldValue: 'profileAvatarUrl'
+                                }}
+                            />
 
                     <Col xs={12} className={"text-center"}>
                     <Form.Group>
@@ -159,7 +144,7 @@ export const EditProfileForm = (props) => {
     function ImageDropZone ({ formikProps }) {
 
         const onDrop = React.useCallback(acceptedFiles => {
-            const FormData = new FormData()
+            const formData = new FormData()
             formData.append('image', acceptedFiles[0])
 
             formikProps.setFieldValue(formikProps.fieldValue, formData)
@@ -179,12 +164,23 @@ export const EditProfileForm = (props) => {
                                 </div>
                             </>
                         }
+                        <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
+                            <FormControl aria-label="Profile Avatar file Drag & Drop area"
+                            aria-describedby="Image Drag & Drop area"
+                            className="form-control-file"
+                            accept="image/*"
+                            onChange={formikProps.handleChange}
+                            onBlur={formikProps.handleBlur}
+                            {...getInputProps()} />
+
+                            {
+                                isDragActive ?
+                                    <span className="align-items-center">Drop image here</span>:
+                                    <span className="align-items-center">Drag & Drop image here or click here to select an image</span>
+                            }
+                        </div>
                     </InputGroup>
                 </Form.Group>
 
             )
-
-        })
-
-
-
+        }
