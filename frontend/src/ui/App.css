@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
 .icons {
-    width: 35%;
+    width: 25%;
     }
 }
 
@@ -22,7 +22,6 @@ a {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-
 }
 
 .addIcon {
@@ -31,6 +30,11 @@ a {
 
 #dragDropBox {
     width: 200%;
+}
+
+body {
+    background-image: url("./img/gamesBG475.jpg");
+    opacity: ;
 }
 
 
