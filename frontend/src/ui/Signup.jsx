@@ -1,11 +1,14 @@
 import React from "react";
-import {Button, Col, Container, FormControl, Image, InputGroup, Row} from "react-bootstrap";
+import {Button, Container, InputGroup} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import {httpConfig} from "../utils/http-config.js";
+
 import {Formik} from "formik";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
-
+import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
+import {httpConfig} from "./shared/utils/http-config.js";
+import {FormDebugger} from "./shared/components/FormDebugger.jsx";
 
 
 export function Signup() {
@@ -22,24 +25,24 @@ export function Signup() {
             .required("email is required"),
         profilePassword: Yup.string()
             .required("Password is required")
-            .min(8,"Password must be at least eight characters"),
+            .min(8, "Password must be at least eight characters"),
         profilePasswordConfirm: Yup.string()
             .required("Password Confirm is required")
-            .min(8,"Password must be at least eight characters"),
+            .min(8, "Password must be at least eight characters"),
         profileName: Yup.string()
             .required("profile name is required")
 
-        });
+    });
 
     const submitSignUp = (values, {resetForm, setStatus}) => {
         httpConfig.post("/apis/sign-up", values)
             .then(reply => {
-                let {message, type} = reply;
-                if (reply.status === 200) {
-                    resetForm();
+                    let {message, type} = reply;
+                    if (reply.status === 200) {
+                        resetForm();
+                    }
+                    setStatus({message, type});
                 }
-                setStatus({message, type});
-            }
             );
     };
 
@@ -59,7 +62,7 @@ export function Signup() {
     )
 }
 
-function SignUpFormContent(props){
+function SignUpFormContent(props) {
     const {
         status,
         values,
@@ -74,81 +77,48 @@ function SignUpFormContent(props){
     } = props;
     return (
         <>
-            <Form onSubmit={handleSubmit}>
-                controlId must match what is passed to the initialValues prop
-                <Form.Group className="mb-1" controlId="profileEmail">
-                    <Form.Label>Email</Form.Label>
+            <Form className="p-4" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="profileName">
+                    <Form.Label>Profile Name</Form.Label>
+                    <Form.Control name="profileName" onBlur={handleBlur} onChange={handleChange}
+                                  value={values.profileName} type="text" placeholder="Enter profile name"/>
+                    <DisplayError errors={errors} touched={touched} field={"profileName"}/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="profileEmail">
+                    <Form.Label>Email address</Form.Label>
                     <InputGroup>
                         <InputGroup.Text>
                             <FontAwesomeIcon icon="envelope"/>
                         </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profileEmail"
-                            type="text"
-                            value={values.profileEmail}
-                            placeholder="your@email.you"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
+                        <Form.Control name="profileEmail" onBlur={handleBlur} onChange={handleChange}
+                                      value={values.profileEmail} type="text" placeholder="Enter Email"/>
                     </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profileEmail"} />
-
+                    <DisplayError errors={errors} touched={touched} field={"profileEmail"}/>
                 </Form.Group>
-                {/*controlId must match what is defined by the initialValues object*/}
-                <Form.Group className="mb-1" controlId="profilePassword">
+                <Form.Group className="mb-3" controlId="profilePassword">
                     <Form.Label>Password</Form.Label>
                     <InputGroup>
-                        <FormControl
-                            className="form-control"
-                            name="profilePassword"
-                            type="password"
-                            value={values.profilePassword}
-                            placeholder="P@ssword1"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
+                        <InputGroup.Text>
+                            <FontAwesomeIcon icon="key"/>
+                        </InputGroup.Text>
+                        <Form.Control name="profilePassword" onBlur={handleBlur} onChange={handleChange}
+                                      value={values.profilePassword} type="password" placeholder="Enter Password"/>
                     </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profilePassword"} />
+                    <DisplayError errors={errors} touched={touched} field={"profilePassword"}/>
                 </Form.Group>
-
-                <Form.Group className="mb-1" controlId="profilePasswordConfirm">
+                <Form.Group className="mb-3" controlId="profilePasswordConfirm">
                     <Form.Label>Confirm Password</Form.Label>
                     <InputGroup>
-                        <FormControl
-                            className="form-control"
-                            name="profilePasswordConfirm"
-                            type="password"
-                            value={values.profilePasswordConfirm}
-                            placeholder="placeholder-placeholder"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
+                        <InputGroup.Text>
+                            <FontAwesomeIcon icon="key"/>
+                        </InputGroup.Text>
+                        <Form.Control name="profilePasswordConfirm" onBlur={handleBlur} onChange={handleChange}
+                                      value={values.profilePasswordConfirm} type="password"
+                                      placeholder="Confirm Password"/>
                     </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profilePasswordConfirm"} />
+                    <DisplayError errors={errors} touched={touched} field={"profilePassword"}/>
                 </Form.Group>
-
-                <Form.Group className="mb-1" controlId="profileName">
-                    <Form.Label>ProfileHandle</Form.Label>
-                    <InputGroup>
-                        <FormControl
-                            className="form-control"
-                            name="profileName"
-                            type="text"
-                            value={values.profileName}
-                            placeholder="yourHandle"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profileName"} />
-                </Form.Group>
-
-                <Form.Group className={"mt-3"}>
+                <Form.Group className={"mt-3 d-block mx-auto"}>
                     <Button className="btn btn-primary" type="submit">Submit</Button>
                     {" "}
                     <Button
@@ -158,37 +128,9 @@ function SignUpFormContent(props){
                     >Reset
                     </Button>
                 </Form.Group>
+                <DisplayStatus status={status}/>
             </Form>
-            <DisplayStatus status={status} />
-
-
-
-
-
-
-
-
-
-            <Form className="p-4">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Profile Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter profile name" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            </Form.Group>
-            <Image/>
-            <Button className="d-block mx-auto" variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
-    </>
+            {/*<FormDebugger {...props}/>*/}
+        </>
     )
 }
