@@ -10,6 +10,7 @@ export const EditProfileForm = (props) => {
     const { profile } = props
 
     const validationObject = Yup.object().shape({
+        profileAvatarUrl: Yup.mixed(),
         profileName: Yup.string()
             .profileName("Enter full name")
             .required('Full name is required'),
