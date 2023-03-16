@@ -25,7 +25,7 @@ export const Profile = (props) => {
         profileAvatarUrl: Yup.mixed(),
         profileName: Yup.string()
             .min(1,"Enter full name")
-            .required('Full name is required'),
+            .required('Profile name is required'),
         profileEmail: Yup.string()
             .email("Please provide a valid email")
             .required("Email is required")
