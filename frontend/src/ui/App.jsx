@@ -13,12 +13,12 @@ import {MyListings} from "./mylistings/MyListings";
 import {Provider} from "react-redux";
 import {Navigation} from "./shared/components/main-nav/MainNav.jsx";
 import {library} from "@fortawesome/fontawesome-svg-core"
-import {faEnvelope, faKey} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faKey, faAdd} from "@fortawesome/free-solid-svg-icons";
 
 
 export function App(props) {
     const { store } = props
-    library.add(faEnvelope, faKey)
+    library.add(faEnvelope, faKey, faAdd)
     return (
         <>
             <Provider store={store}>
