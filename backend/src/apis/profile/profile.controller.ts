@@ -16,7 +16,8 @@ import {Status} from "../../utils/interfaces/Status";
 export async function putProfileController (request: Request, response: Response): Promise<Response> {
     try {
         const { profileId } = request.params
-        const { profileAvatarUrl, profileEmail, profileName } = request.body
+        const { profileEmail, profileName } = request.body
+        const profileAvatarUrl = request.body.profileAvatarUrl ?? null
         const profile = request.session.profile as Profile
         const profileIdFromSessions = profile.profileId as string
 

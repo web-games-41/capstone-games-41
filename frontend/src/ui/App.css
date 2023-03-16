@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
 .icons {
-    width: 35%;
+    width: 25%;
     }
 }
 
@@ -22,11 +22,15 @@ a {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-
 }
 
 .addIcon {
     width: 5em;
+}
+
+body {
+    /*background-image: url("./img/gamesBG6.jpg");*/
+
 }
 
 
