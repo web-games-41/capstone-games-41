@@ -30,7 +30,10 @@ a {
 
 body {
     /*background-image: url("./img/gamesBG6.jpg");*/
+}
 
+.fa-2x1 {
+    font-size: 10em;
 }
 
 

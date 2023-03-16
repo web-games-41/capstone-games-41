@@ -117,6 +117,7 @@ export const Profile = (props) => {
                         <Form.Group controlId={"profileName"}>
                             <InputGroup>
                             <Form.Control className={"mt-3"} name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                         </Form.Group>
@@ -139,6 +140,7 @@ export const Profile = (props) => {
                         </Form>
                     </Row>
                         </Card.Body>
+
                     </Card>
 
                 </Container>
