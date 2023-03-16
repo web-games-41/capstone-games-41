@@ -6,7 +6,7 @@ import {
     getMessageByMessageListingIdController,
     getMessageByMessageProfileIdController,
     getMessageByMessageReceiverId,
-    getMessagesByAllForeignKeys,
+    getMessagesByAllForeignKeys, getMessagesByProfileIds,
     postMessageController
 } from "./message.controller";
 import {isLoggedInController} from "../../utils/controllers/is-logged-in.controller";
@@ -35,3 +35,6 @@ messageRouter.route('/messagesByAllForeignKeys/:messageListingId/:messageProfile
 messageRouter.route('/')
     .get(getAllMessageController)
     .post(isLoggedInController, asyncValidatorController(checkSchema(messageValidator)), postMessageController)
+
+messageRouter.route('/messagesByProfileIds/:messageProfileIdOne/:messageProfileIdTwo')
+    .get(isLoggedInController ,asyncValidatorController([check('messageProfileIdOne', 'please provide the right messageProfileIdOne').isUUID(), check('messageProfileIdTwo', 'please provide the right messageProfileIdTwo').isUUID()]), getMessagesByProfileIds)

@@ -116,6 +116,28 @@ export async function putListingController (request: Request, response: Response
     }
 }
 
+export async function patchListingClaimedController(request: Request, response: Response): Promise<Response> {
+    try {
+        const {listingId} = request.params
+        const profile = request.session.profile as Profile
+        const profileIdFromSession = profile.profileId as string
+        const listing = await selectListingByListingId(listingId)
+
+        if (listing === null) {
+            return response.json({status:404, data: null, message:"Listing not found"})
+        }
+        if (listing.listingProfileId !== profileIdFromSession) {
+            return response.json({status:400, data: null, message: "you are not allowed to perform this task"})
+        }
+        listing.listingClaimed = true
+
+        await updateListing(listing)
+        return response.json({status:200, data:null, message: "listing has been successfully claimed"})
+    } catch (error: any) {
+        return response.json({status: 400, data: null, message: error.message})
+    }
+}
+
 export async function deleteListingController (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const {listingId} = request.params
