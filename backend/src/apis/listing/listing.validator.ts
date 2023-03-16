@@ -1,4 +1,6 @@
 import { Schema } from "express-validator";
+import postgres from "postgres";
+import value = postgres.toPascal.value;
 
 export const listingValidator: Schema = {
     listingProfileId: {
@@ -17,12 +19,17 @@ export const listingValidator: Schema = {
         }
     },
     listingCondition:{
-        isLength: {
-            errorMessage:'listing condition cannot be longer than 128 characters',
-            options: { max: 128 }
-        },
-        trim: true,
-        escape: true
+        errorMessage: "Please enter a valid condition",
+        custom: {
+            options: (value) => {
+                const conditions = ["New", "Slightly Used", "Used"];
+                conditions.includes(value);
+                if (conditions.includes(value) === true){
+                    return true
+                }else return false
+            }
+        }
+
     },
     listingDate:{
         toDate: true
