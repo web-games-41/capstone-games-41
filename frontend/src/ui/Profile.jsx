@@ -9,6 +9,7 @@ import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
 import {useDispatch, useSelector} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const Profile = (props) => {
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ export const Profile = (props) => {
             }
 
         if (values.profileAvatarUrl !== undefined) {
-            httpConfig.post(`/apis/profile/`, values.profileAvatarUrl)
+            httpConfig.post(`/apis/image-upload/`, values.profileAvatarUrl)
                 .then(reply => {
                         let { message, type } = reply
 
@@ -128,13 +129,12 @@ export const Profile = (props) => {
                         </Form.Group>
 
                     <Form.Group>
-
                         <Button className={"btn btn-light btn-outline-secondary mt-5"} type="submit">Update</Button>
                         {' '}
-                        <Button className="mt-5" onClick={handleReset} disabled={!dirty || isSubmitting}>Reset</Button>
+                        <Button className="mt-5 ms-3" onClick={handleReset} disabled={!dirty || isSubmitting}>Reset</Button>
 
                     </Form.Group>
-                        <DisplayStatus status={status} />
+                        <DisplayStatus className="" status={status} />
 
                         </Form>
                     </Row>
@@ -149,7 +149,6 @@ export const Profile = (props) => {
 
     )
 }
-
     function ImageDropZone ({ formikProps }) {
 
         const onDrop = React.useCallback(acceptedFiles => {
@@ -163,7 +162,6 @@ export const Profile = (props) => {
 
             return (
                 <Form.Group {...getRootProps()}>
-                    {/*<Form.Label>USE OR NOT USE THIS LABEL IS THE QUESTION?!?</Form.Label>*/}
                     <InputGroup>
                         {
                             formikProps.values.profileAvatarUrl &&
@@ -173,7 +171,7 @@ export const Profile = (props) => {
                                 </div>
                             </>
                         }
-                        <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
+                        <div className="p-5 d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
                             <FormControl aria-label="Profile Avatar file Drag & Drop area"
                             aria-describedby="Image Drag & Drop area"
                             className="form-control-file"
