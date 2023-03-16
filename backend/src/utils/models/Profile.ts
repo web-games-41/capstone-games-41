@@ -57,8 +57,8 @@ export async function updateProfile (profile: Profile): Promise<string> {
     return 'Profile successfully updated'
 }
 
-export async function selectProfileByMessageListingId (messageListingId: string, profileId: string): Promise<PartialProfile[]> {
-    return <PartialProfile[]> await sql `select distinct profile_id, profile_avatar_url, profile_email, profile_name from profile join message on profile.profile_id = message.message_profile_id or profile.profile_id = message.message_receiver_id where message_listing_id = ${messageListingId} and profile_id != ${profileId} and (message.message_profile_id = ${profileId} or message.message_receiver_id = ${profileId});`
+export async function selectProfilesForInbox (profileId: string): Promise<PartialProfile[]> {
+    return <PartialProfile[]> await sql `select distinct profile_id, profile_avatar_url, profile_email, profile_name from profile join message on profile.profile_id = message.message_profile_id or profile.profile_id = message.message_receiver_id where profile_id != ${profileId} and (message.message_profile_id = ${profileId} or message.message_receiver_id = ${profileId});`
 }
 
 
