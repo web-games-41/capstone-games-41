@@ -32,7 +32,7 @@ export function Home() {
                 <Row>
                     <Col><Image className="icons" src={BoardGame} alt={"Board Game Icon"}/></Col>
                     <Col><Image className="icons" src={Disk} alt={"Disk Game Icon"}/></Col>
-                    {/*<Col><Image className="icons" src={Console} alt={"Console Game Icon"}/></Col>*/}
+                    <Col><Image className="icons" src={Console} alt={"Console Game Icon"}/></Col>
                     <Col><i className="fa fa-check-circle-o fa-5x text-success"></i></Col>
                     <Col><Image className="icons" src={Cards} alt={"Card Game Icon"}/></Col>
                 </Row>
