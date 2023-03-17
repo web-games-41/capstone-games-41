@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {Container, Image, Form, Col, Row, Button, Card, InputGroup, FormControl} from "react-bootstrap";
 import './App.css'
 import {httpConfig} from "./shared/utils/http-config.js";
@@ -65,7 +65,6 @@ export const Profile = (props) => {
         }
 
         return (
-            // <h1>Profile Page</h1>
             <Formik
                 initialValues={currentUser}
                 onSubmit={submitEditedProfile}
@@ -77,6 +76,7 @@ export const Profile = (props) => {
         }
 
     function EditProfileFormContent (props) {
+        const [selectedImage, setSelectedImage] = useState(null)
     const {
             setFieldValue,
             status,
@@ -100,23 +100,32 @@ export const Profile = (props) => {
                 <Container className={"d-flex justify-content-center mt-5"}>
 
                     <Card style={{ width: '30rem'}}>
-                        {/*<Card.Img variant="top" src={Avatar} />*/}
+
                         <Card.Body>
 
                     <Row className={"text-center"}>
                         <Form onSubmit={handleSubmit}>
+
                             <ImageDropZone className="dragDropBox"
                                 formikProps={{
                                     values,
                                     handleChange,
                                     handleBlur,
                                     setFieldValue,
+                                    setSelectedImage:setSelectedImage,
                                     fieldValue: 'profileAvatarUrl'
                                 }}
                             />
+
+                            <div>
+                                {selectedImage !== null ? <img className={"imgInsert"} src={selectedImage}/> : ""}
+                            </div>
+
+
                         <Form.Group controlId={"profileName"}>
                             <InputGroup>
                             <Form.Control className={"mt-3"} name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                         </Form.Group>
@@ -139,6 +148,7 @@ export const Profile = (props) => {
                         </Form>
                     </Row>
                         </Card.Body>
+
                     </Card>
 
                 </Container>
@@ -149,11 +159,17 @@ export const Profile = (props) => {
 
     )
 }
+
     function ImageDropZone ({ formikProps }) {
 
         const onDrop = React.useCallback(acceptedFiles => {
             const formData = new FormData()
             formData.append('image', acceptedFiles[0])
+            const fileReader = new FileReader()
+            fileReader.readAsDataURL(acceptedFiles[0])
+            fileReader.addEventListener("load", () => {
+                formikProps.setSelectedImage(fileReader.result)
+            })
 
             formikProps.setFieldValue(formikProps.fieldValue, formData)
 
@@ -163,14 +179,16 @@ export const Profile = (props) => {
             return (
                 <Form.Group {...getRootProps()}>
                     <InputGroup>
-                        {
-                            formikProps.values.profileAvatarUrl &&
-                            <>
-                                <div>
-                                    <Image fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="Avatar Image" src={formikProps.values.profileAvatarUrl} />
-                                </div>
-                            </>
-                        }
+
+                        {/*THE CODE BELOW ADDS AN UNWANTED IMAGE BROKEN LINK AND WILL BE REMOVED*/}
+                        {/*{*/}
+                        {/*    formikProps.values.profileAvatarUrl &&*/}
+                        {/*    <>*/}
+                        {/*        <div>*/}
+                        {/*            <Image fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="Avatar Image" src={formikProps.values.profileAvatarUrl} />*/}
+                        {/*        </div>*/}
+                        {/*    </>*/}
+                        {/*}*/}
                         <div className="p-5 d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
                             <FormControl aria-label="Profile Avatar file Drag & Drop area"
                             aria-describedby="Image Drag & Drop area"

@@ -38,11 +38,16 @@ body {
     /*background-image: url("./img/gamesBG6.jpg");*/
 }
 
+.fa-2x1 {
+    font-size: 10em;
+}
+
 .fa-5x {
     font-size: 2em;
 }
 
-.btn {
+/*THIS TARGETS THE ROUND "+" AT BOTTOM OF Profile*/
+.btn.btn-dark.btn-outline-info.my-5.btn-primary {
     border-radius: 50%;
 }
 
@@ -50,26 +55,8 @@ button {
     font-size: 1em;
 }
 
-button:hover {
-
-    /*transition-delay: 250ms;*/
-    transform: scale(1.5);
-    /*background-image: url("./img/gameIcons/boardGamesHvr.png");*/
+/*THIS KEEPS IMAGE IN DROP ZONE WITHIN CARD SIZE*/
+img.imgInsert {
+    max-width: 100%;
+    min-width: 100%;
 }
-
-/*.img {*/
-/*    position: absolute;*/
-/*}*/
-
-/*.hoverImg {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    display: none;*/
-/*}*/
-
-/*.img:hover .hoverImg {*/
-/*    display: inline;*/
-/*}*/
-
-

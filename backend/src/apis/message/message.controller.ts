@@ -3,8 +3,12 @@ import {
     insertMessage,
     Message,
     selectAllMessages,
-    selectMessageByMessageId, selectMessageByMessageListingId,
-    selectMessageByMessageProfileId, selectMessageByMessageReceiverId, selectMessagesByAllForeignKeys
+    selectMessageByMessageId,
+    selectMessageByMessageListingId,
+    selectMessageByMessageProfileId,
+    selectMessageByMessageReceiverId,
+    selectMessagesByAllForeignKeys,
+    selectMessagesByProfileIds
 } from "../../utils/models/Message";
 import { Status } from "../../utils/interfaces/Status";
 import { Profile } from "../../utils/models/Profile";
@@ -67,6 +71,32 @@ export async function getMessagesByAllForeignKeys (request: Request, response: R
         }
         const data = await selectMessagesByAllForeignKeys(messageListingId, messageProfileIdOne, messageProfileIdTwo)
         return response.json({status: 200, message: null, data})
+    } catch (error) {
+        return response.json ({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
+export async function getMessagesByProfileIds (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const profile = request.session.profile as Profile
+        const messageProfileId = profile.profileId as string
+        const {messageProfileIdOne, messageProfileIdTwo} = request.params
+        console.log("messageProfileIdOne", messageProfileIdOne)
+        console.log("messageProfileIdTwo", messageProfileIdTwo)
+        console.log("profileIdFromSession", messageProfileId === messageProfileIdTwo)
+        if (messageProfileId !== messageProfileIdOne && messageProfileId !== messageProfileIdTwo) {
+            return response.json({
+                status: 400,
+                message: 'you are not allowed to perform this task',
+                data: []
+            })
+        }
+        const data = await selectMessagesByProfileIds(messageProfileIdOne, messageProfileIdTwo)
+        return response.json({status:200, message:null, data})
     } catch (error) {
         return response.json ({
             status: 500,

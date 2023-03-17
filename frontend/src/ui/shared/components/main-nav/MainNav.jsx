@@ -4,6 +4,7 @@ import "../../../App.css"
 import messageIcon from "../../../img/messageIcon.png"
 import Logo from "../../../img/tossMeAGameLogo.png"
 import {SignInModal} from "./sign-in/SigninModal";
+import {SignOutComponent} from "./SignOut";
 
 export function Navigation () {
     const [show, setShow] = useState(false);
@@ -32,6 +33,7 @@ export function Navigation () {
                             </NavDropdown>
                             <Nav.Link href="/profile">Profile</Nav.Link>
                             <Nav.Link href="/my-listings">My Listings</Nav.Link>
+                            <SignOutComponent/>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

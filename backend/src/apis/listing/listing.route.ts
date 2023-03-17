@@ -3,7 +3,7 @@ import {
     deleteListingController,
     getAllListingsController,
     getListingByListingIdController,
-    getListingsByListingProfileIdController,
+    getListingsByListingProfileIdController, patchListingClaimedController,
     postListing, putListingController,
 } from "./listing.controller";
 import { asyncValidatorController } from "../../utils/controllers/async-validator.controller";
@@ -27,6 +27,9 @@ listingRoute.route('/listingProfileId/:listingProfileId').get(asyncValidatorCont
 listingRoute.route('/')
     .get(getAllListingsController)
     .post(isLoggedInController,asyncValidatorController(checkSchema((listingValidator))), postListing)
+
+listingRoute.route('/listingClaimed/:listingId')
+    .get(isLoggedInController, asyncValidatorController([check('listingId', 'please provide a valid listingId').isUUID()]), patchListingClaimedController)
 
 export default listingRoute
 
