@@ -9,7 +9,6 @@ import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
 import {useDispatch, useSelector} from "react-redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const Profile = (props) => {
     const dispatch = useDispatch()
@@ -180,15 +179,6 @@ export const Profile = (props) => {
                 <Form.Group {...getRootProps()}>
                     <InputGroup>
 
-                        {/*THE CODE BELOW ADDS AN UNWANTED IMAGE BROKEN LINK AND WILL BE REMOVED*/}
-                        {/*{*/}
-                        {/*    formikProps.values.profileAvatarUrl &&*/}
-                        {/*    <>*/}
-                        {/*        <div>*/}
-                        {/*            <Image fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="Avatar Image" src={formikProps.values.profileAvatarUrl} />*/}
-                        {/*        </div>*/}
-                        {/*    </>*/}
-                        {/*}*/}
                         <div className="p-5 d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
                             <FormControl aria-label="Profile Avatar file Drag & Drop area"
                             aria-describedby="Image Drag & Drop area"
