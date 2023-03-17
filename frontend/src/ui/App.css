@@ -51,7 +51,7 @@ body {
     border-radius: 50%;
 }
 
-button {
+button:hover {
     font-size: 1em;
 }
 
@@ -59,4 +59,8 @@ button {
 img.imgInsert {
     max-width: 100%;
     min-width: 100%;
+}
+
+.sticky-top {
+    background-color: #fff;
 }
