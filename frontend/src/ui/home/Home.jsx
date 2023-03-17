@@ -34,24 +34,19 @@ export function Home() {
                     <Col><Image className="icons" src={BoardGame} alt={"Board Game Icon"}/></Col>
                     <Col><Image className="icons" src={Disk} alt={"Disk Game Icon"}/></Col>
                     <Col><Image className="icons" src={Console} alt={"Console Game Icon"}/></Col>
-                    <Col><i className="fa fa-check-circle-o fa-5x text-success"></i></Col>
+                    {/*<Col><i className="fa fa-check-circle-o fa-5x text-success"></i></Col>*/}
                     <Col><Image className="icons" src={Cards} alt={"Card Game Icon"}/></Col>
-
-                    <Col className="img"><Button className={"bg-transparent border-0"}>
-                        <Image className="icons" src={BoardGame} alt={"Board Game Icon"}/>
-                        {/*<Image className="hoverImg" src={BoardGamesHvr} alt={"Board Game Icon"}/>*/}
-                    </Button></Col>
-                    <Col><Button className={"bg-transparent border-0"}><Image className="icons" src={Disk} alt={"Disk Game Icon"}/></Button></Col>
-                    <Col><Button className={"bg-transparent border-0"}><Image className="icons" src={Console} alt={"Console Game Icon"}/></Button></Col>
-                    <Col><Button className={"bg-transparent border-0"}><Image className="icons" src={Cards} alt={"Card Game Icon"}/></Button></Col>
 
                 </Row>
             </Container>
 
             <Container>
                 {listings.map(listing => <HomeCard listing={listing} key={listing.listingId} /> ) }
-                <div className={"text-center"}> <Button className={"btn btn-dark btn-outline-info my-5"}>
-                    <FontAwesomeIcon className={"fa-5x"} icon={"add"}/></Button></div>
+                <div className={"text-center"}>
+                    <Button className={"btn btn-dark btn-outline-info my-5"}>
+                        <FontAwesomeIcon className={"fa-5x"} icon={"add"}/>
+                    </Button>
+                </div>
 
             </Container>
 
