@@ -43,7 +43,7 @@ export function Home() {
             <Container>
                 {listings.map(listing => <HomeCard listing={listing} key={listing.listingId} /> ) }
                 <div className={"text-center"}>
-                    <Button className={"btn btn-dark btn-outline-info my-5"}>
+                    <Button href={"/create-listing"} className={"btn btn-dark btn-outline-info my-5"}>
                         <FontAwesomeIcon className={"fa-5x"} icon={"add"}/>
                     </Button>
                 </div>
