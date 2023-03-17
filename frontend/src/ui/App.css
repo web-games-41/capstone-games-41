@@ -12,47 +12,50 @@
 
 a {
     text-decoration: none;
-    color: black;
+    color: #69985F;
 }
 
-/*.icons:hover {*/
-/*    !*display: none;*!*/
-/*    !*background-image: url("./img/gameIcons/boardGamesHvr.png");*!*/
-
-/*}*/
-
-#signin {
-    background: none;
-    color: inherit;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+a:hover {
+    color: #666;
 }
 
-.addIcon {
-    width: 5em;
+a.nav-link {
+    color: #69985F;
 }
 
-body {
-    /*background-image: url("./img/gamesBG6.jpg");*/
+/*NAVBAR HAMBURGER MENU*/
+button.navbar-toggler.collapsed:hover {
+    font-size: 1em;
 }
 
-.fa-2x1 {
-    font-size: 10em;
+/*NAVBAR MSSG ICON*/
+img.d-xs-flex.img-fluid {
+    filter: drop-shadow(1px 10px 15px #69985F);
 }
 
+img.d-xs-flex.img-fluid:hover {
+    transform: scale(1.25);
+}
+
+/*GAME ICONS*/
+img.icons {
+    filter: drop-shadow(1px 5px 15px #8EA589);
+}
+
+img.icons:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(1px 10px 5px #8EA589);
+}
+
+/*RESIZES FONT AWESOME ADD ICON*/
 .fa-5x {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 /*THIS TARGETS THE ROUND "+" AT BOTTOM OF Profile*/
 .btn.btn-dark.btn-outline-info.my-5.btn-primary {
     border-radius: 50%;
-}
-
-button:hover {
-    font-size: 1em;
+    background-color: #69985F;
 }
 
 /*THIS KEEPS IMAGE IN DROP ZONE WITHIN CARD SIZE*/
@@ -61,6 +64,8 @@ img.imgInsert {
     min-width: 100%;
 }
 
+/*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT*/
 .sticky-top {
     background-color: #fff;
 }
+
