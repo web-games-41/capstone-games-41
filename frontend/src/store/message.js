@@ -5,7 +5,11 @@ const messageSlice = createSlice({
     initialState: {},
     reducers: {
         setIndividualMessage: (message, action) => {
-            message[action.payload.messageId] = action.payload.data
+            message[action.payload.profileId] = action.payload.data
         }
     }
 })
+
+export const {setIndividualMessage} = messageSlice.actions
+
+export default messageSlice.reducer
