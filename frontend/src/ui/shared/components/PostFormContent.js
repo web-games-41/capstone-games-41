@@ -32,11 +32,7 @@ export const PostFormContent = (props) => {
         handleSubmit,
         handleReset
     } = props;
-    if (values.postPicture !== ""){
-        console.log(values.postPicture.get("image"))
-    }
 
-    console.log(values.postPicture)
 
     return (
         <>
@@ -70,7 +66,7 @@ export const PostFormContent = (props) => {
                                     handleChange,
                                     handleBlur,
                                     setFieldValue,
-                                    fieldValue:"postPicture",
+                                    fieldValue:"listingImageUrl",
                                     setSelectedImage: setSelectedImage
 
 
@@ -86,9 +82,9 @@ export const PostFormContent = (props) => {
 
                         </div>
                         {
-                            errors.postPicture && touched.postPicture && (
+                            errors.listingImageUrl && touched.listingImageUrl && (
                                 <div className="alert alert-danger">
-                                    {errors.postPicture}
+                                    {errors.listingImageUrl}
                                 </div>
                             )
                         }

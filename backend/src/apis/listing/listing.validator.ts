@@ -47,8 +47,9 @@ export const listingValidator: Schema = {
             errorMessage:'please provide a valid image',
             options: { max: 256 }
         },
-        trim: true,
-        escape: true
+        isURL: {
+            errorMessage:'please provide a valid image url'
+        }
     },
     listingName:{
         isLength: {
