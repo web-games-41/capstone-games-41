@@ -26,17 +26,17 @@ export interface Profile {
 
 export async function insertProfile (profile: Profile): Promise<string> {
     const {profileActivationToken, profileAvatarUrl, profileEmail, profileHash, profileName} = profile
-    await sql `insert into profile(profile_id, profile_activation_token, profile_avatar_url, profile_email, profile_hash, profile_name) values (gen_random_uuid(), ${profileActivationToken}, ${profileAvatarUrl}, ${profileEmail}, ${profileHash}, ${profileName})`
+    await sql `insert into profile(profile_id, profile_activation_id, profile_avatar_url, profile_email, profile_hash, profile_name) values (gen_random_uuid(), ${profileActivationToken}, ${profileAvatarUrl}, ${profileEmail}, ${profileHash}, ${profileName})`
     return 'Profile updated successfully'
 }
 
 export async function selectProfileByProfileEmail (profileEmail: string) : Promise<Profile|null> {
-    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_token, profile_avatar_url, profile_hash, profile_name FROM profile WHERE profile_email = ${profileEmail}`
+    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_id, profile_avatar_url, profile_hash, profile_name FROM profile WHERE profile_email = ${profileEmail}`
     return result?.length === 1 ? result[0] : null
 }
 
 export async function selectWholeProfileByProfileId(profileId: string): Promise<Profile|null> {
-    const result = <Profile[]>await sql`SELECT profile_id, profile_activation_token, profile_avatar_url, profile_hash, profile_name FROM profile
+    const result = <Profile[]>await sql`SELECT profile_id, profile_activation_id, profile_avatar_url, profile_hash, profile_name FROM profile
     WHERE profile_id = ${profileId}`
     return result?.length === 1 ? result[0] : null
 }
@@ -47,13 +47,13 @@ export async function selectPartialProfileByProfileId(profileId: string): Promis
 }
 
 export async function selectProfileByProfileActivationToken (profileActivationToken: string): Promise<Profile|null> {
-    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_token, profile_hash, profile_avatar_url, profile_email, profile_name FROM profile WHERE profile_activation_token = ${profileActivationToken}`
+    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_id, profile_hash, profile_avatar_url, profile_email, profile_name FROM profile WHERE profile_activation_id = ${profileActivationToken}`
     return result?.length === 1 ? result[0] : null
 }
 
 export async function updateProfile (profile: Profile): Promise<string> {
     const {profileId, profileActivationToken, profileHash, profileAvatarUrl, profileEmail, profileName} = profile
-    await sql `UPDATE profile SET profile_activation_token = ${profileActivationToken},profile_hash = ${profileHash},profile_avatar_url = ${profileAvatarUrl},profile_email = ${profileEmail},profile_name = ${profileName} WHERE profile_id = ${profileId}`
+    await sql `UPDATE profile SET profile_activation_id = ${profileActivationToken},profile_hash = ${profileHash},profile_avatar_url = ${profileAvatarUrl},profile_email = ${profileEmail},profile_name = ${profileName} WHERE profile_id = ${profileId}`
     return 'Profile successfully updated'
 }
 
