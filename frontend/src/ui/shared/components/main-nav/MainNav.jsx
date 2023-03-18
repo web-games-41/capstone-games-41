@@ -1,19 +1,37 @@
 import {Button, Container, Form, Image, Modal, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "../../../App.css"
 import messageIcon from "../../../img/messageIcon.png"
 import Logo from "../../../img/tossMeAGameLogo.png"
 import {SignInModal} from "./sign-in/SigninModal";
 import {SignOutComponent} from "./SignOut";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAuth} from "../../../../store/auth.js";
 
 export function Navigation () {
+    const auth = useSelector(state => state.auth);
+
+    const dispatch = useDispatch()
+    const effects = () => {
+        dispatch(fetchAuth());
+    };
+    useEffect(effects, [dispatch]);
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    return (
+    const isModalOpen = () => {
+        if(!auth) {
+            return !auth
+        } else if (show === true && auth ) {
+            return true
+        }
+    }
 
+
+    return (
         <>
             <Navbar expand="lg">
                 <Container>
@@ -22,18 +40,26 @@ export function Navigation () {
 
                     <Navbar.Toggle/>
                     <Navbar.Collapse className="justify-content-end p-2">
+                        {auth !== null && (
                         <Nav>
                             <a href='/message'>
                                 <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} /> </a>
                         </Nav>
+                        )}
                         <Nav>
+                            {auth === null && (
                             <NavDropdown title="Sign In/Sign Up" id="basic-nav-dropdown">
                                 <SignInModal/>
                                 <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
                             </NavDropdown>
-                            <Nav.Link href="/profile">Profile</Nav.Link>
+                            )}
+                            {auth !== null && (
+                                <>
+                            <Nav.Link href="/profile">Profile </Nav.Link>
                             <Nav.Link href="/my-listings">My Listings</Nav.Link>
                             <SignOutComponent/>
+                                </>
+                                )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
