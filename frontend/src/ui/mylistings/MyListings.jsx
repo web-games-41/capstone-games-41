@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, Card, Col, Container, Dropdown, DropdownButton, Form, Row} from "react-bootstrap";
-import listingitem from "../../images/createlistingimg1.png"
 import {ListingCard} from "./ListingCard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllListings, fetchListingsByProfileId} from "../../store/listing.js";

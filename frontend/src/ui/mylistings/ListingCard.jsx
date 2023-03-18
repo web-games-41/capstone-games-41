@@ -1,17 +1,32 @@
 import React from "react";
-import {Card, Col, Container, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import listingItem from "../../images/createlistingimg1.png";
+import {httpConfig} from "../shared/utils/http-config.js";
+import {fetchAllListings, fetchListingsByProfileId} from "../../store/listing.js";
+import {useDispatch} from "react-redux";
+import {SignInForm} from "../shared/components/main-nav/sign-in/SigninForm.jsx";
+import {ListingClaimModal} from "./ListingClaimModal.jsx";
 
 
 export function ListingCard(props) {
 
     const {listing} = props
+    console.log(listing.listingClaimed)
+
+    const trueOrFalse = () => {
+        if (listing.listingClaimed === true) {
+            return("true")
+        } else {
+            return("false")
+        }
+    }
+
     return (
         <>
             <Container className={'d-flex justify-content-center mt-5'}>
 
                 <Card style={{width: '30rem'}}>
-                    <Card.Img variant="top" src={listingItem}/>
+                    <Card.Img variant="top" src={listing.listingImageUrl}/>
                     <Card.Body>
 
                         <h5>Item Name:</h5><p>{listing.listingName}</p>
@@ -29,6 +44,9 @@ export function ListingCard(props) {
                             </Col>
 
                         </Row>
+                        <p>Claimed: {trueOrFalse()}</p>
+                        <ListingClaimModal listing={listing}/>
+
 
                     </Card.Body>
                 </Card>
