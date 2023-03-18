@@ -3,6 +3,7 @@ import {Button, Card, Col, Container, Dropdown, DropdownButton, Form, Row} from 
 import {ListingCard} from "./ListingCard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllListings, fetchListingsByProfileId} from "../../store/listing.js";
+import {fetchAllCategories} from "../../store/categories.js";
 
 
 export function MyListings() {
@@ -16,6 +17,7 @@ export function MyListings() {
 
     const initialEffect = () => {
         dispatch(fetchListingsByProfileId())
+        dispatch(fetchAllCategories())
     }
 
     React.useEffect(initialEffect, [])
@@ -28,6 +30,7 @@ export function MyListings() {
 
             <Container>
                 {listings.map(listing => <ListingCard listing={listing} key={listing.listingId} /> ) }
+
             </Container>
         </>
     )

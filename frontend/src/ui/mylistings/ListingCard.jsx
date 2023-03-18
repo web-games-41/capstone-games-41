@@ -3,7 +3,7 @@ import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import listingItem from "../../images/createlistingimg1.png";
 import {httpConfig} from "../shared/utils/http-config.js";
 import {fetchAllListings, fetchListingsByProfileId} from "../../store/listing.js";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {SignInForm} from "../shared/components/main-nav/sign-in/SigninForm.jsx";
 import {ListingClaimModal} from "./ListingClaimModal.jsx";
 
@@ -19,6 +19,21 @@ export function ListingCard(props) {
         } else {
             return("false")
         }
+    }
+
+    const category = useSelector(state => {
+        const category = state.categories.find(category => category.categoryId === listing.listingCategoryId)
+        if (category === undefined) {
+            return null
+        } else {
+            return category
+        }
+    })
+
+    console.log(category)
+
+    if (category === null) {
+        return (<></>)
     }
 
     return (
@@ -39,7 +54,7 @@ export function ListingCard(props) {
                                 </div>
                             </Col>
                             <Col>
-                                <div><h5>Category:</h5><p>{listing.listingCategoryId}</p>
+                                <div><h5>Category:</h5><p>{category.categoryName}</p>
                                 </div>
                             </Col>
 
