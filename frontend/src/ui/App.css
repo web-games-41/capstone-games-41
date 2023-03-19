@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Lobster";
+    src: url("../fonts/Lobster-Regular.ttf") format("woff2"),
+    url("../fonts/Lobster-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
 @media (min-width: 768px) {
 .icons {
     width: 25%;
@@ -8,6 +16,10 @@
     .icons {
         width: 50%;
     }
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 a {
@@ -23,14 +35,32 @@ a.nav-link {
     color: #69985F;
 }
 
+/*TOSS ME A GAME FONT*/
+a.fs-4 {
+    font-family: Lobster;
+    font-size: 2em !important;
+}
+
+a.fs-4:hover {
+    color: #fff;
+    filter: drop-shadow(1px 1px 3px #69985F);
+}
+
+/*TOSS ME A GAME ICON IMAGE ON/OFF*/
+img.rounded.img-fluid {
+    display: none;
+}
+
 /*NAVBAR HAMBURGER MENU*/
 button.navbar-toggler.collapsed:hover {
     font-size: 1em;
+    transition: all 0.5s ease;
 }
 
 /*NAVBAR MSSG ICON*/
 img.d-xs-flex.img-fluid {
     filter: drop-shadow(1px 10px 15px #69985F);
+    transition: 0.5s ease;
 }
 
 img.d-xs-flex.img-fluid:hover {
@@ -40,6 +70,7 @@ img.d-xs-flex.img-fluid:hover {
 /*GAME ICONS*/
 img.icons {
     filter: drop-shadow(1px 5px 15px #8EA589);
+    transition: 1s ease;
 }
 
 img.icons:hover {
