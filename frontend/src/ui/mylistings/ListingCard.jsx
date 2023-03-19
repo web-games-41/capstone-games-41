@@ -61,6 +61,7 @@ export function ListingCard(props) {
                         </Row>
                         <p>Claimed: {trueOrFalse()}</p>
                         <ListingClaimModal listing={listing}/>
+                        <Button>Update</Button>
 
 
                     </Card.Body>
