@@ -75,7 +75,7 @@ img.d-xs-flex.img-fluid:hover {
 
 /*GAME ICONS*/
 img.icons {
-    filter: drop-shadow(1px 5px 15px #8EA589);
+    /*filter: drop-shadow(1px 5px 15px #8EA589);*/
     transition: 1s ease;
     cursor: pointer;
 }
