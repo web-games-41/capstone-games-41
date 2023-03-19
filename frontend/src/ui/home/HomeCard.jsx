@@ -20,7 +20,7 @@ export function HomeCard(props) {
             <Container className={'d-flex justify-content-center mt-5'}>
 
                 <Card style={{width: '30rem'}}>
-                    <Card.Img variant="top" src={listingItem}/>
+                    <Card.Img variant="top" src={listing.listingImageUrl}/>
                     <Card.Body>
 
                         <h5>Item Name:</h5><p>{listing.listingName}</p>
