@@ -75,8 +75,9 @@ img.d-xs-flex.img-fluid:hover {
 
 /*GAME ICONS*/
 img.icons {
-    filter: drop-shadow(1px 5px 15px #8EA589);
+    /*filter: drop-shadow(1px 5px 15px #8EA589);*/
     transition: 1s ease;
+    cursor: pointer;
 }
 
 img.icons:hover {
@@ -111,6 +112,10 @@ img.imgInsert {
 
 /*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT WITHOUT THIS*/
 .sticky-top {
-    background-color: #fff;
+    background-image: linear-gradient(rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0));
+}
+
+div.card {
+    filter: drop-shadow(1px 10px 5px #8EA589);
 }
 
