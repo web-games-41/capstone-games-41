@@ -24,7 +24,7 @@ export function ListingCard(props) {
     const category = useSelector(state => {
         const category = state.categories.find(category => category.categoryId === listing.listingCategoryId)
         if (category === undefined) {
-            return null
+            return (<></>)
         } else {
             return category
         }
@@ -32,9 +32,9 @@ export function ListingCard(props) {
 
     console.log(category)
 
-    if (category === null) {
+  /*  if (category === null) {
         return (<></>)
-    }
+    }*/
 
     return (
         <>

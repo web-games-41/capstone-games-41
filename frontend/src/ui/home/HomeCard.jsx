@@ -1,10 +1,20 @@
 import React from "react";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import listingItem from "../../images/createlistingimg1.png";
+import {useSelector} from "react-redux";
 
 export function HomeCard(props) {
 
     const {listing} = props
+
+    const category = useSelector(state => {
+        const category = state.categories.find(category => category.categoryId === listing.listingCategoryId)
+        if (category === undefined) {
+            return (<></>)
+        } else {
+            return category
+        }
+    })
     return (
         <>
             <Container className={'d-flex justify-content-center mt-5'}>
@@ -23,7 +33,7 @@ export function HomeCard(props) {
                                 </div>
                             </Col>
                             <Col>
-                                <div><h5>Category:</h5><p>{listing.listingCategoryId}</p>
+                                <div><h5>Category:</h5><p>{category.categoryName}</p>
                                 </div>
                             </Col>
 

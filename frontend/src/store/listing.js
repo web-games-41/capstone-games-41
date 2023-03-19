@@ -56,4 +56,27 @@ export function fetchAllListings() {
     }
 }
 
+
+export function fetchListingsByCategoryId(categoryId) {
+    return async function (dispatch) {
+        const {data} = await httpConfig('/apis/listing')
+        if(Array.isArray(data) === false) {
+            throw new Error('data is malformed')
+        }
+
+        const listingDictionary = data.filter(listing => listing.listingCategoryId === categoryId).reduce(
+            (accumulator, currentValue) => {
+                accumulator[currentValue.listingId] = currentValue
+                return accumulator
+            },
+            {}
+        )
+
+        dispatch(setInitialListings(listingDictionary))
+    }
+}
+
+
+
+
 export default listingSlice.reducer
