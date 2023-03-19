@@ -15,6 +15,12 @@ import {useDropzone} from "react-dropzone";
 
 export function UpdateListing() {
     const auth = useSelector(state =>(state.auth))
+    const listings = useSelector(state => {
+        if(state?.listings.constructor.name === "Object") {
+            return Object.values(state.listings)
+        } else []
+    })
+
     const createListing = {
         listingCategoryId: "",
         listingClaimed: "",
