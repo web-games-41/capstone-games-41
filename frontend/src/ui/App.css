@@ -40,11 +40,12 @@ a.nav-link {
 a.fs-4 {
     font-family: Lobster;
     font-size: 2em !important;
+    transition: all 0.75s ease;
 }
 
 a.fs-4:hover {
     color: #fff;
-    filter: drop-shadow(1px 1px 3px #69985F);
+    filter: drop-shadow(1px 1px 6px #69985F);
 }
 
 /*TOSS ME A GAME ICON IMAGE ON/OFF*/
@@ -108,7 +109,7 @@ img.imgInsert {
     min-width: 100%;
 }
 
-/*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT*/
+/*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT WITHOUT THIS*/
 .sticky-top {
     background-color: #fff;
 }
