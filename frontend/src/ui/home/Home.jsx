@@ -43,15 +43,10 @@ export function Home() {
                 {listings.map(listing => <HomeCard listing={listing} key={listing.listingId} /> ) }
 
                 <div className={"text-center"}>
-                    <Button href={"/create-listing"} className={"btn btn-dark btn-outline-info my-5"}>
+                    <Button href={"/create-listing"} className={"btn btn-dark btn-outline-light my-5"}>
                         <FontAwesomeIcon className={"fa-5x"} icon={"add"}/>
                     </Button>
                 </div>
-
-
-                <div className={"text-center"}> <Button href={"/create-listing"} className={"my-5"}>
-                    <FontAwesomeIcon className={"fa-5x"} icon={"add"}/></Button></div>
-
 
             </Container>
 

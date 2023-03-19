@@ -6,6 +6,7 @@
     font-display: swap;
 }
 
+/*THIS KEEPS THE GAME ICONS IN VIEWPORT RATIO*/
 @media (min-width: 768px) {
 .icons {
     width: 25%;
@@ -52,9 +53,13 @@ img.rounded.img-fluid {
 }
 
 /*NAVBAR HAMBURGER MENU*/
+button.navbar-toggler.collapsed{
+    transition: all 0.5s ease;
+
+}
+
 button.navbar-toggler.collapsed:hover {
     font-size: 1em;
-    transition: all 0.5s ease;
 }
 
 /*NAVBAR MSSG ICON*/
@@ -78,15 +83,23 @@ img.icons:hover {
     filter: drop-shadow(1px 10px 5px #8EA589);
 }
 
-/*RESIZES FONT AWESOME ADD ICON*/
+/*RESIZES FONT AWESOME "+" ICON*/
 .fa-5x {
     font-size: 1em;
 }
 
 /*THIS TARGETS THE ROUND "+" AT BOTTOM OF Profile*/
-.btn.btn-dark.btn-outline-info.my-5.btn-primary {
+.btn.btn-dark.btn-outline-light.my-5.btn-primary {
     border-radius: 50%;
     background-color: #69985F;
+    transition: all 0.5s ease;
+}
+
+.btn.btn-dark.btn-outline-light.my-5.btn-primary:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(1px 10px 5px #8EA589);
+    transition: 1s ease;
+    color: #fff;
 }
 
 /*THIS KEEPS IMAGE IN DROP ZONE WITHIN CARD SIZE*/
