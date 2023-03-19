@@ -13,6 +13,7 @@ export const ListingClaimModal = (props) => {
                 if (reply.status === 200) {
 
                     dispatch(fetchListingsByProfileId())
+                    handleClose()
                 }
             })
     }
