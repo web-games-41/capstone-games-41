@@ -77,6 +77,7 @@ img.d-xs-flex.img-fluid:hover {
 img.icons {
     filter: drop-shadow(1px 5px 15px #8EA589);
     transition: 1s ease;
+    cursor: pointer;
 }
 
 img.icons:hover {
