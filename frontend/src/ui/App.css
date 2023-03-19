@@ -113,6 +113,9 @@ img.imgInsert {
 /*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT WITHOUT THIS*/
 .sticky-top {
     background-image: linear-gradient(rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0));
+}
 
+div.card {
+    filter: drop-shadow(1px 10px 5px #8EA589);
 }
 
