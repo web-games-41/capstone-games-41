@@ -35,7 +35,7 @@ export function App(props) {
                     <Route path='/view-listing' element={<ViewListing />} />
                     <Route path='/my-listings' element={<MyListings />} />
                     <Route path='/create-listing' element={<CreateListing />} />
-                    <Route path='/update-listing' element={<UpdateListing />} />
+                    <Route path='/update-listing/:listingId' element={<UpdateListing />} />
 
                 </Routes>
             </BrowserRouter>

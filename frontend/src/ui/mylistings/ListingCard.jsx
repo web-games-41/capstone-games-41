@@ -6,6 +6,7 @@ import {fetchAllListings, fetchListingsByProfileId} from "../../store/listing.js
 import {useDispatch, useSelector} from "react-redux";
 import {SignInForm} from "../shared/components/main-nav/sign-in/SigninForm.jsx";
 import {ListingClaimModal} from "./ListingClaimModal.jsx";
+import {Link} from "react-router-dom";
 
 
 export function ListingCard(props) {
@@ -61,6 +62,7 @@ export function ListingCard(props) {
                         </Row>
                         <p>Claimed: {trueOrFalse()}</p>
                         <ListingClaimModal listing={listing}/>
+                        <Link to={`/update-listing/${listing.listingId}`}><Button>Update</Button></Link>
 
 
                     </Card.Body>

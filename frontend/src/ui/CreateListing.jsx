@@ -67,7 +67,10 @@ export function CreateListing() {
 
     )
         function submitListing(listingImageUrl){
+
             const listing = {listingId:null, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingDescription: values.listingDescription, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
+
+
             console.log(listing)
             httpConfig.post("/apis/listing",listing)
                 .then(reply => {
