@@ -33,7 +33,7 @@ export function Navigation () {
 
     return (
         <>
-            <Navbar expand="lg">
+            <Navbar className={"sticky-top"} expand="lg">
                 <Container>
                     <a href="/" className={'fs-4'}>
                         <Image className={"rounded"} fluid width={"50px"} src={Logo} alt={"Toss Me A Game Logo"} /> Toss Me A Game</a>
