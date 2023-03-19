@@ -1,23 +1,21 @@
-import React, {useState} from "react";
-import {Button, Container, DropdownButton, Image, Dropdown, Col, Row, InputGroup, FormControl} from "react-bootstrap";
-import image1 from "../images/createlistingimg1.png"
-import Form from "react-bootstrap/Form";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllListings, fetchListingsByProfileId} from "../store/listing.js";
-import * as Yup from "yup";
 import {fetchAllCategories} from "../store/categories.js";
-import {Formik} from "formik";
+import {fetchAuth} from "../store/auth.js";
+import React, {useState} from "react";
+import * as Yup from "yup";
 import {httpConfig} from "./shared/utils/http-config.js";
+import {Button, Col, Container, FormControl, Image, InputGroup, Row} from "react-bootstrap";
+import {Formik} from "formik";
+import Form from "react-bootstrap/Form";
 import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
+import {FormDebugger} from "./shared/components/FormDebugger.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
-import {FormDebugger} from "./shared/components/FormDebugger.jsx";
-import {fetchCurrentUser} from "../store/currentUser.js";
-import {fetchAuth} from "../store/auth.js";
 
-export function CreateListing() {
+
+export function UpdateListing() {
     const auth = useSelector(state =>(state.auth))
-    const initialListingValues = {
+    const createListing = {
         listingCategoryId: "",
         listingClaimed: "",
         listingCondition: "",
@@ -56,18 +54,18 @@ export function CreateListing() {
     const onSubmit = (values, {resetForm, setStatus}) => {
         console.log(auth)
         //use values to create a listing. for listing profileId use profileId in auth
-    httpConfig.post("/apis/image-upload", values.listingImageUrl).then(reply =>{
-            let {message, type} = reply;
-            if (reply.status === 200){
-                submitListing(message)
-            } else {
-                setStatus({message, type});
+        httpConfig.post("/apis/image-upload", values.listingImageUrl).then(reply =>{
+                let {message, type} = reply;
+                if (reply.status === 200){
+                    submitListing(message)
+                } else {
+                    setStatus({message, type});
+                }
             }
-        }
 
-    )
+        )
         function submitListing(listingImageUrl){
-            const listing = {listingId:null, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingDescription: values.listingDescription, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
+            const listing = {listingId:null, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
             console.log(listing)
             httpConfig.post("/apis/listing",listing)
                 .then(reply => {
@@ -82,27 +80,27 @@ export function CreateListing() {
     };
 
 
-        return (
-            <>
-                <Container>
-                    <Formik validationSchema={validator} initialValues={initialListingValues} onSubmit={onSubmit}>
+    return (
+        <>
+            <Container>
+                <Formik validationSchema={validator} initialValues={createListing} onSubmit={onSubmit}>
 
-                        {(props) => {
-                            const [selectedImage, setSelectedImage] = useState(null)
-                            const {
-                                status,
-                                values,
-                                errors,
-                                touched,
-                                dirty,
-                                isSubmitting,
-                                handleChange,
-                                handleBlur,
-                                handleSubmit,
-                                handleReset,
-                                setFieldValue
-                            } = props;
-                            return (<>
+                    {(props) => {
+                        const [selectedImage, setSelectedImage] = useState(null)
+                        const {
+                            status,
+                            values,
+                            errors,
+                            touched,
+                            dirty,
+                            isSubmitting,
+                            handleChange,
+                            handleBlur,
+                            handleSubmit,
+                            handleReset,
+                            setFieldValue
+                        } = props;
+                        return (<>
                                 <Form className="p-4" onSubmit={handleSubmit}>
 
                                     <ImageDropZone className="dragDropBox"
@@ -134,7 +132,7 @@ export function CreateListing() {
                                     <Row>
                                         <Col sm={3}>
                                             <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCondition} variant="outline-secondary" className="mt-4 "
-                                                            name="listingCondition">
+                                                         name="listingCondition">
                                                 <option>Condition</option>
                                                 <option value="New">New</option>
                                                 <option value="Slightly Used">Slightly Used</option>
@@ -151,30 +149,30 @@ export function CreateListing() {
                                         </Col>
                                     </Row>
 
-                                <Form.Group className={"mt-3 d-block mx-auto"}>
-                                    <Button className="btn btn-primary" type="submit">Submit</Button>
-                                    {" "}
-                                    <Button
-                                        className="btn btn-danger"
-                                        onClick={handleReset}
-                                        disabled={!dirty || isSubmitting}
-                                    >Reset
-                                    </Button>
-                                </Form.Group>
+                                    <Form.Group className={"mt-3 d-block mx-auto"}>
+                                        <Button className="btn btn-primary" type="submit">Submit</Button>
+                                        {" "}
+                                        <Button
+                                            className="btn btn-danger"
+                                            onClick={handleReset}
+                                            disabled={!dirty || isSubmitting}
+                                        >Reset
+                                        </Button>
+                                    </Form.Group>
                                 </Form>
-                                    <FormDebugger {...props}/>
-                                    <DisplayStatus status={status}/>
-                                </>
-                            )
-                        }
-                        }
+                                <FormDebugger {...props}/>
+                                <DisplayStatus status={status}/>
+                            </>
+                        )
+                    }
+                    }
 
-                    </Formik>
-                </Container>
+                </Formik>
+            </Container>
 
-            </>
-        )
-    }
+        </>
+    )
+}
 
 function ImageDropZone ({ formikProps }) {
 
@@ -197,7 +195,7 @@ function ImageDropZone ({ formikProps }) {
     return (
         <Form.Group {...getRootProps()}>
             <InputGroup>
-               {/* {
+                {/* {
                     formikProps.values.listingImageUrl &&
                     <>
                         <div>
