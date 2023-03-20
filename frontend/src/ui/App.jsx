@@ -5,7 +5,7 @@ import { Home } from './home/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {Profile} from "./Profile.jsx";
 import {Message} from "./messages/inbox/Message.jsx";
-import {ViewListing} from "./ViewListing";
+import {ViewListing} from "./viewlisting/ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
 import {Messaging} from "./messages/messaging/Messaging.jsx";
@@ -32,7 +32,7 @@ export function App(props) {
                     <Route path={'/profile'} element={<Profile />} />
                     <Route path='/message' element={<Message />} />
                     <Route path='/convo' element={<Messaging />} />
-                    <Route path='/view-listing' element={<ViewListing />} />
+                    <Route path='/view-listing/:listingId' element={<ViewListing />} listingId=":listingId" />
                     <Route path='/my-listings' element={<MyListings />} />
                     <Route path='/create-listing' element={<CreateListing />} />
                     <Route path='/update-listing/:listingId' element={<UpdateListing />} />

@@ -8,13 +8,26 @@ const listingSlice = createSlice({
     reducers: {
         setInitialListings: (listings, action) => {
             return action.payload
+        },
+        setListing: (listings, action) => {
+            listings[action.payload.listingId] = action.payload.data
         }
     }
 })
 
-export const {setInitialListings, removeListing} = listingSlice.actions
+export const {setInitialListings, setListing} = listingSlice.actions
 
 /*console.log("actions", listingSlice)*/
+
+export function fetchListingByListingId(listingId) {
+
+    return async function (dispatch) {
+        const {data} = await httpConfig(`/apis/listing/${listingId}`)
+
+
+        dispatch(setListing({listingId, data}))
+    }
+}
 
 export const fetchListingsByProfileId = () => async (dispatch, getState) => {
     await dispatch(fetchAuth())
