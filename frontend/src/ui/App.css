@@ -1,4 +1,12 @@
 @font-face {
+    font-family: "Teko";
+    src: url("../fonts/Teko-Regular.ttf") format("woff2"),
+    url("../fonts/Teko-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Lobster";
     src: url("../fonts/Lobster-Regular.ttf") format("woff2"),
     url("../fonts/Lobster-Regular.ttf") format("woff");
@@ -131,3 +139,20 @@ div#root {
 .viewListingProfile.rounded.my-3 {
     background-color: #fff;
 }
+/*CARD FONTS*/
+h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+/*PAGE TITLES*/
+h1, h2, h3, h4, h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+h5.cardDescH5 {
+    font-family: Teko;
+    font-size: 1.5em !important;
+}
+
