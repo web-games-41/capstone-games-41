@@ -11,32 +11,21 @@ import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {FormDebugger} from "./shared/components/FormDebugger.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
+import {useParams} from "react-router-dom";
 
 
-export function UpdateListing() {
-    const listingId = match.listingId
+
+export function UpdateListing({listing}) {
     const auth = useSelector(state =>(state.auth))
-    const listings = useSelector(state => {
-        if(state?.listings.constructor.name === "Object") {
-            return Object.values(state.listings)
-        } else []
-    })
-
-    const createListing = {
-        listingCategoryId: "",
-        listingClaimed: "",
-        listingCondition: "",
-        listingDate: "",
-        listingDescription: "",
-        listingImageUrl: "",
-        listingName: "",
-    };
+    const listingId = listing.listingId
+    const initialValues = {...listing, imageUrl:null}
     const categories = useSelector(state => (state.categories))
 
     const dispatch = useDispatch()
     const initialEffects = () => {
         dispatch(fetchAllCategories())
         dispatch(fetchAuth())
+        /*dispatch(fetchListingByListingId(listingId))*/
     }
     React.useEffect(initialEffects, [dispatch])
 
@@ -50,7 +39,7 @@ export function UpdateListing() {
 
         listingDescription: Yup.string()
             .required("Description content is required"),
-        listingImageUrl: Yup.mixed()
+        imageUrl: Yup.mixed()
             .required("Image required"),
         listingName: Yup.string()
             .required("Listing Name is required"),
@@ -61,20 +50,24 @@ export function UpdateListing() {
     const onSubmit = (values, {resetForm, setStatus}) => {
         console.log(auth)
         //use values to create a listing. for listing profileId use profileId in auth
-        httpConfig.post("/apis/image-upload", values.listingImageUrl).then(reply =>{
-                let {message, type} = reply;
-                if (reply.status === 200){
-                    submitListing(message)
-                } else {
-                    setStatus({message, type});
+        if (values.imageUrl === null) {
+            updateListing(values)
+        } else {
+            httpConfig.post("/apis/image-upload", values.imageUrl).then(reply =>{
+                    let {message, type} = reply;
+                    if (reply.status === 200){
+                        updateListing(message)
+                    } else {
+                        setStatus({message, type});
+                    }
                 }
-            }
 
-        )
-        function submitListing(listingImageUrl){
-            const listing = {listingId:null, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
+            )
+        }
+        function updateListing(listingImageUrl){
+            const listing = {listingId, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingDescription: values.listingDescription, listingDate: values.listingDate, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
             console.log(listing)
-            httpConfig.post("/apis/listing",listing)
+            httpConfig.put(`/apis/listing/${listing.listingId}`,listing)
                 .then(reply => {
                         let {message, type} = reply;
                         if (reply.status === 200) {
@@ -90,7 +83,7 @@ export function UpdateListing() {
     return (
         <>
             <Container>
-                <Formik validationSchema={validator} initialValues={createListing} onSubmit={onSubmit}>
+                <Formik validationSchema={validator} initialValues={initialValues} onSubmit={onSubmit}>
 
                     {(props) => {
                         const [selectedImage, setSelectedImage] = useState(null)
@@ -109,6 +102,7 @@ export function UpdateListing() {
                         } = props;
                         return (<>
                                 <Form className="p-4" onSubmit={handleSubmit}>
+                                    <h1 className="py-3 text-center mb-5">Update Listing</h1>
 
                                     <ImageDropZone className="dragDropBox"
                                                    formikProps={{
@@ -116,14 +110,14 @@ export function UpdateListing() {
                                                        handleChange,
                                                        handleBlur,
                                                        setFieldValue,
-                                                       fieldValue: 'listingImageUrl',
+                                                       fieldValue: 'imageUrl',
                                                        setSelectedImage: setSelectedImage
                                                    }}
 
                                     />
 
                                     <div className="container container-fluid p-5">
-                                        {selectedImage !== null ? <Image fluid={true} height={300} rounded={true} thumbnail={true} width={300}  className="d-block mx-auto img-fluid" src={selectedImage}/> : ""}
+                                        {selectedImage !== null ? <Image fluid={true} height={300} rounded={true} thumbnail={true} width={300}  className="d-block mx-auto img-fluid" src={selectedImage}/> :  <Image fluid={true} height={300} rounded={true} thumbnail={true} width={300}  className="d-block mx-auto img-fluid" src={ listing.listingImageUrl }/>}
                                     </div>
 
                                     <Form.Group className="mt-4" controlId="listingName">
@@ -147,7 +141,7 @@ export function UpdateListing() {
                                             </Form.Select>
                                         </Col>
                                         <Col sm={3}>
-                                            <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCategory} variant="outline-secondary" className="mt-4"
+                                            <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCategoryId} variant="outline-secondary" className="mt-4"
                                                          name="listingCategoryId">
                                                 <option>Select a category</option>
                                                 {categories.map(category => <option
