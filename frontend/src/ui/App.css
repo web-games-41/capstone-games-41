@@ -65,7 +65,6 @@ button.navbar-toggler.collapsed:hover {
 
 /*NAVBAR MSSG ICON*/
 img.d-xs-flex.img-fluid {
-    filter: drop-shadow(1px 10px 15px #69985F);
     transition: 0.5s ease;
 }
 
@@ -75,14 +74,13 @@ img.d-xs-flex.img-fluid:hover {
 
 /*GAME ICONS*/
 img.icons {
-    /*filter: drop-shadow(1px 5px 15px #8EA589);*/
     transition: 1s ease;
     cursor: pointer;
 }
 
 img.icons:hover {
     transform: scale(1.5);
-    filter: drop-shadow(1px 10px 5px #8EA589);
+    filter: drop-shadow(1px 10px 5px #333);
 }
 
 /*RESIZES FONT AWESOME "+" ICON*/
@@ -99,7 +97,7 @@ img.icons:hover {
 
 .btn.btn-dark.btn-outline-light.my-5.btn-primary:hover {
     transform: scale(1.5);
-    filter: drop-shadow(1px 10px 5px #8EA589);
+    filter: drop-shadow(1px 10px 5px #333);
     transition: 1s ease;
     color: #fff;
 }
@@ -115,7 +113,11 @@ img.imgInsert {
     background-image: linear-gradient(rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0));
 }
 
+/*THIS AFFECTS ALL CARDS ON ALL PAGES*/
 div.card {
-    filter: drop-shadow(1px 10px 5px #8EA589);
+    filter: drop-shadow(1px 10px 5px #333);
 }
 
+div#root {
+    background: linear-gradient(70deg, #69985F, #8EA589);
+}

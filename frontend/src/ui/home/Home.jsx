@@ -1,11 +1,11 @@
 import React from "react"
 import "../App.css"
 import {Card, Col, Container, Row, Image, Button, Form, DropdownButton, Dropdown} from "react-bootstrap";
-/*import Board from "/frontend/src/ui/img/gameIcons/boardGames.png"
-import BoardGamesHvr from "../img/gameIcons/boardGamesHvr.png"
-import Disc from "../img/gameIcons/disks.png"
-import Console from "../img/gameIcons/cnslCtlr.png"
-import Cards from "../img/gameIcons/cardDeck.png"*/
+// import Board from "/frontend/src/ui/img/gameIcons/boardGames.png"
+// import BoardGamesHvr from "../img/gameIcons/boardGamesHvr.png"
+// import Disc from "../img/gameIcons/disks.png"
+// import Console from "../img/gameIcons/cnslCtlr.png"
+// import Cards from "../img/gameIcons/cardDeck.png"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllListings, fetchListingsByCategoryId} from "../../store/listing.js";
 import {HomeCard} from "./HomeCard.jsx";
