@@ -25,7 +25,7 @@ export function HomeCard(props) {
 
                         <h5>Item Name:</h5><p>{listing.listingName}</p>
 
-                        <h5>Description:</h5><p>{listing.listingDescription}</p>
+                       {/* <h5>Description:</h5><p>{listing.listingDescription}</p>*/}
 
                         <Row>
                             <Col>
