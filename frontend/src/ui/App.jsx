@@ -14,6 +14,7 @@ import {Provider} from "react-redux";
 import {Navigation} from "./shared/components/main-nav/MainNav.jsx";
 import {library} from "@fortawesome/fontawesome-svg-core"
 import {faEnvelope, faKey, faAdd} from "@fortawesome/free-solid-svg-icons";
+import {UpdateListing} from "./UpdateListing.jsx";
 
 
 export function App(props) {
@@ -34,6 +35,7 @@ export function App(props) {
                     <Route path='/view-listing' element={<ViewListing />} />
                     <Route path='/my-listings' element={<MyListings />} />
                     <Route path='/create-listing' element={<CreateListing />} />
+                    <Route path='/update-listing/:listingId' element={<UpdateListing />} />
 
                 </Routes>
             </BrowserRouter>
