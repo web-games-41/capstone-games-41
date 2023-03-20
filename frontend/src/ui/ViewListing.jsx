@@ -35,7 +35,7 @@ export function ViewListing () {
                     </Col>
                 </Row>
             </Container>
-                <Row className='viewListingProfile rounded my-3'>
+                <Row className='viewListingProfile rounded mb-5 mx-auto'>
                         <Col xs={2} className='px-0'>
                             <Image fluid src={profilepic} alt="meow" className='rounded-circle'/>
                         </Col>
