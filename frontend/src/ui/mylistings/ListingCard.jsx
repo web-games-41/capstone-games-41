@@ -63,9 +63,8 @@ export function ListingCard(props) {
                         <p>Claimed: {trueOrFalse()}</p>
                         <ListingClaimModal listing={listing}/>
 
-                        <Link to={`/update-listing/${listing.listingId}`}><Button>Update</Button></Link>
+                        <Link to={`/update-listing/${listing.listingId}`}><Button className={"ms-2"}>Update</Button></Link>
 
-                        <Button className={"ms-2"}>Update</Button>
 
 
 
