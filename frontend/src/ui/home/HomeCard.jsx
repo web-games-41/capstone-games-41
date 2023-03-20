@@ -27,17 +27,16 @@ export function HomeCard(props) {
                     <Card.Img variant="top" src={listing.listingImageUrl}/>
                     <Card.Body>
 
-                        <h5>Item Name:</h5><p>{listing.listingName}</p>
-
+                        <h5 className={"cardDescH5"}>Item Name:</h5><p>{listing.listingName}</p>
                        {/* <h5>Description:</h5><p>{listing.listingDescription}</p>*/}
-
+                        <h5 className={"cardDescH5"}>Description:</h5><p>{listing.listingDescription}</p>
                         <Row>
                             <Col>
-                                <div><h5>Condition:</h5><p>{listing.listingCondition}</p>
+                                <div><h5 className={"cardDescH5"}>Condition:</h5><p>{listing.listingCondition}</p>
                                 </div>
                             </Col>
                             <Col>
-                                <div><h5>Category:</h5><p>{category.categoryName}</p>
+                                <div><h5 className={"cardDescH5"}>Category:</h5><p>{category.categoryName}</p>
                                 </div>
                             </Col>
 
