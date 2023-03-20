@@ -121,3 +121,13 @@ div.card {
 div#root {
     background: linear-gradient(70deg, #69985F, #8EA589);
 }
+
+/*VIEW-LISTING PAGE GAME DESCRIPTION*/
+.viewListingGame.rounded.my-3 {
+    background-color: #fff;
+}
+
+/*VIEW-LISTING PAGE PROFILE DESCRIPTION*/
+.viewListingProfile.rounded.my-3 {
+    background-color: #fff;
+}
