@@ -10,15 +10,7 @@ import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.js
 import {useDropzone} from "react-dropzone";
 import {useDispatch, useSelector} from "react-redux";
 
-export const Profile = (props) => {
-    const dispatch = useDispatch()
-    const profile = useSelector(state => {return state.currentUser ? state.currentUser : null})
-
-    const sideEffects = () => {
-        dispatch(fetchCurrentUser())
-    }
-
-    React.useEffect(sideEffects, [dispatch])
+export const Profile = ({currentUser}) => {
 
 
     const validationObject = Yup.object().shape({
@@ -123,7 +115,7 @@ export const Profile = (props) => {
 
                         <Form.Group controlId={"profileName"}>
                             <InputGroup>
-                            <Form.Control className={"mt-3"} name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control className={"mt-3"} name="profileName" type="text" value={values.profileName} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
 
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
