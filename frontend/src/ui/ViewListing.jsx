@@ -16,7 +16,7 @@ export function ViewListing () {
                     />
             </Container>
 
-            <Container>
+            <Container className={"viewListingGame rounded my-3"}>
                 <Row className='g-2'>
                     <Col xs={12}>
                         <h1>Chess Board</h1>
@@ -35,7 +35,7 @@ export function ViewListing () {
                     </Col>
                 </Row>
             </Container>
-                <Row className='rounded'>
+                <Row className='viewListingProfile rounded my-3'>
                         <Col xs={2} className='px-0'>
                             <Image fluid src={profilepic} alt="meow" className='rounded-circle'/>
                         </Col>
