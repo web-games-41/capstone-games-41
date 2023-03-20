@@ -58,7 +58,7 @@ export function Home() {
             <Container>
                 {listings.filter(unfilteredListing => unfilteredListing.listingClaimed === false).map(listing => <HomeCard listing={listing} key={listing.listingId} /> ) }
 
-                <div className={"text-center"}>
+                <div className={"text-center fixed-bottom"}>
                     <Button href={"/create-listing"} className={"btn btn-dark btn-outline-light my-5"}>
                         <FontAwesomeIcon className={"fa-5x"} icon={"add"}/>
                     </Button>
