@@ -1,4 +1,12 @@
 @font-face {
+    font-family: "Viga";
+    src: url("../fonts/Viga-Regular.ttf") format("woff2"),
+    url("../fonts/Viga-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Teko";
     src: url("../fonts/Teko-Regular.ttf") format("woff2"),
     url("../fonts/Teko-Regular.ttf") format("woff");
@@ -159,20 +167,27 @@ h1, h2, h3, h4, h5 {
 
 h1.mb-5 {
     color: #283618;
+    font-family: Viga;
 }
 
 h3.px-5.my-3 {
     color: #283618;
+    font-family: Viga;
 }
 
 h1.text-center {
     color: #283618;
+    font-family: Viga;
 }
 
 /*CARD FONTS ON LISTINGCARD & HOMECARD*/
 h5.cardDescH5 {
     font-family: Teko;
     font-size: 1.5em !important;
+}
+
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link:hover {
+
 }
 
 
