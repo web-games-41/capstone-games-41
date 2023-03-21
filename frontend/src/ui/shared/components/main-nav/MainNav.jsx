@@ -18,7 +18,7 @@ export function Navigation () {
     };
     useEffect(effects, [dispatch]);
 
-    const [show, setShow] = useState(false);
+    /*const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,7 +29,7 @@ export function Navigation () {
         } else if (show === true && auth ) {
             return true
         }
-    }
+    }*/
 
 
     return (
@@ -56,7 +56,7 @@ export function Navigation () {
                             )}
                             {auth !== null && (
                                 <>
-                            <Link to="/profile">Profile </Link>
+                            <Nav.Link href="/profile">Profile </Nav.Link>
                             <Nav.Link href="/my-listings">My Listings</Nav.Link>
                             <SignOutComponent/>
                                 </>
