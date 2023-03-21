@@ -12,6 +12,7 @@ import {FormDebugger} from "./shared/components/FormDebugger.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
 import {useParams} from "react-router-dom";
+import {setListing} from "../store/listing.js";
 
 
 
@@ -25,7 +26,7 @@ export function UpdateListing({listing}) {
     const initialEffects = () => {
         dispatch(fetchAllCategories())
         dispatch(fetchAuth())
-        /*dispatch(fetchListingByListingId(listingId))*/
+
     }
     React.useEffect(initialEffects, [dispatch])
 
@@ -37,21 +38,21 @@ export function UpdateListing({listing}) {
 
         listingCondition: Yup.string(),
 
-        listingDescription: Yup.string()
-            .required("Description content is required"),
-        imageUrl: Yup.mixed()
-            .required("Image required"),
-        listingName: Yup.string()
-            .required("Listing Name is required"),
+        listingDescription: Yup.string(),
+
+        imageUrl: Yup.mixed(),
+
+        listingName: Yup.string(),
+
 
 
     });
 
     const onSubmit = (values, {resetForm, setStatus}) => {
-        console.log(auth)
+        console.log(values)
         //use values to create a listing. for listing profileId use profileId in auth
         if (values.imageUrl === null) {
-            updateListing(values)
+            updateListing()
         } else {
             httpConfig.post("/apis/image-upload", values.imageUrl).then(reply =>{
                     let {message, type} = reply;
@@ -65,13 +66,18 @@ export function UpdateListing({listing}) {
             )
         }
         function updateListing(listingImageUrl){
-            const listing = {listingId, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingDescription: values.listingDescription, listingDate: values.listingDate, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
-            console.log(listing)
+            let listing
+            if (listingImageUrl !== undefined ) {
+                listing = {listingId, listingCategoryId: values.listingCategoryId, listingCondition: values.listingCondition, listingDescription: values.listingDescription, listingDate: values.listingDate, listingImageUrl: listingImageUrl, listingName: values.listingName, listingProfileId: auth.profileId, listingClaimed: false}
+            } else {
+                listing = values
+            }
+
             httpConfig.put(`/apis/listing/${listing.listingId}`,listing)
                 .then(reply => {
                         let {message, type} = reply;
                         if (reply.status === 200) {
-                            resetForm();
+                            dispatch(setListing({data:listing,listingId:listing.listingId}))
                         }
                         setStatus({message, type});
                     }
