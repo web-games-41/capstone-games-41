@@ -26,7 +26,7 @@ export const Profile = ({currentUser}) => {
     function submitEditedProfile (values, { resetForm, setStatus }) {
 
         const submitUpdatedProfile = (updatedProfile) => {
-            httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
+            httpConfig.put(`/apis/profile/${currentUser.profileId}`, updatedProfile)
                 .then(reply => {
                     let { message, type } = reply
 
