@@ -7,9 +7,9 @@
 }
 
 @font-face {
-    font-family: "Anton";
-    src: url("../fonts/Anton-Regular.ttf") format("woff2"),
-    url("../fonts/Anton-Regular.ttf") format("woff");
+    font-family: "Teko";
+    src: url("../fonts/Teko-Regular.ttf") format("woff2"),
+    url("../fonts/Teko-Regular.ttf") format("woff");
     font-weight: bold;
     font-display: swap;
 }
@@ -186,7 +186,7 @@ h1.text-center {
 
 /*CARD FONTS ON LISTINGCARD & HOMECARD*/
 h5.cardDescH5 {
-    font-family: Anton;
+    font-family: Teko;
     font-size: 1.5em !important;
     letter-spacing: 1px;
 }
