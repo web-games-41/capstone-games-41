@@ -156,9 +156,23 @@ h1, h2, h3, h4, h5 {
     font-family: Teko;
     font-size: 3em;
 }
+
+h1.mb-5 {
+    color: #283618;
+}
+
+h3.px-5.my-3 {
+    color: #283618;
+}
+
+h1.text-center {
+    color: #283618;
+}
+
 /*CARD FONTS ON LISTINGCARD & HOMECARD*/
 h5.cardDescH5 {
     font-family: Teko;
     font-size: 1.5em !important;
 }
+
 
