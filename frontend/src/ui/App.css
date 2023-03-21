@@ -208,7 +208,14 @@ a.dropdown-item:hover {
     background-color: #fff;
 }
 
+/*SIGNIN MODAL BODY*/
+div.modal-header {
+    background: linear-gradient(150deg, #FEFAE0 10%, #8EA589);
+}
 
+div.rounded-bottom.modal-body {
+    /*background: linear-gradient(-165deg, #FEFAE0 10%, #8EA589);*/
+}
 
 
 
