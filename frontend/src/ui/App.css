@@ -186,8 +186,28 @@ h5.cardDescH5 {
     font-size: 1.5em !important;
 }
 
-a#basic-nav-dropdown.dropdown-toggle.show.nav-link:hover {
-
+/*MAINNAV SIGNIN/SIGNUP DROPDOWN MENU*/
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link {
+    color: #69985F;
 }
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link:hover {
+    color: #228B22;
+}
+
+div.dropdown-menu.show {
+    border: none;
+}
+
+/*SIGNIN/SIGNUP MENU ITEMS*/
+a.dropdown-item {
+    color: #69985F;
+}
+
+a.dropdown-item:hover {
+    color: #228B22;
+    background-color: #fff;
+}
+
+
 
 
