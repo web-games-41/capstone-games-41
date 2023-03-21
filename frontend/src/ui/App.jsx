@@ -32,7 +32,7 @@ export function App(props) {
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route path={'/profile'} element={<ProfilePage />} />
                     <Route path='/message' element={<Message />} />
-                    <Route path='/convo' element={<Messaging />} />
+                    <Route path='/convo/:messageProfileIdOne/:messageProfileIdTwo' element={<Messaging />} messageProfileIdOne=":messageProfileIdOne" messageProfileIdTwo="messageProfileIdTwo"/>
                     <Route path='/view-listing/:listingId' element={<ViewListing />} listingId=":listingId" />
                     <Route path='/my-listings' element={<MyListings />} />
                     <Route path='/create-listing' element={<CreateListing />} />

@@ -2,6 +2,7 @@ import React from "react";
 import {Card, Col, Container, Row, Image} from "react-bootstrap";
 import {ListingCard} from "../../mylistings/ListingCard.jsx";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 export function InboxCard (props) {
     console.log(props)
@@ -18,6 +19,8 @@ export function InboxCard (props) {
 
     return (
         <>
+
+            <Link to={`/convo/${message.messageProfileId}/${message.messageReceiverId}`}>
             <Container className='rounded my-2'>
                 <Row>
                     <Col xs={3} className='d-flex justify-content-center'>
@@ -29,6 +32,7 @@ export function InboxCard (props) {
                     </Col>
                 </Row>
             </Container>
+            </Link>
         </>
     )
 }
