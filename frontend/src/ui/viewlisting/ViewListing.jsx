@@ -35,6 +35,9 @@ export function ViewListing () {
             return category
         }
     })
+    if (listing === undefined) {
+        return <></>
+    }
 
         return (
             <>
