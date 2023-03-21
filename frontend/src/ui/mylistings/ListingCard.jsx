@@ -64,6 +64,7 @@ export function ListingCard(props) {
                         <ListingClaimModal listing={listing}/>
 
                         <Link to={`/update-listing/${listing.listingId}`}><Button className={"ms-2"}>Update</Button></Link>
+                        <Button  className={"ms-5 btn btn-danger"}> Delete </Button>
 
 
 
