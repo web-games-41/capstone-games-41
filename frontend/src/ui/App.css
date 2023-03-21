@@ -1,4 +1,20 @@
 @font-face {
+    font-family: "Viga";
+    src: url("../fonts/Viga-Regular.ttf") format("woff2"),
+    url("../fonts/Viga-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Teko";
+    src: url("../fonts/Teko-Regular.ttf") format("woff2"),
+    url("../fonts/Teko-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Lobster";
     src: url("../fonts/Lobster-Regular.ttf") format("woff2"),
     url("../fonts/Lobster-Regular.ttf") format("woff");
@@ -45,7 +61,7 @@ a.fs-4 {
 
 a.fs-4:hover {
     color: #fff;
-    filter: drop-shadow(1px 1px 6px #69985F);
+    filter: drop-shadow(1px 1px 3px #000);
 }
 
 /*TOSS ME A GAME ICON IMAGE ON/OFF*/
@@ -93,13 +109,14 @@ img.icons:hover {
     border-radius: 50%;
     background-color: #69985F;
     transition: all 0.5s ease;
+    color: #fff;
 }
 
 .btn.btn-dark.btn-outline-light.my-5.btn-primary:hover {
     transform: scale(1.5);
     filter: drop-shadow(1px 10px 5px #333);
     transition: 1s ease;
-    color: #fff;
+    color: #000;
 }
 
 /*THIS KEEPS IMAGE IN DROP ZONE WITHIN CARD SIZE*/
@@ -116,10 +133,15 @@ img.imgInsert {
 /*THIS AFFECTS ALL CARDS ON ALL PAGES*/
 div.card {
     filter: drop-shadow(1px 10px 5px #333);
+    color: #69985F;
+}
+
+div.card:hover {
+    color: #228B22;
 }
 
 div#root {
-    background: linear-gradient(70deg, #69985F, #8EA589);
+    background: linear-gradient(to right, #69985F, #8EA589);
 }
 
 /*VIEW-LISTING PAGE GAME DESCRIPTION*/
@@ -131,3 +153,70 @@ div#root {
 .viewListingProfile.rounded.mb-5.mx-auto {
     background-color: #fff;
 }
+/*CARD FONTS*/
+h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+/*PAGE TITLES*/
+h1, h2, h3, h4, h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+h1.mb-5 {
+    color: #283618;
+    font-family: Viga;
+}
+
+h3.px-5.my-3 {
+    color: #283618;
+    font-family: Viga;
+}
+
+h1.text-center {
+    color: #283618;
+    font-family: Viga;
+}
+
+/*CARD FONTS ON LISTINGCARD & HOMECARD*/
+h5.cardDescH5 {
+    font-family: Teko;
+    font-size: 1.5em !important;
+}
+
+/*MAINNAV SIGNIN/SIGNUP DROPDOWN MENU*/
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link {
+    color: #69985F;
+}
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link:hover {
+    color: #228B22;
+}
+
+div.dropdown-menu.show {
+    border: none;
+}
+
+/*SIGNIN/SIGNUP MENU ITEMS*/
+a.dropdown-item {
+    color: #69985F;
+}
+
+a.dropdown-item:hover {
+    color: #228B22;
+    background-color: #fff;
+}
+
+/*SIGNIN MODAL BODY*/
+div.modal-header {
+    background: linear-gradient(150deg, #FEFAE0 10%, #8EA589);
+}
+
+div.rounded-bottom.modal-body {
+    /*background: linear-gradient(-165deg, #FEFAE0 10%, #8EA589);*/
+}
+
+
+
+

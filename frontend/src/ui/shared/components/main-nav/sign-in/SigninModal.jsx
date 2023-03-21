@@ -16,7 +16,7 @@ export const SignInModal = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className={"rounded-bottom"}>
                     <SignInForm/>
                 </Modal.Body>
             </Modal>
