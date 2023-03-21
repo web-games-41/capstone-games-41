@@ -145,7 +145,7 @@ export function CreateListing() {
                                             </Form.Select>
                                         </Col>
                                         <Col sm={3}>
-                                            <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCategory} variant="outline-secondary" className="mt-4"
+                                            <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCategoryId} variant="outline-secondary" className="mt-4"
                                                          name="listingCategoryId">
                                                 <option>Select a category</option>
                                                 {categories.map(category => <option

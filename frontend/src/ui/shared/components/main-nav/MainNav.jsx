@@ -7,6 +7,7 @@ import {SignInModal} from "./sign-in/SigninModal";
 import {SignOutComponent} from "./SignOut";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../../../store/auth.js";
+import {Link} from "react-router-dom";
 
 export function Navigation () {
     const auth = useSelector(state => state.auth);
@@ -55,7 +56,7 @@ export function Navigation () {
                             )}
                             {auth !== null && (
                                 <>
-                            <Nav.Link href="/profile">Profile </Nav.Link>
+                            <Link to="/profile">Profile </Link>
                             <Nav.Link href="/my-listings">My Listings</Nav.Link>
                             <SignOutComponent/>
                                 </>

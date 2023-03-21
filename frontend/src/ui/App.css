@@ -150,7 +150,7 @@ div#root {
 }
 
 /*VIEW-LISTING PAGE PROFILE DESCRIPTION*/
-.viewListingProfile.rounded.my-3 {
+.viewListingProfile.rounded.mb-5.mx-auto {
     background-color: #fff;
 }
 /*CARD FONTS*/

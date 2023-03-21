@@ -3,23 +3,13 @@ import {Container, Image, Form, Col, Row, Button, Card, InputGroup, FormControl}
 import './App.css'
 import {httpConfig} from "./shared/utils/http-config.js";
 import * as Yup from 'yup'
-import currentUser, {fetchCurrentUser} from "../store/currentUser"
 import {Formik} from "formik";
 import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
-import {useDispatch, useSelector} from "react-redux";
+import currentUser from "../store/currentUser.js";
 
-export const Profile = (props) => {
-    const dispatch = useDispatch()
-    const profile = useSelector(state => {return state.currentUser ? state.currentUser : null})
-
-    const sideEffects = () => {
-        dispatch(fetchCurrentUser())
-    }
-
-    React.useEffect(sideEffects, [dispatch])
-
+export const Profile = ({currentUser}) => {
 
     const validationObject = Yup.object().shape({
         profileAvatarUrl: Yup.mixed(),
@@ -34,7 +24,7 @@ export const Profile = (props) => {
     function submitEditedProfile (values, { resetForm, setStatus }) {
 
         const submitUpdatedProfile = (updatedProfile) => {
-            httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
+            httpConfig.put(`/apis/profile/${currentUser.profileId}`, updatedProfile)
                 .then(reply => {
                     let { message, type } = reply
 
@@ -117,13 +107,14 @@ export const Profile = (props) => {
                             />
 
                             <div>
-                                {selectedImage !== null ? <img className={"imgInsert"} src={selectedImage}/> : ""}
+                                {selectedImage !== null ? <img className={"imgInsert"} src={selectedImage}/> :
+                                    <Image className="d-block img-fluid rounded mt-3" src={ values.profileAvatarUrl }/>}
                             </div>
 
 
                         <Form.Group controlId={"profileName"}>
                             <InputGroup>
-                            <Form.Control className={"mt-3"} name="profileName" type="text" value={values.currentUser} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
+                            <Form.Control className={"mt-3"} name="profileName" type="text" value={values.profileName} required placeholder={"Profile Name"} onChange={handleChange} onBlur={handleBlur}/>
 
                             </InputGroup>
                             <DisplayError errors={errors} touched={touched} field={'profileName'}/>
