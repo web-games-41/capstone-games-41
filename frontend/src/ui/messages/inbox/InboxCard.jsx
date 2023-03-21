@@ -27,7 +27,7 @@ export function InboxCard (props) {
                         <Image fluid src={profile.profileAvatarUrl} width={100} height={100} alt="meow" className='rounded-circle'/>
                     </Col>
                     <Col xs={9} className='py-2'>
-                        <h5>{profile.profileName}</h5>
+                        <h5 className={"mssgProfileName"}>{profile.profileName}</h5>
                         <p>{message.messageContent}</p>
                     </Col>
                 </Row>

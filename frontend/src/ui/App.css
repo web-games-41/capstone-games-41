@@ -7,9 +7,9 @@
 }
 
 @font-face {
-    font-family: "Teko";
-    src: url("../fonts/Teko-Regular.ttf") format("woff2"),
-    url("../fonts/Teko-Regular.ttf") format("woff");
+    font-family: "Anton";
+    src: url("../fonts/Anton-Regular.ttf") format("woff2"),
+    url("../fonts/Anton-Regular.ttf") format("woff");
     font-weight: bold;
     font-display: swap;
 }
@@ -131,6 +131,10 @@ img.imgInsert {
 }
 
 /*THIS AFFECTS ALL CARDS ON ALL PAGES*/
+p {
+    font-size: 1.15em;
+}
+
 div.card {
     filter: drop-shadow(1px 10px 5px #333);
     color: #69985F;
@@ -182,8 +186,9 @@ h1.text-center {
 
 /*CARD FONTS ON LISTINGCARD & HOMECARD*/
 h5.cardDescH5 {
-    font-family: Teko;
+    font-family: Anton;
     font-size: 1.5em !important;
+    letter-spacing: 1px;
 }
 
 /*MAINNAV SIGNIN/SIGNUP DROPDOWN MENU*/
@@ -217,6 +222,15 @@ div.rounded-bottom.modal-body {
     /*background: linear-gradient(-165deg, #FEFAE0 10%, #8EA589);*/
 }
 
+/*MESSAGE PAGE*/
+h5.mssgProfileName {
+    font-size: 2.5em;
+}
 
+div.py-2.col-9 {
+    color: #283618;
+}
 
-
+div.py-2.col-9:hover {
+    color: #228B22;
+}
