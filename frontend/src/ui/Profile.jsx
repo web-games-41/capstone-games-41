@@ -3,15 +3,13 @@ import {Container, Image, Form, Col, Row, Button, Card, InputGroup, FormControl}
 import './App.css'
 import {httpConfig} from "./shared/utils/http-config.js";
 import * as Yup from 'yup'
-import currentUser, {fetchCurrentUser} from "../store/currentUser"
 import {Formik} from "formik";
 import {DisplayError} from "./shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "./shared/components/display-status/DisplayStatus.jsx";
 import {useDropzone} from "react-dropzone";
-import {useDispatch, useSelector} from "react-redux";
+import currentUser from "../store/currentUser.js";
 
 export const Profile = ({currentUser}) => {
-
 
     const validationObject = Yup.object().shape({
         profileAvatarUrl: Yup.mixed(),
@@ -109,7 +107,8 @@ export const Profile = ({currentUser}) => {
                             />
 
                             <div>
-                                {selectedImage !== null ? <img className={"imgInsert"} src={selectedImage}/> : ""}
+                                {selectedImage !== null ? <img className={"imgInsert"} src={selectedImage}/> :
+                                    <Image className="d-block img-fluid rounded mt-3" src={ values.profileAvatarUrl }/>}
                             </div>
 
 
