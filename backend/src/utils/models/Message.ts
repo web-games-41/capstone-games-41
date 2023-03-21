@@ -43,5 +43,5 @@ export async function selectMessagesByAllForeignKeys (messageListingId: string, 
 }
 
 export async function selectMessagesByProfileIds (messageProfileIdOne: string, messageProfileIdTwo: string): Promise<Message[]> {
-    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_profile_id in (${messageProfileIdOne}, ${messageProfileIdTwo}) and message_receiver_id in (${messageProfileIdTwo}, ${messageProfileIdOne}) ORDER BY message_date DESC`
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_profile_id in (${messageProfileIdOne}, ${messageProfileIdTwo}) and message_receiver_id in (${messageProfileIdTwo}, ${messageProfileIdOne}) ORDER BY message_date `
 }
