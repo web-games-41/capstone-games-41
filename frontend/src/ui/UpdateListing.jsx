@@ -149,7 +149,7 @@ export function UpdateListing({listing}) {
                                         <Col sm={3}>
                                             <Form.Select onBlur={handleBlur} onChange={handleChange} value={values.listingCategoryId} variant="outline-secondary" className="mt-4"
                                                          name="listingCategoryId">
-                                                <option>Select a category</option>
+                                                <option>Category</option>
                                                 {categories.map(category => <option
                                                     value={category.categoryId}>{category.categoryName}</option>)}
                                             </Form.Select>
