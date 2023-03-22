@@ -17,14 +17,14 @@ export function MessageCards (props) {
                     <Row>
                         <Col xs={9} className={'py-2'}>
                             <Col className='d-flex flex-row-reverse'>
-                                <h5>{message.messageProfileId}</h5>
+                                <h5 className={"convoMssgID"}>{message.messageProfileId}</h5>
                             </Col>
                             <Col className='d-flex flex-row-reverse'>
                                 <p>{message.messageContent}</p>
                             </Col>
                         </Col>
-                        <Col xs={3} className='d-flex justify-content-center'>
-                            <Image fluid src={profilepic} width={100} height={100} alt="meow" className='rounded-circle'/>
+                        <Col xs={3} className='imgBox d-flex justify-content-center'>
+                            <Image fluid src={profilepic} alt="meow" className='convo rounded-circle'/>
                         </Col>
                     </Row>
                 </Container>

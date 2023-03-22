@@ -23,7 +23,7 @@ export function InboxCard (props) {
         <>
 
             <Link to={`/convo/${message.messageProfileId}/${message.messageReceiverId}`}>
-            <Container className='rounded my-2'>
+            <Container className='inboxImg-Txt rounded my-3'>
                 <Row>
                     <Col xs={3} className='d-flex justify-content-center'>
                         <Image fluid src={profile.profileAvatarUrl} width={100} height={100} alt="meow" className='rounded-circle'/>
