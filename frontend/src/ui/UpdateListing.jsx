@@ -167,7 +167,7 @@ export function UpdateListing({listing}) {
                                         </Button>
                                     </Form.Group>
                                 </Form>
-                                <FormDebugger {...props}/>
+                                {/*<FormDebugger {...props}/>*/}
                                 <DisplayStatus status={status}/>
                             </>
                         )
