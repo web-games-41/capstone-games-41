@@ -39,7 +39,7 @@ export function MessageCards (props) {
                             <Image fluid src={profilepic2} width={100} height={100} alt="meow" className='rounded-circle'/>
                         </Col>
                         <Col xs={9} className='py-2'>
-                            <h5>{message.messageReceiverId}</h5>
+                            <h5 className={"convoMssgID"}>{message.messageReceiverId}</h5>
                             <p>{message.messageContent}</p>
                         </Col>
                     </Row>
