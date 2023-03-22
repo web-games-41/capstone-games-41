@@ -9,7 +9,18 @@ import {fetchAuth} from "../../../store/auth.js";
 export function MessageCards (props) {
     const {message} = props
     const auth = useSelector(state => (state.auth))
-    const dispatch = useDispatch()
+
+    const profile = useSelector(state => {
+       /* let profileId = message.messageProfileId !== state.auth.profileId ? message.messageReceiverId : message.messageProfileId;
+        console.log(profileId)*/
+        return state.profiles[message.messageProfileId]
+    })
+
+
+    if (profile === undefined) {
+        return (<></>)
+    }
+
     if (message.messageProfileId === auth.profileId) {
         return(
             <>
@@ -17,7 +28,7 @@ export function MessageCards (props) {
                     <Row>
                         <Col xs={9} className={'py-2'}>
                             <Col className='d-flex flex-row-reverse'>
-                                <h5 className={"convoMssgID"}>{message.messageProfileId}</h5>
+                                <h5 className={"convoMssgID"}>{profile.profileName}</h5>
                             </Col>
                             <Col className='d-flex flex-row-reverse'>
                                 <p>{message.messageContent}</p>
@@ -39,7 +50,7 @@ export function MessageCards (props) {
                             <Image fluid src={profilepic2} width={100} height={100} alt="meow" className='rounded-circle'/>
                         </Col>
                         <Col xs={9} className='py-2'>
-                            <h5>{message.messageReceiverId}</h5>
+                            <h5>{profile.profileName}</h5>
                             <p>{message.messageContent}</p>
                         </Col>
                     </Row>

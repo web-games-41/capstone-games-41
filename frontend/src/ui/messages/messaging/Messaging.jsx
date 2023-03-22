@@ -11,10 +11,10 @@ import {useParams} from "react-router-dom";
 import message, {fetchMessagesForConvos} from "../../../store/message.js";
 import {fetchAuth} from "../../../store/auth.js";
 import {SendMessageForm} from "./SendMessageForm.jsx";
+import {fetchProfileByProfileId} from "../../../store/profile.js";
 
 export function Messaging () {
     const {messageProfileIdOne, messageProfileIdTwo} = useParams()
-
 
     const messages = useSelector(state => {
         if (state?.messages.constructor.name === 'Array') {
@@ -23,16 +23,15 @@ export function Messaging () {
             return []
         }
     })
-console.log(messages)
-
 
     const lastMessage = messages.at(-1)
-    console.log(lastMessage)
     const dispatch = useDispatch()
 
 
     const initialEffect = () => {
         dispatch(fetchMessagesForConvos(messageProfileIdOne, messageProfileIdTwo))
+        dispatch(fetchProfileByProfileId(messageProfileIdOne))
+        dispatch(fetchProfileByProfileId(messageProfileIdTwo))
         dispatch(fetchAuth())
     }
 

@@ -6,7 +6,8 @@ import categories from "./categories.js";
 import inbox from "./inbox.js";
 import message, {setIndividualMessage} from "./message.js";
 import claim from "./claim.js";
+import profile from "./profile.js";
 
 
-const reducer = combineReducers({listings:listings, auth:auth, inbox:inbox, categories:categories, currentUser:currentUser, messages:message, claims:claim})
+const reducer = combineReducers({listings:listings, auth:auth, inbox:inbox, categories:categories, currentUser:currentUser, messages:message, claims:claim, profiles:profile})
 export const store = configureStore({reducer})
