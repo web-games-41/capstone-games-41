@@ -145,8 +145,9 @@ div.card:hover {
 }
 
 div#root {
-    /*background: linear-gradient(to right, #69985F, #8EA589);*/
-    background-image: linear-gradient(to right, rgba(105, 152, 95, 1), rgba(142, 165, 137, 1));
+    background-image:
+            linear-gradient(to right, rgba(105, 152, 95),
+            rgba(142, 165, 137));
 }
 
 /*VIEW-LISTING PAGE GAME DESCRIPTION*/
