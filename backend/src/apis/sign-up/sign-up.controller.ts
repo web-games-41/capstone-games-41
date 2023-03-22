@@ -2,7 +2,7 @@ import {Request, Response} from "express";
 import Mailgun from "mailgun.js";
 import formData from 'form-data'
 import Client from "mailgun.js/dist/lib/client";
-import {setActivationId, setHash} from "../../utils/auth.utils";
+import {setActivationToken, setHash} from "../../utils/auth.utils";
 import {insertProfile, Profile } from "../../utils/models/Profile";
 import { Status } from "../../utils/interfaces/Status";
 
@@ -13,9 +13,9 @@ export async function signupProfileController ( request:Request, response: Respo
 
         const { profileAvatarUrl, profileEmail, profilePassword, profileName } = request.body
         const profileHash = await setHash(profilePassword)
-        const profileActivationId = setActivationId()
+        const profileActivationToken = setActivationToken()
 
-        const basePath: string = `${request.protocol}://${request.hostname}/${request.originalUrl}/activation/${profileActivationId}`
+        const basePath: string = `${request.protocol}://${request.hostname}:8080${request.originalUrl}/activation/${profileActivationToken}`
 
         const message = `<h2>Welcome to Toss Me a Game.</h2>
 <p>In order to start posting donations, you must confirm your account</p>
@@ -31,7 +31,7 @@ export async function signupProfileController ( request:Request, response: Respo
 
         const profile: Profile = {
             profileId: null,
-            profileActivationId,
+            profileActivationToken: profileActivationToken,
             profileAvatarUrl: profileAvatarUrl ?? null,
             profileEmail,
             profileHash,

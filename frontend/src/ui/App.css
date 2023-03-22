@@ -1,0 +1,244 @@
+@font-face {
+    font-family: "Viga";
+    src: url("../fonts/Viga-Regular.ttf") format("woff2"),
+    url("../fonts/Viga-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Teko";
+    src: url("../fonts/Teko-Regular.ttf") format("woff2"),
+    url("../fonts/Teko-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Lobster";
+    src: url("../fonts/Lobster-Regular.ttf") format("woff2"),
+    url("../fonts/Lobster-Regular.ttf") format("woff");
+    font-weight: bold;
+    font-display: swap;
+}
+
+/*THIS KEEPS THE GAME ICONS IN VIEWPORT RATIO*/
+@media (min-width: 768px) {
+.icons {
+    width: 25%;
+    }
+}
+
+@media (max-width: 767px) {
+    .icons {
+        width: 50%;
+    }
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: #69985F;
+}
+
+a:hover {
+    color: #666;
+}
+
+a.nav-link {
+    color: #69985F;
+}
+
+/*TOSS ME A GAME FONT*/
+a.fs-4 {
+    font-family: Lobster;
+    font-size: 2em !important;
+    transition: all 0.75s ease;
+}
+
+a.fs-4:hover {
+    color: #fff;
+    filter: drop-shadow(1px 1px 3px #000);
+}
+
+/*TOSS ME A GAME ICON IMAGE ON/OFF*/
+img.rounded.img-fluid {
+    display: none;
+}
+
+/*NAVBAR HAMBURGER MENU*/
+button.navbar-toggler.collapsed{
+    transition: all 0.5s ease;
+
+}
+
+button.navbar-toggler.collapsed:hover {
+    font-size: 1em;
+}
+
+/*NAVBAR MSSG ICON*/
+img.d-xs-flex.img-fluid {
+    transition: 0.5s ease;
+}
+
+img.d-xs-flex.img-fluid:hover {
+    transform: scale(1.25);
+}
+
+/*GAME ICONS*/
+img.icons {
+    transition: 1s ease;
+    cursor: pointer;
+}
+
+img.icons:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(1px 10px 5px #333);
+}
+
+/*RESIZES FONT AWESOME "+" ICON*/
+.fa-5x {
+    font-size: 1em;
+}
+
+/*THIS TARGETS THE ROUND "+" AT BOTTOM OF Profile*/
+.btn.btn-dark.btn-outline-light.my-5.btn-primary {
+    border-radius: 50%;
+    background-color: #69985F;
+    transition: all 0.5s ease;
+    color: #fff;
+}
+
+.btn.btn-dark.btn-outline-light.my-5.btn-primary:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(1px 10px 5px #333);
+    transition: 1s ease;
+    color: #000;
+}
+
+/*THIS KEEPS IMAGE IN DROP ZONE WITHIN CARD SIZE*/
+img.imgInsert {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+/*NAVBAR BACKGROUND DEFAULT IS TRANSPARENT WITHOUT THIS*/
+.sticky-top {
+    background-image: linear-gradient(rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0));
+}
+
+/*THIS AFFECTS ALL CARDS ON ALL PAGES*/
+p {
+    font-size: 1.15em;
+}
+
+div.card {
+    filter: drop-shadow(1px 10px 5px #333);
+    color: #69985F;
+}
+
+div.card:hover {
+    color: #228B22;
+}
+
+div#root {
+    /*background: linear-gradient(to right, #69985F, #8EA589);*/
+    background-image: linear-gradient(to right, rgba(105, 152, 95, 1), rgba(142, 165, 137, 1));
+}
+
+/*VIEW-LISTING PAGE GAME DESCRIPTION*/
+.viewListingGame.rounded.my-3 {
+    background-color: #fff;
+}
+
+/*VIEW-LISTING PAGE PROFILE DESCRIPTION*/
+.viewListingProfile.rounded.mb-5.mx-auto {
+    background-color: #fff;
+}
+/*CARD FONTS*/
+h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+/*PAGE TITLES*/
+h1, h2, h3, h4, h5 {
+    font-family: Teko;
+    font-size: 3em;
+}
+
+h1.mb-5 {
+    color: #283618;
+    font-family: Viga;
+}
+
+h3.px-5.my-3 {
+    color: #283618;
+    font-family: Viga;
+}
+
+h1.text-center {
+    color: #283618;
+    font-family: Viga;
+}
+
+/*CARD FONTS ON LISTINGCARD & HOMECARD*/
+h5.cardDescH5 {
+    font-family: Teko;
+    font-size: 1.5em !important;
+    letter-spacing: 1px;
+}
+
+/*MAINNAV SIGNIN/SIGNUP DROPDOWN MENU*/
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link {
+    color: #69985F;
+}
+a#basic-nav-dropdown.dropdown-toggle.show.nav-link:hover {
+    color: #228B22;
+}
+
+div.dropdown-menu.show {
+    border: none;
+}
+
+/*SIGNIN/SIGNUP MENU ITEMS*/
+a.dropdown-item {
+    color: #69985F;
+}
+
+a.dropdown-item:hover {
+    color: #228B22;
+    background-color: #fff;
+}
+
+/*SIGNIN MODAL BODY*/
+div.modal-header {
+    background: linear-gradient(150deg, #FEFAE0 10%, #8EA589);
+}
+
+/*MESSAGE PAGE MSSGS/PROFILE-IMAGE*/
+h5.mssgProfileName {
+    font-size: 2.5em;
+    color: #283618;
+}
+
+div.py-2.col-9 {
+    color: #283618;
+}
+
+.inboxImg-Txt.rounded.my-3 {
+    transition: 1s ease;
+}
+
+.inboxImg-Txt.rounded.my-3:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(1px 5px 5px #333);
+}
+
+/*CONVO PAGE MSSG/IMG*/
+h5.convoMssgID {
+    font-size: 2em;
+}

@@ -14,7 +14,7 @@ export async function insertMessage (message: Message): Promise<string> {
     const {messageListingId, messageProfileId, messageReceiverId, messageContent} = message
     await sql `insert into message (message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date) 
 values (gen_random_uuid(), ${messageListingId}, ${messageProfileId}, ${messageReceiverId}, ${messageContent}, NOW())`
-    return 'Message created successfully'
+    return 'Inbox created successfully'
 }
 
 export async function selectAllMessages (): Promise<Message[]> {
@@ -28,4 +28,20 @@ export async function selectMessageByMessageId (messageId: string): Promise<Mess
 
 export async function selectMessageByMessageProfileId (messageProfileId: string): Promise<Message[]> {
     return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_profile_id = ${messageProfileId}`
+}
+
+export async function selectMessageByMessageReceiverId (messageReceiverId: string): Promise<Message[]> {
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_receiver_id = ${messageReceiverId}`
+}
+
+export async function selectMessageByMessageListingId (messageListingId: string): Promise<Message[]> {
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_listing_id = ${messageListingId}`
+}
+
+export async function selectMessagesByAllForeignKeys (messageListingId: string, messageProfileIdOne: string, messageProfileIdTwo: string): Promise<Message[]> {
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_listing_id = ${messageListingId} and message_profile_id in (${messageProfileIdOne}, ${messageProfileIdTwo}) and message_receiver_id in (${messageProfileIdTwo}, ${messageProfileIdOne})`
+}
+
+export async function selectMessagesByProfileIds (messageProfileIdOne: string, messageProfileIdTwo: string): Promise<Message[]> {
+    return <Message[]> await sql`select message_id, message_listing_id, message_profile_id, message_receiver_id, message_content, message_date from message where message_profile_id in (${messageProfileIdOne}, ${messageProfileIdTwo}) and message_receiver_id in (${messageProfileIdTwo}, ${messageProfileIdOne}) ORDER BY message_date `
 }

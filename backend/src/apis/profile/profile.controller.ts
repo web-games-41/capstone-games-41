@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
     PartialProfile,
     Profile,
-    selectPartialProfileByProfileId,
+    selectPartialProfileByProfileId, selectProfilesForInbox,
     selectWholeProfileByProfileId, updateProfile
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
@@ -16,7 +16,8 @@ import {Status} from "../../utils/interfaces/Status";
 export async function putProfileController (request: Request, response: Response): Promise<Response> {
     try {
         const { profileId } = request.params
-        const { profileAvatarUrl, profileEmail, profileName } = request.body
+        const { profileEmail, profileName } = request.body
+        const profileAvatarUrl = request.body.profileAvatarUrl ?? null
         const profile = request.session.profile as Profile
         const profileIdFromSessions = profile.profileId as string
 
@@ -47,6 +48,20 @@ export async function getProfileByProfileId (request: Request, response: Respons
         const status: Status = { status: 200, data, message: null }
         return response.json(status)
     } catch (error: any) {
+        return (response.json({status: 400, data: null, message: error.message}))
+    }
+}
+
+export async function getProfilesForInbox (request: Request, response: Response): Promise<Response> {
+    try {
+        const profile = request.session.profile as Profile
+        const profileIdFromSessions = profile.profileId as string
+
+        const data = await selectProfilesForInbox(profileIdFromSessions)
+        const status: Status = { status: 200, data, message: null}
+        return response.json(status)
+    } catch (error: any) {
+
         return (response.json({status: 400, data: null, message: error.message}))
     }
 }

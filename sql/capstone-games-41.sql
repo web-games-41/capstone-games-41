@@ -11,7 +11,7 @@ create table if not exists category(
 
 create table if not exists profile(
                         profile_id uuid not null,
-                        profile_activation_id uuid not null,
+                        profile_activation_token char(32),
                         profile_avatar_url varchar(256),
                         profile_email varchar(128) not null unique,
                         profile_hash varchar(97) not null,
@@ -44,10 +44,11 @@ create table if not exists message(
                         message_receiver_id uuid not null,
                         message_content varchar(300) not null,
                         message_date timestamptz not null,
-                        foreign key (message_listing_id) references listing(listing_id),
+                        foreign key (message_listing_id) references listing(listing_id) ON DELETE CASCADE,
                         foreign key (message_profile_id) references profile(profile_id),
                         foreign key (message_receiver_id) references profile(profile_id),
                         primary key (message_id)
+
 );
 
 create index on message(message_listing_id);
