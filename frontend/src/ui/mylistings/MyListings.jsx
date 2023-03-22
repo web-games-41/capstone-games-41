@@ -12,14 +12,11 @@ export function MyListings() {
             return Object.values(state.listings)
         } else []
     })
-
     const dispatch = useDispatch()
-
     const initialEffect = () => {
         dispatch(fetchListingsByProfileId())
         dispatch(fetchAllCategories())
     }
-
     React.useEffect(initialEffect, [])
 
     return (
