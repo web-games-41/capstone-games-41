@@ -6,12 +6,12 @@ import {fetchAuth} from "../store/auth.js";
 import React from "react";
 import {fetchListingByListingId} from "../store/listing.js";
 
-export function UpdateListingPage () {
+export function UpdateListingPage() {
     let {listingId} = useParams()
     console.log(listingId)
     /*const auth = useSelector(state =>(state.auth))*/
     const listing = useSelector(state => {
-        if(state?.listings.constructor.name === "Object") {
+        if (state?.listings.constructor.name === "Object") {
             return state.listings[listingId]
         } else return null
     })
@@ -24,7 +24,7 @@ export function UpdateListingPage () {
     return (
         <>
             {listing &&
-            <UpdateListing listing = {listing}/>
+                <UpdateListing listing={listing}/>
             }
 
         </>

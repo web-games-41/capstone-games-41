@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {SignInForm} from "../shared/components/main-nav/sign-in/SigninForm.jsx";
 import {ListingClaimModal} from "./ListingClaimModal.jsx";
 import {Link} from "react-router-dom";
+import {ListingDeleteModal} from "./ListingDeleteModal.jsx";
 
 
 export function ListingCard(props) {
@@ -64,7 +65,9 @@ export function ListingCard(props) {
                         <ListingClaimModal listing={listing}/>
 
                         <Link to={`/update-listing/${listing.listingId}`}><Button className={"ms-2"}>Update</Button></Link>
-                        <Button  className={"ms-5 btn btn-danger"}> Delete </Button>
+
+
+                        <ListingDeleteModal listing={listing}/>
 
 
 
