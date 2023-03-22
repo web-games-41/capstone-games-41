@@ -5,7 +5,7 @@ import {ListingCard} from "../../mylistings/ListingCard.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProfilesForInbox} from "../../../store/inbox.js";
 import {InboxCard} from "./InboxCard";
-export function Message () {
+export function Inbox () {
     const profiles = useSelector(state => {
         if(state?.inbox.constructor.name === "Object") {
             return Object.values(state.inbox)
@@ -21,7 +21,7 @@ export function Message () {
     React.useEffect(initialEffect, [])
     return (
         <>
-            <h1 className='text-center'>Messages</h1>
+            <h1 className='text-center'>Inbox</h1>
             <div>
                {/* <a href='/convo'>*/}
                 {/*<Container className='rounded my-2'>

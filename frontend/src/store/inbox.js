@@ -29,7 +29,7 @@ export const fetchProfilesForInbox = () => async (dispatch, getState) => {
             console.log(profile.profileId)
             const {data: messages} = await httpConfig.get(`/apis/message/messagesByProfileIds/${auth.profileId}/${profile.profileId}`)
             const message = messages.at(-1)
-            dispatch(setIndividualMessage({profileId: profile.profileId, data:[message]}))
+            dispatch(setIndividualMessage({profileId: profile.profileId, data:message}))
         }
             const listingDictionary = data.reduce(
             (accumulator, currentValue) => {

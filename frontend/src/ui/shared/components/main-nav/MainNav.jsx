@@ -43,8 +43,8 @@ export function Navigation () {
                     <Navbar.Collapse className="justify-content-end p-2">
                         {auth !== null && (
                         <Nav>
-                            <a href='/message'>
-                                <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Message Icon"} /> </a>
+                            <a href='/inbox'>
+                                <Image fluid className={"d-xs-flex"} width={"30px"} src={messageIcon} alt={"Inbox Icon"} /> </a>
                         </Nav>
                         )}
                         <Nav>

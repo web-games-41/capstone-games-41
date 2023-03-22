@@ -6,54 +6,35 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchListingsByProfileId} from "../../../store/listing.js";
 import {ListingCard} from "../../mylistings/ListingCard.jsx";
 import {InboxCard} from "../inbox/InboxCard.jsx";
+import {MessageCards} from "./MessageCards";
+import {useParams} from "react-router-dom";
+import message, {fetchMessagesForConvos} from "../../../store/message.js";
+import {fetchAuth} from "../../../store/auth.js";
 
 export function Messaging () {
-    const listings = useSelector(state => {
-        if(state?.listings.constructor.name === "Object") {
-            return Object.values(state.listings)
-        } else []
+    const {messageProfileIdOne, messageProfileIdTwo} = useParams()
+
+
+    const messages = useSelector(state => {
+        if (state?.messages.constructor.name === 'Array') {
+            return state.messages
+        } else {
+            return []
+        }
     })
 
     const dispatch = useDispatch()
 
     const initialEffect = () => {
-        dispatch(fetchListingsByProfileId())
+        dispatch(fetchMessagesForConvos(messageProfileIdOne, messageProfileIdTwo))
+        dispatch(fetchAuth())
     }
 
     React.useEffect(initialEffect, [])
     return (
         <>
-            <Container fluid={'md'} className={'text-center'}>
-            <h2>Chess Board</h2>
-            </Container>
-
-            <Container fluid={'md'} className='rounded border-dark mt-5'>
-                <Row>
-                    <Col xs={9} className={'py-2'}>
-                    <Col className='d-flex flex-row-reverse'>
-                        <h5>Nicole Diaz</h5>
-                    </Col>
-                    <Col className='d-flex flex-row-reverse'>
-                        <p>I want this product</p>
-                    </Col>
-                    </Col>
-                    <Col xs={3} className='d-flex justify-content-center'>
-                        <Image fluid src={profilepic} width={100} height={100} alt="meow" className='rounded-circle'/>
-                    </Col>
-                </Row>
-            </Container>
-
-            <Container fluid={'md'} className='rounded border-dark my-2'>
-                <Row>
-                    <Col xs={3} className='d-flex justify-content-center'>
-                        <Image fluid src={profilepic2} width={100} height={100} alt="meow" className='rounded-circle'/>
-                    </Col>
-                    <Col xs={9} className='py-2'>
-                        <h5>Plexi Putput</h5>
-                        <p>I want this product</p>
-                    </Col>
-                </Row>
-            </Container>
+            {/*<MessageCards messages={messages}/>*/}
+            {messages.map(message => <MessageCards message={message} key={message.messageId} /> ) }
         </>
     )
 }

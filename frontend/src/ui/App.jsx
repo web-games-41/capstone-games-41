@@ -4,7 +4,7 @@ import './App.css'
 import { Home } from './home/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {ProfilePage} from "./ProfilePage.jsx";
-import {Message} from "./messages/inbox/Message.jsx";
+import {Inbox} from "./messages/inbox/Inbox.jsx";
 import {ViewListing} from "./viewlisting/ViewListing";
 import {Signup} from './Signup.jsx';
 import {CreateListing} from './CreateListing'
@@ -31,7 +31,7 @@ export function App(props) {
                     <Route path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route path={'/profile'} element={<ProfilePage />} />
-                    <Route path='/message' element={<Message />} />
+                    <Route path='/inbox' element={<Inbox />} />
                     <Route path='/convo/:messageProfileIdOne/:messageProfileIdTwo' element={<Messaging />} messageProfileIdOne=":messageProfileIdOne" messageProfileIdTwo="messageProfileIdTwo"/>
                     <Route path='/view-listing/:listingId' element={<ViewListing />} listingId=":listingId" />
                     <Route path='/my-listings' element={<MyListings />} />
