@@ -10,6 +10,7 @@ import {MessageCards} from "./MessageCards";
 import {useParams} from "react-router-dom";
 import message, {fetchMessagesForConvos} from "../../../store/message.js";
 import {fetchAuth} from "../../../store/auth.js";
+import {SendMessageForm} from "./SendMessageForm.jsx";
 
 export function Messaging () {
     const {messageProfileIdOne, messageProfileIdTwo} = useParams()
@@ -22,8 +23,13 @@ export function Messaging () {
             return []
         }
     })
+console.log(messages)
 
+
+    const lastMessage = messages.at(-1)
+    console.log(lastMessage)
     const dispatch = useDispatch()
+
 
     const initialEffect = () => {
         dispatch(fetchMessagesForConvos(messageProfileIdOne, messageProfileIdTwo))
@@ -31,10 +37,18 @@ export function Messaging () {
     }
 
     React.useEffect(initialEffect, [])
+    if (messages.length === 0 ) {
+        return (<></>)
+    }
+
+
     return (
         <>
+            <Container>
             {/*<MessageCards messages={messages}/>*/}
             {messages.map(message => <MessageCards message={message} key={message.messageId} /> ) }
+                <SendMessageForm messageListingId={lastMessage.messageListingId}/>
+            </Container>
         </>
     )
 }
